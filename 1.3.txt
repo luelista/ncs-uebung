@@ -21,7 +21,76 @@ c) List two ways in which the OSI reference model and TCP/IP reference model are
 same. Now list two ways in which they differ
 
 Im TCP/IP Modell gibt es den Internet Layer, der im OSI-Modell dem Network Layer 
-entspricht, dieser wird im Internet üblicherweise durch das Internet Protocol (IP)
+entspricht, dieser wird im Internet üblicherweise durch das Internet Protocol (IP) implementiert.
+Außerdem entspricht der TCP/IP Transport Layer dem OSI Transport Layer, dafür wird meist TCP oder UDP benutzt.
+
+Unterschiede gibt es bei den OSI-Layern 1 und 2, die sind in TCP/IP zum "Network Interface" Layer zusammengefasst. Genauso die OSI-Layer 5 bis 7, die im TCP-IP-Modell als Application Layer zusammengefasst werden.
+
+
+d) 
+On page 6 of this exercise sheet you will find a list of protocols. Identify 3 example protocols for each layer of the ISO/OSI model. Explain your choice for one of the example protocols briefly
+
+---------------------------------------------------------------------
+ISO/OSI Layer			Example Protocol
+Explanation for one protocol
+---------------------------------------------------------------------
+Application			HTTP
+				WebDAV
+				IMAP
+
+
+
+---------------------------------------------------------------------
+Presentation			MIME
+				Telnet
+				NCP
+				TLS
+
+Telnet: Die Anwendung läuft auf dem Server, es wird nur die Ausgabe
+der Anwendung übertragen, Telnet beschreibt die Darstellung (Presentation).
+
+---------------------------------------------------------------------
+Session				NetBIOS/NetBEUI
+				SMB
+				NFS
+
+
+
+---------------------------------------------------------------------
+Transport			TCP
+				UDP
+				
+
+
+
+---------------------------------------------------------------------
+Network				IPv4
+				IPv6
+				IPsec
+
+IPsec arbeitet auf dem Network Layer
+
+---------------------------------------------------------------------
+Datalink			IEEE 802.11 WiFi
+
+
+
+---------------------------------------------------------------------
+Physical			USB (physical layer)
+				IEEE 802.11 WiFi (physical layer)
+				Ethernet physical layer
+				IEEE 1394 interface
+
+
+---------------------------------------------------------------------
+
+
+
+
+
+
+
+
 
 
 
