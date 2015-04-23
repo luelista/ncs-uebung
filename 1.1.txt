@@ -8,7 +8,7 @@ Berechnung der übertragenen Datenmenge pro Trip:
 
 Übertragungsgeschwindigkeit des Hundenetzes für Entfernungen X:
 Paketgröße = 27 GB/trip
-Entfernung = X = 5 km/trip
+Entfernung = X km/trip
 Geschwindigkeit = 18 km/h
 
 27GB/trip / X km/trip * 18km/h = 486/X GB/h
