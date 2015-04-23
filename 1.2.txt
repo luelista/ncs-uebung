@@ -1,30 +1,4 @@
 
-# Task 1.1
-
-Hund:
-Berechnung der übertragenen Datenmenge pro Trip:
-1 dog/trip * 3 tapes/dog * 9 GB/tape * 1024 MB/GB = 27648 MB/trip
-1 dog/trip * 3 tapes/dog * 9 GB/tape = 27 GB/trip
-
-Übertragungsgeschwindigkeit des Hundenetzes für Entfernungen X:
-Paketgröße = 27 GB/trip
-Entfernung = X = 5 km/trip
-Geschwindigkeit = 18 km/h
-
-27GB/trip / 5km/trip * 18km/h
-
-
-(3456 MBit / Lauf) / (n km / Lauf) * (18 km / h) / 2 = 3456 * 18 / n = (62208 / n) MBit/h = 17,28/n MBit/sec
-
-Kabel:
-155 MBit / sec = 68.11 GB/h
-
------------------
-17,28/n = 155
-
-n = 17.28/155 = 0,11 km
-
-
 # Task 1.2
 a)
 
