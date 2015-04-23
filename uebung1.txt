@@ -1,0 +1,60 @@
+
+# Task 1.1
+
+Hund:
+Berechnung der übertragenen Datenmenge pro Trip:
+1 dog/trip * 3 tapes/dog * 9 GB/tape * 1024 MB/GB = 27648 MB/trip
+1 dog/trip * 3 tapes/dog * 9 GB/tape = 27 GB/trip
+
+Übertragungsgeschwindigkeit des Hundenetzes für Entfernungen X:
+Paketgröße = 27 GB/trip
+Entfernung = X = 5 km/trip
+Geschwindigkeit = 18 km/h
+
+27GB/trip / 5km/trip * 18km/h
+
+
+(3456 MBit / Lauf) / (n km / Lauf) * (18 km / h) / 2 = 3456 * 18 / n = (62208 / n) MBit/h = 17,28/n MBit/sec
+
+Kabel:
+155 MBit / sec = 68.11 GB/h
+
+-----------------
+17,28/n = 155
+
+n = 17.28/155 = 0,11 km
+
+
+# Task 1.2
+a)
+
+1) VoIP
+Level 7 da es sich analog zu FTP und HTTP um eine Anwendung handelt.
+
+2) Dropbox
+Level 7, da es sich um eine File Transfer-Anwendung handelt und die Daten über HTTP übertragen werden.
+
+3) E-Mail client
+Level 7 
+
+4) Proxy server
+Level 7
+
+5) Smartphone
+Level 1-7
+
+6) Steam
+???
+
+7) Powerline-Adapter
+Level 2, da der Adapter nur Pakete auf Data Link-Ebene verwaltet (äquivalent zu einem Switch).
+
+8) Fritzbox
+Level 4, da ein Router üblicherweise Network Address Translation betreibt und dabei in Level3 und 4 Protokolle eingreifen muss.
+
+9) FTP Server
+Level 7 (siehe Folie 1/72)
+
+
+b)
+
