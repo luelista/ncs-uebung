@@ -1,8 +1,8 @@
 
 # Task 1.3
 a)
-Die Protokolle werden einfacher und klarer, denn sie müssen sich jeweils nur auf eine 
-konkrete Aufgabe lösen.  Protokolle können so auch leichter ausgetauscht 
+Die Protokolle werden einfacher und klarer, denn sie müssen sich jeweils nur auf eine
+konkrete Aufgabe beschränken. Implementierungen der einzelnen Schichten oder auch ganze Protokolle können so leichter ausgetauscht 
 werden.
 Außerdem erleichtert es die Arbeit von Softwareentwicklern, da man sich bei
 der Entwicklung eines Anwendungsprogrammes auf einer höheren Abstraktionsschicht
@@ -17,17 +17,17 @@ Determining which route through the subnet to use :
 Die Vermittlungsschicht/Network Layer (Schicht 3) verwaltet Routingtabellen und sucht
 auf diese Weise den schnellsten Weg zu dem Empfänger-Netzwerkknoten.
 
-c) List two ways in which the OSI reference model and TCP/IP reference model are the 
+c) List two ways in which the OSI reference model and TCP/IP reference model are the
 same. Now list two ways in which they differ
 
-Im TCP/IP Modell gibt es den Internet Layer, der im OSI-Modell dem Network Layer 
+Im TCP/IP Modell gibt es den Internet Layer, der im OSI-Modell dem Network Layer
 entspricht, dieser wird im Internet üblicherweise durch das Internet Protocol (IP) implementiert.
 Außerdem entspricht der TCP/IP Transport Layer dem OSI Transport Layer, dafür wird meist TCP oder UDP benutzt.
 
 Unterschiede gibt es bei den OSI-Layern 1 und 2, die sind in TCP/IP zum "Network Interface" Layer zusammengefasst. Genauso die OSI-Layer 5 bis 7, die im TCP-IP-Modell als Application Layer zusammengefasst werden.
 
 
-d) 
+d)
 On page 6 of this exercise sheet you will find a list of protocols. Identify 3 example protocols for each layer of the ISO/OSI model. Explain your choice for one of the example protocols briefly
 
 ---------------------------------------------------------------------
@@ -59,7 +59,7 @@ Session				NetBIOS/NetBEUI
 ---------------------------------------------------------------------
 Transport			TCP
 				UDP
-				
+
 
 
 
@@ -83,16 +83,3 @@ Physical			USB (physical layer)
 
 
 ---------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -9,16 +9,16 @@ Level 7 da es sich analog zu FTP und HTTP um eine Anwendung handelt.
 Level 7, da es sich um eine File Transfer-Anwendung handelt und die Daten über HTTP übertragen werden.
 
 3) E-Mail client
-Level 7 
+Level 7
 
 4) Proxy server
-Level 7
+Level 7 // Anmerkung Julian: Bist du dir sicher? Der Proxy Server muss die Pakete doch eigentlich nur durchrouten (Transport Ebene) und nicht komplett aufschlüsseln bis auf Ebene 7, oder? So im Sinne von Folie 67.
 
 5) Smartphone
 Level 1-7
 
 6) Steam
-???
+Level 7, da es sich um eine komplexe Desktop Anwendung handelt, die sowohl File-Transfer als auch Chat Funktionalität implementiert.
 
 7) Powerline-Adapter
 Level 2, da der Adapter nur Pakete auf Data Link-Ebene verwaltet (äquivalent zu einem Switch).
@@ -32,3 +32,15 @@ Level 7 (siehe Folie 1/72)
 
 b)
 
+Layer 7,6,5: Darstellung der Webseite auf Endgerät, Sessions verwalten
+Layer 4: Kommunikation in Paketen an Zielserver schicken und empfangen (TCP)
+Layer 3: Übermittlung der Pakete über verschiedene Zwischenknoten (Routing)
+Layer 2,1: Transfer von Paketen in Bitform zum nächstgelegenen Knoten
+
+c)
+
+1. Chat Kommunikation mit Freunden
+2. E-mail
+3. Im Internet surfen
+
+Ohne Computer Netzwerke wäre eine Echtzeit-Kommunikation über größere Entfernungen (1) nicht möglich. Selbst Zeitversetzte Kommunikation wie E-mail (2) wäre deutlich komplizierter und müsste über Post o.Ä, erfolgen. Auch der dauerhafte und augenblickliche Zugang zu Wissen und Informationen, wie er durch das WWW verfügbar ist (3) wäre ohne Computer Netzwerke nicht möglich. Man müsste auf Printmedien wie Bücher oder Zeitungen zurückgreifen, um an Informationen zu gelangen.
