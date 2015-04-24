@@ -2,7 +2,7 @@
 # Task 1.3
 a)
 Die Protokolle werden einfacher und klarer, denn sie müssen sich jeweils nur auf eine
-konkrete Aufgabe beschränken. Implementierungen der einzelnen Schichten oder auch ganze Protokolle können so leichter ausgetauscht 
+konkrete Aufgabe beschränken. Einzelne Protokolle können so leichter ausgetauscht
 werden.
 Außerdem erleichtert es die Arbeit von Softwareentwicklern, da man sich bei
 der Entwicklung eines Anwendungsprogrammes auf einer höheren Abstraktionsschicht
@@ -53,12 +53,14 @@ der Anwendung übertragen, Telnet beschreibt die Darstellung (Presentation).
 Session				NetBIOS/NetBEUI
 				SMB
 				NFS
+				Socks
 
 
 
 ---------------------------------------------------------------------
 Transport			TCP
 				UDP
+				SCTP
 
 
 
@@ -72,6 +74,11 @@ IPsec arbeitet auf dem Network Layer
 
 ---------------------------------------------------------------------
 Datalink			IEEE 802.11 WiFi
+					STP
+					LLDPe
+
+Dieser Layer ist doof.
+
 
 
 
