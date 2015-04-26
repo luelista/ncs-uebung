@@ -167,11 +167,11 @@ Example Protocol
 Explanation for one protocol
 \\
 \hline
-&HTTP&
+&HTTP& HTTP als Protokoll des World Wide Web ist Layer 7,
 \\ \cline {2-2}
-Application & WebDAV &
+Application & WebDAV &  da es einer Anwendung (Web-Browser) den Zugang
 \\ \cline {2-2}
-&IMAP&
+&IMAP& zum Netzwerk ermöglicht.
 \\ \hline
 &MIME& Telnet: Die Anwendung lÃ¤uft auf dem Server.
 \\ \cline {2-2}
@@ -179,35 +179,35 @@ Presentation &Telnet&Nur die Ausgabe der Anwendung wird Ã¼ber-
 \\ \cline {2-2}
 &NCP&tragen. Telnet beschreibt nur die Darstellung.
 \\ \hline
-&NetBios / NetBEUI&
+&NetBios / NetBEUI& NetBEUI implementiert einen Sitzungsdienst für die
 \\ \cline {2-2}
-Session & SMB &
+Session & SMB & Aufrechterhaltung  von verbindungsorientierter Kommunikation
 \\ \cline {2-2}
-& NFS &
+& NFS & und ist daher auf Layer 5 angesiedelt.
 \\ \hline
-&TCP&
+&TCP&    TCP beschreibt Funktionen für die Transportschicht, also die Kommunikation zwischen Prozessadressierung,
 \\ \cline {2-2}
-Transport &UDP&
+Transport &UDP&Prozessen auf einem System: Verbindungsmanagement, Fehlerkorrektur und 
 \\ \cline {2-2}
-&SCTP&
+&SCTP& Flow control und ist daher ein Level-4-Protokoll
 \\ \hline
-&IPv4&
+&IPv4&  IP 4/6 beinhaltet das Routing von Nachrichten zu einem Zielsystem und
 \\ \cline {2-2}
-Network &IPv6&
+Network &IPv6& die Bildung von Subnetzen, sowie die Stausteuerung auf Pfaden.
 \\ \cline {2-2}
-&IPsec&
+&IPsec& Daher Level 3.
 \\ \hline
-&IEEE 802.11 WiFi&
+&IEEE 802.11 WiFi& Auf dem Datalink-Layer ist Layer 2 von WiFi, es beinhaltet grundlegende 
 \\ \cline {2-2}
-Datalink &STP& Dieser Layer ist doof
+Datalink &STP& Fehlererkennung, außerdem die Aufteilung des gemeinsam genutzten Mediums
 \\ \cline {2-2}
-&LLDPe&
+&LLDPe& zwischen verschiedenen Stationen sowie die Adressierung der Netzwerkadapter (MAC-Adressen).
 \\ \hline
-&USB (physical layer)&
+&USB (physical layer)& Auf der physikalischen Ebene befindet sich z.B. der Physical Layer
 \\ \cline {2-2}
-Physical &IEEE 1394&
+Physical &IEEE 1394& von WiFi (W-LAN), da darin die Umsetzung der Daten-Bits in elektromagnetische
 \\ \cline {2-2}
-&IEEE 802.11 WiFi (physical layer)&
+&IEEE 802.11 WiFi (physical layer)& Wellen im 2,4GHz bzw 5GHz-Band durchgeführt wird.
 \\ \hline
 \end{tabular}
 \end{center}
