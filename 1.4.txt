@@ -1,0 +1,21 @@
+a)
+Bei verbindungsbasierter Kommunikation (connection-oriented communication) wird zwischen den zwei Kommunkationspartnern zunächst eine Verbindung aufgebaut. Über diese Verbindung werden Daten übertragen und empfangen. Zuletzt wird die Verbindung wieder geschlossen. Diese Form der Kommunikation ist mit einem Telefonanruf vergleichbar: Nach dem Anrufen und abheben melden Angerufener und Anrufer, die Verbindung ist aufgebaut. Nach erfolgtem Gespräch, also der Datenübertragung, wird durch eine Verabschiedung und das Auflegen die Verbindung wieder geschlossen. 
+
+Bei der verbindungslosen Kommunikation (connectionless communication) schickt der Sender seine Daten ohne vorherigen Verbindungsaufbau zum Empfänger. Sie ist, anders als die verbindungsbasierte Kommunikation, nicht zur bi-, sondern nur zur unidirektionalen Kommunikation geeignet. Es erfolgt keine Empfangsbestätigung. Ein Beispiel für verbindungslose Kommunikation ist der Rundfunk.
+
+
+b)
+Bei der Leitungsvermittlung (circuit switching) wird den beiden Kommunikationspartnern für die Dauer ihrer Kommunikation eine dedizierte Verbindung mit konstanter Bandbreite zugeteilt, die von beiden exklusiv genutzt wird. Sie bleibt auch dann bestehen, wenn die Kommuniktion zwischen Verbindungsaufbau und Verbindungsschluss für belieig lange Zeit pausiert wird.
+
+Bei der Paketvermittlung (packet switching) werden alle Nachrichten in Datenpakete aufgeteilt, die dann über das Netzwerk verschickt werden. Eine dediziere Verbindung zwischen Kommunikationspartern besteht nicht, stattdessen enthalten alle Pakete neben den Nutzdaten Informationen über Sender und Empfänger, sodass die Vermittlungsstellen im Netzwerk die Pakete korrekt weiterleiten können. 
+
+Vergleich der Systeme bzgl. Addressierung: Bei der Leitungsvermittlung entfällt die Addressierung aufgrund der für beide exklusiven Verbindung. Sie ist deshalb einfacher für die Kommunikationspartner. Bei der Paketvermittlung enthalten alle Pakete mit den Addressinformationen einen Overhead. Bei kleiner Paketgröße müssen im Vergleich zur Leitungsvermittlung recht viele Daten zusätzlich übertragen werden.
+
+Vergleich der Systeme bzgl. Netzwerkauslastung: Bei der Leitungsvermittlung wird das Netzwerk sehr ineffizient ausgelastet. Der Aufwand für die Datenübertragung ist von der Anzahl der Verbindungen abhängig. Für jede Verbindung ist der gleiche Aufwand nötig, unabhängig davon, ob die zugehörigen Kommunikationspartner viele oder wenige Daten übertragen. Dadurch, dass allen Verbindungen eine feste Bandbreite dauerhaft garantiert wird, bleibt viel Bandbreite ungenutzt, da viele Verbindungen die Bandbreite nicht maximal ausnutzen und bei Kommunikationspausen trotzdem Bandbreite blockiert wird. Bei der Paketvermittlung wird das Netzwerk im besten Fall optimal ausgelastet. Der Aufwand für die Datenübertragung ist nicht von der Anzahl der Verbindungen, sondern von der Anzahl der Pakete abhängig. Für Kommunikationspaare, die viele Daten übertragen, wird im Idealfall proportional mehr Aufwand betrieben als für solche, die wenige übertragen.
+
+
+c)
+Weder noch bzw. beides. Es kommt darauf an, wo der Betrachter steht. 
+
+d)
+H.U.N.D. ist ein verbindungsloses Paketvermittlungsnetzwerk (connectionless packet-switching network). Jeder Hund stellt ein einzelnes Paket dar. Er trägt die Nutzdaten auf Magnetband um den Hals und bekommt die Adressdaten (durch ein nicht in der Aufgabe beschriebenes System) mitgeteilt. Ein Verbindungsaufbau wird in der Aufgabe nicht beschrieben. Der Sender schickt die Hunde los und hofft, dass sie bei dem Empfänger ankommen mögen, wie bei der verbindungslosen Kommunikation üblich. 

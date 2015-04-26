@@ -1,0 +1,239 @@
+\documentclass[a4paper,
+			llpt,
+			solution,
+			accentcolor=tud2d,
+			colorbacktitle
+			]
+			{tudexercise}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{paralist}
+
+\title{Übungsaufgabe Net Centric Systems}
+\subtitle{Sommersemester 2015, Ralf Kundel, Übungsblatt 1}
+\subsubtitle{Max Weller, Julian Haas, Stefan Pilot}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+$$
+\frac{1\,Hund * 3\,Tapes * 9 \frac{GiB}{Tape} * 1024\frac{MiB}{GiB} * 8 \frac{b}{B} * 18 \frac{km}{h} * \frac{1\frac{m}{s}}{3,6\frac{km}{h}}}{155 \frac{Mb}{sec}}
+\approx
+7135 m
+$$
+
+Ab hier ist alles noch so ungefähr wie im txt. Ich bevorzuge den obigen Bruch. Bitte überlege sich jemand einen Satz dazu.
+Berechnung der übertragenen Datenmenge pro Trip:
+\\\\
+\centerline{$   1 \frac{dog}{trip} * 3 \frac{tapes}{dog} * 9 \frac{GB}{tape} * 1024 \frac{MB}{GB} = 27648 \frac{MB}{trip}
+$}
+\\\\
+\centerline{
+$
+    1 \frac{dog}{trip} * 3 \frac{tapes}{dog} * 9 \frac{GB}{tape} = 27 \frac{GB}{trip}
+$
+}
+\\
+Übertragungsgeschwindigkeit des Hundenetzes für Entfernungen X:
+\\
+\begin{enumerate}
+
+
+\item    Paketgröße = $27 \frac{GB}{trip}$
+\item    Entfernung in km/trip = X 
+\item    Geschwindigkeit = 18 km/h
+\end{enumerate}
+    27GB/trip * 18km/h = 486 (GB*km/(trip*h))
+    
+Erläuterung:
+>Ich teile die Geschwindigkeit durch die Entfernung, dadurch erhalte ich die Anzahl Trips pro Stunde, d.h. wie oft kann der Hund die Strecke pro Stunde laufen. Z.B. von Darmstadt nach Griesheim sind es 9 km, der Hund läuft mit 18km/h, also 18km/h / 9km = 2/h, der Hund kann die Strecke 2 Mal pro Stunde laufen.
+>Anschließend multipliziere ich mit der Paketgröße um herauszufinden wie viel GB pro Stunde übertragen werden.
+
+
+Übertragungsgeschwindigkeit des Kabels:
+    155 MBit / sec = 68.11 GB/h
+
+----------------------------------------------------------------
+
+    486 (GB*km/(trip*h)) / X = 68.11 GB/h 
+
+
+         486 (GB*km/(trip*h))
+    X = ---------------------   =  486/68.11  km/trip = 7,135 km / trip
+              68.11 GB/h 
+              
+              
+\section{}
+\begin{enumerate}
+\item
+\begin{enumerate}
+
+\item
+VoIP:
+Level 7 da es sich analog zu FTP und HTTP um eine Anwendung handelt.
+
+\item
+Dropbox:
+Level 7, da es sich um eine File-Transfer-Anwendung handelt und die Daten über HTTP übertragen werden.
+
+\item
+E-Mail-Client:
+Level 7
+
+\item
+Proxy-Server:
+Level 7 // Anmerkung Julian: Bist du dir sicher? Der Proxy Server muss die Pakete doch eigentlich nur durchrouten (Transport Ebene) und nicht komplett aufschlüsseln bis auf Ebene 7, oder? So im Sinne von Folie 67.
+
+\item
+Smartphone:
+Level 1-7
+
+\item
+Steam:
+Level 7, da es sich um eine komplexe Desktopanwendung handelt, die sowohl File-Transfer als auch Chat-Funktionen implementiert.
+
+\item
+Powerline-Adapter:
+Level 2, da der Adapter nur Pakete auf Data-Link-Ebene verwaltet (äquivalent zu einem Switch).
+
+\item
+Fritzbox:
+Level 4, da ein Router üblicherweise Network Address Translation betreibt und dabei in Level-3- und -4-Protokolle eingreifen muss.
+
+\item
+FTP Server:
+Level 7 (siehe Folie 1/72)
+\end{enumerate}
+\item
+
+Layer 7,6,5: Darstellung der Webseite auf Endgerät, Sessions verwalten, Anfragen an Server stellen
+\\
+Layer 4: Kommunikation in Paketen an Zielserver schicken und empfangen (TCP)
+\\
+Layer 3: Übermittlung der Pakete über verschiedene Zwischenknoten (Routing)
+\\
+Layer 2,1: Transfer von Paketen in Bitform zum nächstgelegenen Knoten
+
+\item
+\begin{compactenum}[1.]
+\item
+Chat-Kommunikation mit Freunden
+\item
+E-Mail
+\item
+Im Internet surfen
+\end{compactenum}
+Ohne Computernetzwerke wäre eine textbasierte Echtzeit-Kommunikation über größere Entfernungen (1) nicht möglich. Selbst Zeitversetzte Kommunikation wie E-Mail (2) wäre deutlich komplizierter und müsste z.B. über die Post erfolgen. Auch der dauerhafte und augenblickliche Zugang zu Wissen und Informationen, wie er durch das WWW verfügbar ist (3), wäre ohne Computernetzwerke nicht möglich. Man müsste auf Printmedien wie Bücher oder Zeitungen zurückgreifen, um an Informationen zu gelangen.
+
+\end{enumerate}
+\section{}
+\begin{enumerate}
+\item
+Die Protokolle werden einfacher und klarer, denn sie müssen sich jeweils nur auf eine konkrete Aufgabe beschränken.
+Einzelne Protokolle können so leichter ausgetauscht werden.
+Außerdem erleichtert es die Arbeit von Softwareentwicklern,
+da man sich bei der Entwicklung eines Anwendungsprogrammes
+auf einer höheren Abstraktionsschicht befindet
+und sich so nicht mehr mit den Low-Level-Netzwerkschichten beschäftigen muss.
+
+\item
+Dividing the transmitted bit stream into frames:
+Der Data-Link-Layer, also Schicht 2, teilt den Datenstrom in Blöcke ein (bei Ethernet
+werden diese auch als Frames oder Rahmen bezeichnet).
+
+Determining which route through the subnet to use:
+Die Vermittlungsschicht/Network Layer (Schicht 3) verwaltet Routingtabellen und sucht
+auf diese Weise den schnellsten Weg zu dem Empfänger-Netzwerkknoten.
+
+\item
+Im TCP/IP Modell gibt es den Internet Layer, der im OSI-Modell dem Network Layer
+entspricht, dieser wird im Internet üblicherweise durch das Internet Protocol (IP) implementiert.
+Außerdem entspricht der TCP/IP Transport Layer dem OSI Transport Layer, dafür wird meist TCP oder UDP benutzt.
+
+Unterschiede gibt es bei den OSI-Layern 1 und 2, die sind in TCP/IP zum "Network Interface" Layer zusammengefasst. Genauso die OSI-Layer 5 bis 7, die im TCP-IP-Modell zum Application Layer zusammengefasst werden.
+\item
+On page 6 of this exercise sheet you will find a list of protocols. Identify 3 example protocols for each layer of the ISO/OSI model. Explain your choice for one of the example protocols briefly
+
+\end{enumerate}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+ISO/OSI Layer
+&
+Example Protocol
+&
+Explanation for one protocol
+\\
+\hline
+&HTTP&
+\\ \cline {2-2}
+Application & WebDAV &
+\\ \cline {2-2}
+&IMAP&
+\\ \hline
+&MIME& Telnet: Die Anwendung läuft auf dem Server.
+\\ \cline {2-2}
+Presentation &Telnet&Nur die Ausgabe der Anwendung wird über-
+\\ \cline {2-2}
+&NCP&tragen. Telnet beschreibt nur die Darstellung.
+\\ \hline
+&NetBios / NetBEUI&
+\\ \cline {2-2}
+Session & SMB &
+\\ \cline {2-2}
+& NFS &
+\\ \hline
+&TCP&
+\\ \cline {2-2}
+Transport &UDP&
+\\ \cline {2-2}
+&SCTP&
+\\ \hline
+&IPv4&
+\\ \cline {2-2}
+Network &IPv6&
+\\ \cline {2-2}
+&IPsec&
+\\ \hline
+&IEEE 802.11 WiFi&
+\\ \cline {2-2}
+Datalink &STP& Dieser Layer ist doof
+\\ \cline {2-2}
+&LLDPe&
+\\ \hline
+&USB (physical layer)&
+\\ \cline {2-2}
+Physical &IEEE 1394&
+\\ \cline {2-2}
+&IEEE 802.11 WiFi (physical layer)&
+\\ \hline
+\end{tabular}
+\end{center}
+\section{}
+\begin{enumerate}
+\item
+Bei verbindungsbasierter Kommunikation (connection-oriented communication) wird zwischen den zwei Kommunkationspartnern zunächst eine Verbindung aufgebaut. Über diese Verbindung werden Daten übertragen und empfangen. Zuletzt wird die Verbindung wieder geschlossen. Diese Form der Kommunikation ist mit einem Telefonanruf vergleichbar: Nach dem Anrufen und abheben melden Angerufener und Anrufer, die Verbindung ist aufgebaut. Nach erfolgtem Gespräch, also der Datenübertragung, wird durch eine Verabschiedung und das Auflegen die Verbindung wieder geschlossen. 
+
+Bei der verbindungslosen Kommunikation (connectionless communication) schickt der Sender seine Daten ohne vorherigen Verbindungsaufbau zum Empfänger. Sie ist, anders als die verbindungsbasierte Kommunikation, nicht zur bi-, sondern nur zur unidirektionalen Kommunikation geeignet. Es erfolgt keine Empfangsbestätigung. Ein Beispiel für verbindungslose Kommunikation ist der Rundfunk.
+
+
+\item
+Bei der Leitungsvermittlung (circuit switching) wird den beiden Kommunikationspartnern für die Dauer ihrer Kommunikation eine dedizierte Verbindung mit konstanter Bandbreite zugeteilt, die von beiden exklusiv genutzt wird. Sie bleibt auch dann bestehen, wenn die Kommunikation zwischen Verbindungsaufbau und Verbindungsschluss für beliebig lange Zeit pausiert wird.
+
+Bei der Paketvermittlung (packet switching) werden alle Nachrichten in Datenpakete aufgeteilt, die dann über das Netzwerk verschickt werden. Eine dedizierte Verbindung zwischen Kommunikationspartnern besteht nicht, stattdessen enthalten alle Pakete neben den Nutzdaten Informationen über Sender und Empfänger, sodass die Vermittlungsstellen im Netzwerk die Pakete korrekt weiterleiten können. 
+
+Vergleich der Systeme bzgl. Adressierung:\\Bei der Leitungsvermittlung entfällt die Adressierung aufgrund der für beide exklusiven Verbindung. Sie ist deshalb einfacher für die Kommunikationspartner. Bei der Paketvermittlung enthalten alle Pakete mit den Adressinformationen einen Overhead. Bei kleiner Paketgröße müssen im Vergleich zur Leitungsvermittlung recht viele Daten zusätzlich übertragen werden.
+
+Vergleich der Systeme bzgl. Netzwerkauslastung: \\Bei der Leitungsvermittlung wird das Netzwerk sehr ineffizient ausgelastet. Der Aufwand für die Datenübertragung ist von der Anzahl der Verbindungen abhängig. Für jede Verbindung ist der gleiche Aufwand nötig, unabhängig davon, ob die zugehörigen Kommunikationspartner viele oder wenige Daten übertragen. Dadurch, dass allen Verbindungen eine feste Bandbreite dauerhaft garantiert wird, bleibt viel Bandbreite ungenutzt, da viele Verbindungen die Bandbreite nicht maximal ausnutzen und bei Kommunikationspausen trotzdem Bandbreite blockiert wird. Bei der Paketvermittlung wird das Netzwerk im besten Fall optimal ausgelastet. Der Aufwand für die Datenübertragung ist nicht von der Anzahl der Verbindungen, sondern von der Anzahl der Pakete abhängig. Für Kommunikationspaare, die viele Daten übertragen, wird im Idealfall proportional mehr Aufwand betrieben als für solche, die wenige übertragen.
+
+
+\item
+Weder noch bzw. beides. Es kommt darauf an, wo der Betrachter steht. 
+
+\item
+H.U.N.D. ist ein verbindungsloses Paketvermittlungsnetzwerk (connectionless packet-switching network). Jeder Hund stellt ein einzelnes Paket dar. Er trägt die Nutzdaten auf Magnetband um den Hals und bekommt die Adressdaten (durch ein nicht in der Aufgabe beschriebenes System) mitgeteilt. Ein Verbindungsaufbau wird in der Aufgabe nicht beschrieben. Der Sender schickt die Hunde los und hofft, dass sie bei dem Empfänger ankommen mögen, wie bei der verbindungslosen Kommunikation üblich. 
+\end{enumerate}
+\end{document}
