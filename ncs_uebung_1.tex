@@ -19,52 +19,51 @@
 \maketitle
 
 \section{}
+Berechnung der übertragenen Datenmenge pro Trip:
+\\\\
+\centerline{
+$
+    1 \frac{dog}{trip} * 3 \frac{tapes}{dog} * 9 \frac{GB}{tape} = 27 \frac{GB}{trip} = 27648 \frac{MB}{trip} = 221184\frac{Mb}{trip}
+$
+}
+\\
+
+Übertragungsgeschwindigkeit des Kabels:
+    155 MBit / sec = 68.11 GB/h
+\\
+
+Übertragungsgeschwindigkeit des Hundenetzes für Entfernungen X:
+\begin{enumerate}
+\item    Paketgröße = $27 \frac{GB}{trip}$
+\item    Entfernung = $X \frac{m}{trip}$
+\item    Geschwindigkeit = $18 \frac{km}{h}$
+\item	 Datenmenge pro Trip = $221184\frac{Mb}{trip}$
+\end{enumerate}
+
+
+
+$$
+\frac{221184\frac{Mb}{trip} * 18 \frac{km}{h} * \frac{1\frac{m}{s}}{3,6\frac{km}{h}}}{X\frac{m}{trip}}
+=
+155 \frac{Mb}{s}
+$$
+
+$$
+\frac{221184 Mb * 5 \frac{m}{s}}{155 \frac{Mb}{s}}
+\approx
+7135 m
+$$
+
+\noindent \textbf{Erläuterung}:
+Die Übertragungsgeschwindigkeit des Hundes berechnet sich, in dem man die Datenmenge pro Trip mit der Geschwindigkeit des Hundes multipliziert und durch die Entfernung pro Trip teilt.
+Nun setzen wir die Übertragungsgeschwindigkeit des Kabels in diese Formel ein und stellen nach X um.
+Die Entfernung pro Trip muss also weniger als \textbf{7135m} betragen, um bessere Übertragungsraten als das Kabel zu erreichen.
+
 $$
 \frac{1\,Hund * 3\,Tapes * 9 \frac{GiB}{Tape} * 1024\frac{MiB}{GiB} * 8 \frac{b}{B} * 18 \frac{km}{h} * \frac{1\frac{m}{s}}{3,6\frac{km}{h}}}{155 \frac{Mb}{sec}}
 \approx
 7135 m
 $$
-
-Ab hier ist alles noch so ungefähr wie im txt. Ich bevorzuge den obigen Bruch. Bitte überlege sich jemand einen Satz dazu.
-Berechnung der übertragenen Datenmenge pro Trip:
-\\\\
-\centerline{$   1 \frac{dog}{trip} * 3 \frac{tapes}{dog} * 9 \frac{GB}{tape} * 1024 \frac{MB}{GB} = 27648 \frac{MB}{trip}
-$}
-\\\\
-\centerline{
-$
-    1 \frac{dog}{trip} * 3 \frac{tapes}{dog} * 9 \frac{GB}{tape} = 27 \frac{GB}{trip}
-$
-}
-\\
-Übertragungsgeschwindigkeit des Hundenetzes für Entfernungen X:
-\\
-\begin{enumerate}
-
-
-\item    Paketgröße = $27 \frac{GB}{trip}$
-\item    Entfernung in km/trip = X 
-\item    Geschwindigkeit = 18 km/h
-\end{enumerate}
-    27GB/trip * 18km/h = 486 (GB*km/(trip*h))
-    
-Erläuterung:
->Ich teile die Geschwindigkeit durch die Entfernung, dadurch erhalte ich die Anzahl Trips pro Stunde, d.h. wie oft kann der Hund die Strecke pro Stunde laufen. Z.B. von Darmstadt nach Griesheim sind es 9 km, der Hund läuft mit 18km/h, also 18km/h / 9km = 2/h, der Hund kann die Strecke 2 Mal pro Stunde laufen.
->Anschließend multipliziere ich mit der Paketgröße um herauszufinden wie viel GB pro Stunde übertragen werden.
-
-
-Übertragungsgeschwindigkeit des Kabels:
-    155 MBit / sec = 68.11 GB/h
-
-----------------------------------------------------------------
-
-    486 (GB*km/(trip*h)) / X = 68.11 GB/h 
-
-
-         486 (GB*km/(trip*h))
-    X = ---------------------   =  486/68.11  km/trip = 7,135 km / trip
-              68.11 GB/h 
-              
               
 \section{}
 \begin{enumerate}
