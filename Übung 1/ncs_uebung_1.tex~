@@ -1,0 +1,238 @@
+\documentclass[a4paper,
+			llpt,
+			solution,
+			accentcolor=tud2d,
+			colorbacktitle
+			]
+			{tudexercise}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{paralist}
+
+\title{�bungsaufgabe Net Centric Systems}
+\subtitle{Sommersemester 2015, Ralf Kundel, �bungsblatt 1}
+\subsubtitle{Max Weller, Julian Haas, Stefan Pilot}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+Berechnung der �bertragenen Datenmenge pro Trip:
+\\\\
+\centerline{
+$
+    1 \frac{dog}{trip} * 3 \frac{tapes}{dog} * 9 \frac{GB}{tape} = 27 \frac{GB}{trip} = 27648 \frac{MB}{trip} = 221184\frac{Mb}{trip}
+$
+}
+\\
+
+�bertragungsgeschwindigkeit des Kabels:
+    155 MBit / sec = 68.11 GB/h
+\\
+
+�bertragungsgeschwindigkeit des Hundenetzes f�r Entfernungen X:
+\begin{enumerate}
+\item    Paketgr��e = $27 \frac{GB}{trip}$
+\item    Entfernung = $X \frac{m}{trip}$
+\item    Geschwindigkeit = $18 \frac{km}{h}$
+\item	 Datenmenge pro Trip = $221184\frac{Mb}{trip}$
+\end{enumerate}
+
+
+
+$$
+\frac{221184\frac{Mb}{trip} * 18 \frac{km}{h} * \frac{1\frac{m}{s}}{3,6\frac{km}{h}}}{X\frac{m}{trip}}
+=
+155 \frac{Mb}{s}
+$$
+
+$$
+\frac{221184 Mb * 5 \frac{m}{s}}{155 \frac{Mb}{s}}
+\approx
+7135 m
+$$
+
+\noindent \textbf{Erl�uterung}:
+Die �bertragungsgeschwindigkeit des Hundes berechnet sich, in dem man die Datenmenge pro Trip mit der Geschwindigkeit des Hundes multipliziert und durch die Entfernung pro Trip teilt.
+Nun setzen wir die �bertragungsgeschwindigkeit des Kabels in diese Formel ein und stellen nach X um.
+Die Entfernung pro Trip muss also weniger als \textbf{7135m} betragen, um bessere �bertragungsraten als das Kabel zu erreichen.
+
+$$
+\frac{1\,Hund * 3\,Tapes * 9 \frac{GiB}{Tape} * 1024\frac{MiB}{GiB} * 8 \frac{b}{B} * 18 \frac{km}{h} * \frac{1\frac{m}{s}}{3,6\frac{km}{h}}}{155 \frac{Mb}{sec}}
+\approx
+7135 m
+$$
+              
+\section{}
+\begin{enumerate}
+\item
+\begin{enumerate}
+
+\item
+VoIP:
+Level 7 da es sich analog zu FTP und HTTP um eine Anwendung handelt.
+
+\item
+Dropbox:
+Level 7, da es sich um eine File-Transfer-Anwendung handelt und die Daten �ber HTTP �bertragen werden.
+
+\item
+E-Mail-Client:
+Level 7, da ein E-mail Client unter anderem das SMTP-Protokoll verwendet, welches eine Implementierung von Ebene 7 darstellt.
+
+\item
+Proxy-Server:
+Level 7, da der Proxy als vollwertiger Kommunikationspartner alle Anfragen stellen muss, die auch der Proxy Nutzer stellt. Demnach muss der Proxy alle Ebenen des OSI Modells implementieren.
+
+\item
+Smartphone:
+Level 7, da ein Smartphone verschiedene Anwendungen ausf�hren kann (z.B. E-mail Programme), die sich auf Ebene 7 bewegen.
+
+\item
+Steam:
+Level 7, da es sich um eine komplexe Desktopanwendung handelt, die sowohl File-Transfer als auch Chat-Funktionen implementiert.
+
+\item
+Powerline-Adapter:
+Level 2, da der Adapter nur Pakete auf Data-Link-Ebene verwaltet (�quivalent zu einem Switch).
+
+\item
+Fritzbox:
+Level 4, da ein Router �blicherweise Network Address Translation betreibt und dabei in Level-3- und -4-Protokolle eingreifen muss.
+
+\item
+FTP Server:
+Level 7 (siehe Folie 1/72)
+\end{enumerate}
+\item
+
+Layer 7,6,5 (Application Layer): Darstellung der Webseite auf Endger�t, Sessions verwalten, Anfragen an Server stellen
+\\
+Layer 4 (Transport Layer): Kommunikation in Paketen an Zielserver schicken und Antwort empfangen (TCP)
+\\
+Layer 3 (Internet Layer): �bermittlung der Pakete �ber verschiedene Zwischenknoten an den Zielserver (Routing)
+\\
+Layer 2,1 (Link Layer): Transfer von Paketen in Bitform zum n�chstgelegenen Knoten.
+
+\item
+\begin{compactenum}[1.]
+\item
+Chat-Kommunikation mit Freunden
+\item
+E-Mail
+\item
+Im Internet surfen
+\end{compactenum}
+Ohne Computernetzwerke w�re eine textbasierte Echtzeit-Kommunikation �ber gr��ere Entfernungen (1) nicht m�glich. Selbst Zeitversetzte Kommunikation wie E-Mail (2) w�re deutlich komplizierter und m�sste z.B. �ber die Post erfolgen. Auch der dauerhafte und augenblickliche Zugang zu Wissen und Informationen, wie er durch das WWW verf�gbar ist (3), w�re ohne Computernetzwerke nicht m�glich. Man m�sste auf Printmedien wie B�cher oder Zeitungen zur�ckgreifen, um an Informationen zu gelangen.
+
+\end{enumerate}
+\section{}
+\begin{enumerate}
+\item
+Die Protokolle werden einfacher und klarer, denn sie m�ssen sich jeweils nur auf eine konkrete Aufgabe beschr�nken.
+Einzelne Protokolle k�nnen so leichter ausgetauscht werden.
+Au�erdem erleichtert es die Arbeit von Softwareentwicklern,
+da man sich bei der Entwicklung eines Anwendungsprogrammes
+auf einer h�heren Abstraktionsschicht befindet
+und sich so nicht mehr mit den Low-Level-Netzwerkschichten besch�ftigen muss.
+
+\item
+Dividing the transmitted bit stream into frames:
+Der Data-Link-Layer, also Schicht 2, teilt den Datenstrom in Bl�cke ein (bei Ethernet
+werden diese auch als Frames oder Rahmen bezeichnet).
+
+Determining which route through the subnet to use:
+Die Vermittlungsschicht/Network Layer (Schicht 3) verwaltet Routingtabellen und sucht
+auf diese Weise den schnellsten Weg zu dem Empf�nger-Netzwerkknoten.
+
+\item
+Im TCP/IP Modell gibt es den Internet Layer, der im OSI-Modell dem Network Layer
+entspricht, dieser wird im Internet �blicherweise durch das Internet Protocol (IP) implementiert.
+Au�erdem entspricht der TCP/IP Transport Layer dem OSI Transport Layer, daf�r wird meist TCP oder UDP benutzt.
+
+Unterschiede gibt es bei den OSI-Layern 1 und 2, die sind in TCP/IP zum "Network Interface" Layer zusammengefasst. Genauso die OSI-Layer 5 bis 7, die im TCP-IP-Modell zum Application Layer zusammengefasst werden.
+\item
+On page 6 of this exercise sheet you will find a list of protocols. Identify 3 example protocols for each layer of the ISO/OSI model. Explain your choice for one of the example protocols briefly
+
+\end{enumerate}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+ISO/OSI Layer
+&
+Example Protocol
+&
+Explanation for one protocol
+\\
+\hline
+&HTTP& HTTP als Protokoll des World Wide Web ist Layer 7,
+\\ \cline {2-2}
+Application & WebDAV &  da es einer Anwendung (Web-Browser) den Zugang
+\\ \cline {2-2}
+&IMAP& zum Netzwerk erm�glicht.
+\\ \hline
+&MIME& Telnet: Die Anwendung l�uft auf dem Server.
+\\ \cline {2-2}
+Presentation &Telnet&Nur die Ausgabe der Anwendung wird �ber-
+\\ \cline {2-2}
+&NCP&tragen. Telnet beschreibt nur die Darstellung.
+\\ \hline
+&NetBios / NetBEUI& NetBEUI implementiert einen Sitzungsdienst f�r die
+\\ \cline {2-2}
+Session & SMB & Aufrechterhaltung  von verbindungsorientierter Kommunikation
+\\ \cline {2-2}
+& NFS & und ist daher auf Layer 5 angesiedelt.
+\\ \hline
+&TCP&    TCP beschreibt Funktionen f�r die Transportschicht, also die Kommunikation zwischen Prozessadressierung,
+\\ \cline {2-2}
+Transport &UDP&Prozessen auf einem System: Verbindungsmanagement, Fehlerkorrektur und 
+\\ \cline {2-2}
+&SCTP& Flow control und ist daher ein Level-4-Protokoll
+\\ \hline
+&IPv4&  IP 4/6 beinhaltet das Routing von Nachrichten zu einem Zielsystem und
+\\ \cline {2-2}
+Network &IPv6& die Bildung von Subnetzen, sowie die Stausteuerung auf Pfaden.
+\\ \cline {2-2}
+&IPsec& Daher Level 3.
+\\ \hline
+&IEEE 802.11 WiFi& Auf dem Datalink-Layer ist Layer 2 von WiFi, es beinhaltet grundlegende 
+\\ \cline {2-2}
+Datalink &STP& Fehlererkennung, au�erdem die Aufteilung des gemeinsam genutzten Mediums
+\\ \cline {2-2}
+&LLDPe& zwischen verschiedenen Stationen sowie die Adressierung der Netzwerkadapter (MAC-Adressen).
+\\ \hline
+&USB (physical layer)& Auf der physikalischen Ebene befindet sich z.B. der Physical Layer
+\\ \cline {2-2}
+Physical &IEEE 1394& von WiFi (W-LAN), da darin die Umsetzung der Daten-Bits in elektromagnetische
+\\ \cline {2-2}
+&IEEE 802.11 WiFi (physical layer)& Wellen im 2,4GHz bzw 5GHz-Band durchgef�hrt wird.
+\\ \hline
+\end{tabular}
+\end{center}
+\section{}
+\begin{enumerate}
+\item
+Bei verbindungsbasierter Kommunikation (connection-oriented communication) wird zwischen den zwei Kommunkationspartnern zun�chst eine Verbindung aufgebaut. �ber diese Verbindung werden Daten �bertragen und empfangen. Zuletzt wird die Verbindung wieder geschlossen. Diese Form der Kommunikation ist mit einem Telefonanruf vergleichbar: Nach dem Anrufen und abheben melden Angerufener und Anrufer, die Verbindung ist aufgebaut. Nach erfolgtem Gespr�ch, also der Daten�bertragung, wird durch eine Verabschiedung und das Auflegen die Verbindung wieder geschlossen. 
+
+Bei der verbindungslosen Kommunikation (connectionless communication) schickt der Sender seine Daten ohne vorherigen Verbindungsaufbau zum Empf�nger. Sie ist, anders als die verbindungsbasierte Kommunikation, nicht zur bi-, sondern nur zur unidirektionalen Kommunikation geeignet. Es erfolgt keine Empfangsbest�tigung. Ein Beispiel f�r verbindungslose Kommunikation ist der Rundfunk.
+
+
+\item
+Bei der Leitungsvermittlung (circuit switching) wird den beiden Kommunikationspartnern f�r die Dauer ihrer Kommunikation eine dedizierte Verbindung mit konstanter Bandbreite zugeteilt, die von beiden exklusiv genutzt wird. Sie bleibt auch dann bestehen, wenn die Kommunikation zwischen Verbindungsaufbau und Verbindungsschluss f�r beliebig lange Zeit pausiert wird.
+
+Bei der Paketvermittlung (packet switching) werden alle Nachrichten in Datenpakete aufgeteilt, die dann �ber das Netzwerk verschickt werden. Eine dedizierte Verbindung zwischen Kommunikationspartnern besteht nicht, stattdessen enthalten alle Pakete neben den Nutzdaten Informationen �ber Sender und Empf�nger, sodass die Vermittlungsstellen im Netzwerk die Pakete korrekt weiterleiten k�nnen. 
+
+Vergleich der Systeme bzgl. Adressierung:\\Bei der Leitungsvermittlung entf�llt die Adressierung aufgrund der f�r beide exklusiven Verbindung. Sie ist deshalb einfacher f�r die Kommunikationspartner. Bei der Paketvermittlung enthalten alle Pakete mit den Adressinformationen einen Overhead. Bei kleiner Paketgr��e m�ssen im Vergleich zur Leitungsvermittlung recht viele Daten zus�tzlich �bertragen werden.
+
+Vergleich der Systeme bzgl. Netzwerkauslastung: \\Bei der Leitungsvermittlung wird das Netzwerk sehr ineffizient ausgelastet. Der Aufwand f�r die Daten�bertragung ist von der Anzahl der Verbindungen abh�ngig. F�r jede Verbindung ist der gleiche Aufwand n�tig, unabh�ngig davon, ob die zugeh�rigen Kommunikationspartner viele oder wenige Daten �bertragen. Dadurch, dass allen Verbindungen eine feste Bandbreite dauerhaft garantiert wird, bleibt viel Bandbreite ungenutzt, da viele Verbindungen die Bandbreite nicht maximal ausnutzen und bei Kommunikationspausen trotzdem Bandbreite blockiert wird. Bei der Paketvermittlung wird das Netzwerk im besten Fall optimal ausgelastet. Der Aufwand f�r die Daten�bertragung ist nicht von der Anzahl der Verbindungen, sondern von der Anzahl der Pakete abh�ngig. F�r Kommunikationspaare, die viele Daten �bertragen, wird im Idealfall proportional mehr Aufwand betrieben als f�r solche, die wenige �bertragen.
+
+
+\item
+Weder noch bzw. beides. Es kommt darauf an, wo der Betrachter steht. 
+
+\item
+H.U.N.D. ist ein verbindungsloses Paketvermittlungsnetzwerk (connectionless packet-switching network). Jeder Hund stellt ein einzelnes Paket dar. Er tr�gt die Nutzdaten auf Magnetband um den Hals und bekommt die Adressdaten (durch ein nicht in der Aufgabe beschriebenes System) mitgeteilt. Ein Verbindungsaufbau wird in der Aufgabe nicht beschrieben. Der Sender schickt die Hunde los und hofft, dass sie bei dem Empf�nger ankommen m�gen, wie bei der verbindungslosen Kommunikation �blich. 
+\end{enumerate}
+\end{document}
