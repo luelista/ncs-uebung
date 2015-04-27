@@ -11,8 +11,9 @@ Connectionless:
 (es ist wichtig, dass Pakete mit möglichst geringer Latenz ankommen. Verloren gegangene Pakete sollten nicht wiederholt werden.)
 
 Connection-oriented:
-* Dateidownload (z.B. )
+* Dateidownload (z.B. FTP)
 (Daten müssen in der richtigen Reihenfolge und vollständig ankommen)
-* 
+* Web (HTTP)
+(Webseiten und Bilder sollten in korrekter Reihenfolge übertragen werden)
 
 
