@@ -5,5 +5,14 @@ Normalerweise werden bei einem verbindungsorientierten Dienst die Pakete in der 
 Es gibt allerdings Ausnahmen, z.B. das TCP-Urgent-Flag, welches den Empfänger veranlasst, ein Paket vorzuziehen.
 
 b)
+Connectionless:
+* IP-Telefonie
+* Live-TV-Streaming
+(es ist wichtig, dass Pakete mit möglichst geringer Latenz ankommen. Verloren gegangene Pakete sollten nicht wiederholt werden.)
+
+Connection-oriented:
+* Dateidownload (z.B. )
+(Daten müssen in der richtigen Reihenfolge und vollständig ankommen)
+* 
 
 
