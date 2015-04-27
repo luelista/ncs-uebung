@@ -20,9 +20,35 @@
 \maketitle
 
 \section{}
+
+
+%2.1.txt
+\begin{enumerate}
+
+\item
+Normalerweise werden bei einem verbindungsorientierten Dienst die Pakete in der Reihenfolge zugestellt, in der sie gesendet wurden. Falls die Pakete in der falschen Reihenfolge beim Empfänger ankommen, werden sie entweder verworfen und später neu angefordert, oder aber gepuffert und in der richtigen Reihenfolge weitergereicht.
+Es gibt allerdings Ausnahmen, z.B. das TCP-Urgent-Flag, welches den Empfänger veranlasst, ein Paket vorzuziehen.
+
+\item
+Connectionless:
+\begin{itemize}
+\item IP-Telefonie
+\item Live-TV-Streaming
+(es ist wichtig, dass Pakete mit möglichst geringer Latenz ankommen. Verloren gegangene Pakete sollten nicht wiederholt werden.)
+\end{itemize}
+Connection-oriented:
+\begin{itemize}
+\item Dateidownload (z.B. FTP)
+(Daten müssen in der richtigen Reihenfolge und vollständig ankommen)
+\item Web (HTTP)
+(Webseiten und Bilder sollten in korrekter Reihenfolge übertragen werden)
+\end{itemize}
+\end{enumerate}
 \section{}
 \section{}
 \section{}
 
 
 \end{document}
+
+
