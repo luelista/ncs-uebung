@@ -45,6 +45,60 @@ Connection-oriented:
 \end{itemize}
 \end{enumerate}
 \section{}
+\begin{enumerate}
+\item
+Während des 200ms langen Burst mit Datenrate $20\frac{\mathrm{MiB}}{\mathrm{s}}$ empfängt der token bucket 4MiB Daten: 
+
+\begin{align*}
+\text{t}_\text{burst}  \cdot \text{R}_\text{max} &= \text{Datenmenge Burst}
+\\
+200\mathrm{ms} \cdot 0.02\frac{\mathrm{MiB}}{\mathrm{ms}} &= \mathrm{4MiB}
+\end{align*}
+
+
+Für t1 = 125ms kann der token bucket die empfangenen Daten mit $\mathrm{R}_{\mathrm{max}} = 20\frac{\mathrm{MiB}}{\mathrm{s}}$, weiterleiten:
+\begin{align*}
+\mathrm{B} + \mathrm{R}\cdot\mathrm{t}_1 &= \mathrm{R}_ {\mathrm{max}} \cdot t_1
+\\
+t_1 &= 0.125\mathrm{s}
+\end{align*}
+
+Nach diesen 125ms verbleiben noch 1.5MiB an zu sendenden Daten:
+$$4\mathrm{MiB} - \left(0.125\mathrm{s} \cdot 20\frac{\mathrm{MiB }}{\mathrm{s}}\right) = 1.5 \mathrm{MiB}$$
+
+Diese 1.5MiB werden dann mit der Rate R = $4\frac{\mathrm{MiB}}{\mathrm{s}}
+$
+% = 0.004 \frac{\mathrm{MiB}}{\mathrm{ms}}$
+übertragen. Das dauert 375ms:
+$$
+\frac{1.5 \mathrm{MiB}}{ 4 \frac{\mathrm{MiB}}{\mathrm{s}}} = 375\mathrm{ms}
+$$
+Der Graph sieht also so aus:
+$$\text{HIER GRAPH EINFÜGEN}$$
+Die bis zur vollen Sekunde verbleibenden 500ms reichen, bis sich der token bucket wieder gefüllt hat: 
+$$
+4\frac{\mathrm{MiB}}{\mathrm{s}} \cdot 500\mathrm{ms} = 2\mathrm{MiB} = \mathrm{B}
+$$
+\item
+Der 200ms lange 20MiB/s burst enthält 4MiB Daten:
+Rmax: 20MiB/s = 0.02MiB/ms
+200ms * 0.02MiB/ms = 4MiB
+
+Für t1 = 125ms kann der token bucket die empfangenen Daten mit Rmax, 20MB/s, weiterleiten:
+B+ R*t1 = Rmax * t1
+<=> t1 = 0.125s
+
+Nach diesen 125ms verbleiben noch 1.5MiB an Daten:
+4MiB - (0.125s * 20MiB/s) = 1.5 MiB
+
+Diese 1.5MiB werden dann mit der Rate R = 4MiB/s = 0.004 MiB/s übertragen. Das dauert 375ms:
+1.5 MiB / 0.004 MiB/ms = 375ms
+
+Der Graph sieht also so aus:
+Die bis zur vollen Sekunde verbleibenden 500ms reichen, bis sich der token bucket wieder gefüllt hat: 4MiB/s * 500ms = 2MiB
+
+\end{enumerate}
+
 \section{}
 \section{}
 
