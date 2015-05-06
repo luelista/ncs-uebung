@@ -1,0 +1,15 @@
+Der 200ms lange 20MiB/s burst enthält 4MiB Daten:
+Rmax: 20MiB/s = 0.02MiB/ms
+200ms * 0.02MiB/ms = 4MiB
+
+Für t1 = 125ms kann der token bucket die empfangenen Daten mit Rmax, 20MB/s, weiterleiten:
+B+ R*t1 = Rmax * t1
+<=> t1 = 0.125s
+
+Nach diesen 125ms verbleiben noch 1.5MiB an Daten:
+4MiB - (0.125s * 20MiB/s) = 1.5 MiB
+
+Diese 1.5MiB werden dann mit der Rate R = 4MiB/s = 0.004 MiB/s übertragen. Das dauert 375ms:
+1.5 MiB / 0.004 MiB/ms = 375ms
+
+Der Graph sieht also so aus:
