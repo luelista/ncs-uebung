@@ -13,3 +13,4 @@ Diese 1.5MiB werden dann mit der Rate R = 4MiB/s = 0.004 MiB/s übertragen. Das 
 1.5 MiB / 0.004 MiB/ms = 375ms
 
 Der Graph sieht also so aus:
+Die bis zur vollen Sekunde verbleibenden 500ms reichen, bis sich der token bucket wieder gefüllt hat: 4MiB/s * 500ms = 2MiB
