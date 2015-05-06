@@ -1,0 +1,8 @@
+Während der token bucket Daten mit 20MiB/s versendet, füllt sich der leaky bucket mit einer Rate von
+20 MiB/s - 10MiB/s = 10MiB/s
+Nach den 125ms sind 0.01MiB/ms * 125ms = 1.25 MiB im leaky bucket.
+In den nächsten 375ms, in denen der token bucket mit 4MiB/s verschickt, leert sich der leaky bucket mit einer Rate von 
+4MiB/s - 10MiB/s = -6 MiB/s
+
+Die gespeicherten 1.25MiB brauchen 1.25MiB / 6MiB/s = 208.33ms, um den leaky bucket wieder zu verlassen.
+Also, nein. Der leaky bucket verliert keine Daten.
