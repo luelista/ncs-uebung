@@ -56,6 +56,7 @@ Connection-oriented:
 
 
 \section{}
+\subsection{}
 \begin{enumerate}
 \item
 \begin{multicols}{2}
@@ -174,6 +175,32 @@ coordinates {(0,10)(0.333,10)(0.333,4)(0.5,4)(0.5,0)(1,0)}
 \end{axis}
 \end{tikzpicture}
 \end{center}
+\end{enumerate}
+\subsection{}
+\begin{enumerate}
+\item
+Die Füllrate des leaky bucket wird hier als $r_{fill}$ bezeichnet, die Rate, mit der der leak bucket Daten empfängt, als $r_{in}$, die in der Übung als $r$ bezeichnete Outputrate als $r_{out}$.
+
+$$d_{bucket} = \left(r_{in} - r_{out}\right) \cdot t_{burst}$$
+
+$r_{out}$ kann minimal $0\MiBs$ und maximal $2\MiBs$ betragen. Schon durch Einsetzen dieser Randextrema erhält man die Lösung, da der $t_{bucket}$ unter 1\,MiB liegt:
+
+\begin{align*}
+\left(15\MiBs - 0\MiBs\right) \cdot 60\mathrm{\,ms} &= 0,9\mathrm{ \,MiB}\\
+\left(15\MiBs - 2\MiBs\right) \cdot 60\mathrm{\,ms} &= 0,78\mathrm{\,MiB}
+\end{align*}
+
+Antwort: r darf zwischen 0\,$\MiBs$ und 2\,$\MiBs$ betragen
+
+\item
+$$\text{DAS HIER ÜBERPRÜFEN! IST DAS WIRKLICH GEFRAGT?}$$
+Bei einem Burst mit $t_{in} = 12\,\MiBs$ und einer Dauer von 120\,ms läuft der leaky bucket nach 100\,ms über.
+
+\begin{align*}
+12\, \MiBs - 2\, \MiBs \cdot t_{burst} &= 1\,\mathrm{MiB} \\
+t_{burst} &= 100\,\mathrm{ms}
+\end{align*}
+
 \end{enumerate}
 \section{}
 
