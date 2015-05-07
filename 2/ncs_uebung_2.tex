@@ -25,23 +25,17 @@
 \begin{document}
 
 \maketitle
-
-\setcounter{section}{2}
-%% ----  2.1 -----
-\subsection{}
+\section{}
 
 
 %2.1.txt
 \begin{multicols}{2}
 \begin{enumerate}
 
-%% ----  a)  ----
 \item
 Normalerweise werden bei einem verbindungsorientierten Dienst die Pakete in der Reihenfolge zugestellt, in der sie gesendet wurden. Falls die Pakete in der falschen Reihenfolge beim Empfänger ankommen, werden sie entweder verworfen und später neu angefordert, oder aber gepuffert und in der richtigen Reihenfolge weitergereicht.
 Es gibt allerdings Ausnahmen, z.B. das TCP-Urgent-Flag, welches den Empfänger veranlasst, ein Paket vorzuziehen.
-\\\\\\
-
-%% ----  b)  ----
+\\\\\\\
 \item
 Connectionless:
 \begin{compactitem}
@@ -58,13 +52,11 @@ Connection-oriented:
 \end{compactitem}
 \end{enumerate}
 \end{multicols}
-\subsection{}
 
-%% ----  2.2.1 -----
-\subsubsection{}
+
+
+\section{}
 \begin{enumerate}
-
-%% ----  2.2.1 a) -----
 \item
 \begin{multicols}{2}
 Während des 200ms langen Burst mit Datenrate $20\MiBs$ empfängt der token bucket 4MiB Daten: 
@@ -97,7 +89,7 @@ $$
 %Der Graph des sekündlichen Output des token bucket sieht also so aus:
 %\begin{center}
 \begin{tikzpicture}
-\begin{axis}[title=Sekündlicher utput des token bucket,
+\begin{axis}[title=Sekündlicher Output des token bucket,
 			 change x base,
 			 x SI prefix=milli,
 			 x unit=s,
@@ -118,7 +110,6 @@ coordinates {(0,20)(0.125,20)(0.125,4)(0.5,4)(0.5,0)(1,0)}
 
 \end{multicols}
 \newpage
-%% ----  2.2.1 b) -----
 \item
 Während der token bucket Daten mit $20\MiBs$ versendet, füllt sich der leaky bucket mit einer Rate von
 $$
@@ -184,21 +175,10 @@ coordinates {(0,10)(0.333,10)(0.333,4)(0.5,4)(0.5,0)(1,0)}
 \end{tikzpicture}
 \end{center}
 \end{enumerate}
-
-%% ----  2.2.2 -----
-\subsubsection{}
-
-
-
-%% ----  2.2.3 -----
-\subsubsection{}
-
-
-%% ----  2.3 -----
-\subsection{}
-
-
+\section{}
 
 
 
 \end{document}
+
+
