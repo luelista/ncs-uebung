@@ -19,16 +19,19 @@
 \begin{document}
 
 \maketitle
-\section{}
 
+\setcounter{section}{2}
+%% ----  2.1 -----
+\subsection{}
 
-%2.1.txt
 \begin{enumerate}
 
+%% ----  a)  ----
 \item
 Normalerweise werden bei einem verbindungsorientierten Dienst die Pakete in der Reihenfolge zugestellt, in der sie gesendet wurden. Falls die Pakete in der falschen Reihenfolge beim Empfänger ankommen, werden sie entweder verworfen und später neu angefordert, oder aber gepuffert und in der richtigen Reihenfolge weitergereicht.
 Es gibt allerdings Ausnahmen, z.B. das TCP-Urgent-Flag, welches den Empfänger veranlasst, ein Paket vorzuziehen.
 
+%% ----  b)  ----
 \item
 Connectionless:
 \begin{itemize}
@@ -44,10 +47,17 @@ Connection-oriented:
 (Webseiten und Bilder sollten in korrekter Reihenfolge übertragen werden)
 \end{itemize}
 \end{enumerate}
-\section{}
+
+
+\subsection{}
+
+%% ----  2.2.1 -----
+\subsubsection{}
 \begin{enumerate}
+
+%% ----  2.2.1 a) -----
 \item
-Während des 200ms langen Burst mit Datenrate $20\MiBs$ empfängt der token bucket 4MiB Daten: 
+Während des 200ms langen Burst mit Datenrate $20\MiBs$ empfängt der token bucket 4MiB Daten:
 
 \begin{align*}
 \text{t}_\text{burst}  \cdot \text{R}_\text{max} &= \text{Datenmenge Burst}
@@ -75,10 +85,12 @@ $$
 $$
 Der Graph sieht also so aus:
 $$\text{HIER GRAPH EINFÜGEN}$$
-Die bis zur vollen Sekunde verbleibenden 500ms reichen, bis sich der token bucket wieder gefüllt hat: 
+Die bis zur vollen Sekunde verbleibenden 500ms reichen, bis sich der token bucket wieder gefüllt hat:
 $$
 4\MiBs \cdot 500\mathrm{ms} = 2\mathrm{MiB} = \mathrm{B}
 $$
+
+%% ----  2.2.1 b) -----
 \item
 Während der token bucket Daten mit $20\MiBs$ versendet, füllt sich der leaky bucket mit einer Rate von
 $$
@@ -101,10 +113,21 @@ um den leaky bucket wieder zu verlassen.
 Antwort: Der leaky bucket verliert keine Daten.
 \end{enumerate}
 
-\section{}
-\section{}
+
+%% ----  2.2.2 -----
+\subsubsection{}
+
+
+
+%% ----  2.2.3 -----
+\subsubsection{}
+
+
+%% ----  2.3 -----
+\subsection{}
+
+
+
 
 
 \end{document}
-
-
