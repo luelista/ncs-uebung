@@ -11,6 +11,7 @@
 \usepackage{paralist}
 \usepackage{amsmath}
 \usepackage{pgfplots}
+\usepackage{graphicx}
 \pgfplotsset{compat=newest}
 \usepgfplotslibrary{units}
 %\usepgfplotslibrary{units}
@@ -60,7 +61,7 @@ Connection-oriented:
 \begin{enumerate}
 \item
 \begin{multicols}{2}
-Während des 200ms langen Burst mit Datenrate $20\MiBs$ empfängt der token bucket 4MiB Daten: 
+Während des 200ms langen Burst mit Datenrate $20\MiBs$ empfängt der token bucket 4MiB Daten:
 \begin{align*}
 \text{t}_\text{burst}  \cdot \text{R}_\text{max} &= \text{Datenmenge Burst}
 \\
@@ -68,7 +69,7 @@ Während des 200ms langen Burst mit Datenrate $20\MiBs$ empfängt der token buck
 \end{align*}
 Für t1 = 125ms kann der token bucket die empfangenen Daten mit $\mathrm{R}_{\mathrm{max}} = 20\MiBs$, weiterleiten:
 \begin{alignat*}{5}
-&\mathrm{B}     &&{}+ \mathrm{R} &&{}\cdot  \mathrm{t}_1 &&{}= \mathrm{R}_{\mathrm{max}} &&{}\cdot  \mathrm{t}_1 \\ 
+&\mathrm{B}     &&{}+ \mathrm{R} &&{}\cdot  \mathrm{t}_1 &&{}= \mathrm{R}_{\mathrm{max}} &&{}\cdot  \mathrm{t}_1 \\
 & 2\mathrm{MiB} &&{}+ 4\MiBs &&{}\cdot   \mathrm{t}_1 &&{}= 20\MiBs &&{}\cdot  \mathrm{t}_1\\
 &               &&{}         &&{}      \mathrm{t}_1 &&{}= 0,125\mathrm{s} &&{}
 \end{alignat*}
@@ -81,7 +82,7 @@ $
 $$
 \frac{1.5 \mathrm{MiB}}{ 4 \MiBs} = 375\mathrm{ms}
 $$
-Die bis zur vollen Sekunde verbleibenden 500ms reichen, bis sich der token bucket wieder gefüllt hat: 
+Die bis zur vollen Sekunde verbleibenden 500ms reichen, bis sich der token bucket wieder gefüllt hat:
 $$
 4\MiBs \cdot 500\mathrm{ms} = 2\mathrm{MiB} = \mathrm{B}
 $$
@@ -101,7 +102,7 @@ $$
 			 ymin=0,ymax=21,
 			 xmax=1,xmin=0,
 			 enlargelimits=false]
-			 
+
 \addplot[const plot,fill=gray,draw=black]
 coordinates {(0,20)(0.125,20)(0.125,4)(0.5,4)(0.5,0)(1,0)}
 \closedcycle;
@@ -138,7 +139,7 @@ Wie aus den Rechnungen zu b) hervorgeht, lässt sich der Verlauf der Senderate d
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-Phase 
+Phase
 &
 Dauer (ms)
 &
@@ -168,7 +169,7 @@ Senderate $\left( \MiBs \right)$
 			 ymin=0,ymax=11,
 			 xmax=1,xmin=0,
 			 enlargelimits=false]
-			 
+
 \addplot[const plot,fill=gray,draw=black]
 coordinates {(0,10)(0.333,10)(0.333,4)(0.5,4)(0.5,0)(1,0)}
 \closedcycle;
@@ -202,10 +203,43 @@ t_{burst} &= 100\,\mathrm{ms}
 \end{align*}
 
 \end{enumerate}
+
 \section{}
+\subsection{}
+  \begin{center}
+    \includegraphics[scale=0.6]{2_3_1.pdf}
+  \end{center}
 
-
+\subsection{}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Edge i
+&
+$C_{i} (kbit/sec)$
+&
+Utilization of path (pkts/sec)
+&
+$\lambda_{i}(pkts/sec)$
+&
+$\mu C_{i}(pkts/sec)$
+&
+$T_{i}(msec/pkt)$
+&
+Weight
+\\ \hline
+AB & 30 & 12 & 17 & 60 & 23,26 & 0,2881 \\ \hline
+AE & 20 & 6 & 10 & 40 & 33,33 & 0,1695 \\ \hline
+BC & 20 & 8 & 12 & 40 & 35,71 & 0,2034 \\ \hline
+BD & 10 & 3 & 3 & 20 & 58,82 & 0,0508 \\ \hline
+CE & 10 & 5 & 7 & 20 & 76,92 & 0,1186 \\ \hline
+DE & 40 & 5 & 10 & 80 & 14,29 & 0,1695 \\ \hline
+ABC &   & 4 &    &    &       &\\ \hline
+AED &   & 3 &    &    &       &\\ \hline
+BAE &   & 1 &    &    &       &\\ \hline
+CED &   & 2 &    &    &       &\\ \hline
+$\Sigma \lambda _{j}$ & & & 59 & & & \\ \hline
+\end{tabular}
+\end{center}
 
 \end{document}
-
-
