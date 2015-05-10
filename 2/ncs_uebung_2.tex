@@ -14,12 +14,12 @@
 \usepackage{graphicx}
 \pgfplotsset{compat=newest}
 \usepgfplotslibrary{units}
-%\usepgfplotslibrary{units}
+\usepackage{ziffer} 
 
 \usepackage{multicol} \setlength{\multicolsep}{0pt}
 
 \title{Lösungsvorschlag zur zweiten Hausübung}
-\subtitle{Einführung in Net Centric Systems und \LaTeX, Sommersemester 2015}
+\subtitle{Einführung in Net Centric Systems, Sommersemester 2015}
 \subsubtitle{Max Weller, Julian Haas, Stefan Pilot}
 
 %\newcommand{\MiBs}{\frac{\mathrm{MiB}}{\mathrm{s}}}
@@ -55,9 +55,6 @@ Connection-oriented:
 \end{compactitem}
 \end{enumerate}
 \end{multicols}
-
-
-
 \section{}
 \subsection{}
 \begin{enumerate}
@@ -79,10 +76,9 @@ Nach diesen 125\,ms verbleiben noch 1.5\,MiB an zu sendenden Daten:
 $$4\mathrm{\,MiB} - \left(0.125\mathrm{s} \cdot 20\MiBs\right) = 1,5 \mathrm{\,MiB}$$
 Diese 1.5\,MiB werden dann mit der Rate R = $4\MiBs
 $
-% = 0.004 \frac{\mathrm{\,MiB}}{\mathrm{\,ms}}$
 übertragen. Das dauert 375\,ms:
 $$
-\frac{1.5 \mathrm{\,MiB}}{ 4 \MiBs} = 375\mathrm{\,ms}
+\frac{1,5 \mathrm{\,MiB}}{ 4 \MiBs} = 375\mathrm{\,ms}
 $$
 Die bis zur vollen Sekunde verbleibenden 500\,ms reichen, bis sich der token bucket wieder gefüllt hat:
 $$
@@ -90,8 +86,6 @@ $$
 $$
 \vfill
 \columnbreak
-%Der Graph des sekündlichen Output des token bucket sieht also so aus:
-%\begin{center}
 \begin{tikzpicture}
 \begin{axis}[title=Sekündlicher Output des token bucket,
 			 change x base,
@@ -110,8 +104,6 @@ coordinates {(0,20)(0.125,20)(0.125,4)(0.5,4)(0.5,0)(1,0)}
 \closedcycle;
 \end{axis}
 \end{tikzpicture}
-%\end{center}
-
 \end{multicols}
 \newpage
 \item
@@ -129,14 +121,12 @@ $$
 $$
 Die gespeicherten 1,25\,MiB Daten brauchen
 $$
-\frac{1.25\mathrm{\,MiB}}{6\MiBs} = 208.33\mathrm{\,ms}
+\frac{1,25\mathrm{\,MiB}}{6\MiBs} = 208,33\mathrm{\,ms}
 $$
 um den leaky bucket wieder zu verlassen.
-Danach bleibt der leaky bucket bis zur nächsten vollen Sekunde leer.
-\\\\
+Danach bleibt der leaky bucket bis zur nächsten vollen Sekunde leer.\newline
 Antwort: Der leaky bucket verliert keine Daten.
 \item
-
 Wie aus den Rechnungen zu b) hervorgeht, lässt sich der Verlauf der Senderate des leaky bucket in vier Phasen aufteilen:
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -182,30 +172,68 @@ coordinates {(0,10)(0.333,10)(0.333,4)(0.5,4)(0.5,0)(1,0)}
 \subsection{}
 \begin{enumerate}
 \item
-Die Füllrate des leaky bucket wird hier als $r_{fill}$ bezeichnet, die Rate, mit der der leak bucket Daten empfängt, als $r_{in}$, die in der Übung als $r$ bezeichnete Outputrate als $r_{out}$.
-
-$$d_{bucket} = \left(r_{in} - r_{out}\right) \cdot t_{burst}$$
-
-$r_{out}$ kann minimal $0\MiBs$ und maximal $2\MiBs$ betragen. Schon durch Einsetzen dieser Randextrema erhält man die Lösung, da der $t_{bucket}$ unter 1\,MiB liegt:
-
+Die Rate, mit der der leaky bucket Daten empfängt, wird hier als $\mathrm{r}_{\mathrm{in}}$ bezeichnet, die in der Übung als $\mathrm{r}$ bezeichnete Outputrate als $\mathrm{r}_{\mathrm{out}}$. Der Füllstand des leaky bucket nach einer der Dauer eines Bursts $\mathrm{t}_\mathrm{burst}$ als $\mathrm{d}_\mathrm{bucket}$. Es gilt:
+$$\mathrm{d}_\mathrm{bucket} = \left(\mathrm{r}_\mathrm{in} - \mathrm{r}_\mathrm{out}\right) \cdot \mathrm{t}_\mathrm{burst}$$
+$\mathrm{r}_\mathrm{out}$ kann minimal $0\MiBs$ und maximal $2\MiBs$ betragen. Schon durch Einsetzen dieser Randextrema erhält man die Lösung, da $\mathrm{d}_\mathrm{bucket}$ unter 1\,MiB liegt:
 \begin{align*}
-\left(15\MiBs - 0\MiBs\right) \cdot 60\mathrm{\,ms} &= 0,9\mathrm{ \,MiB}\\
-\left(15\MiBs - 2\MiBs\right) \cdot 60\mathrm{\,ms} &= 0,78\mathrm{\,MiB}
+\mathrm{d}_\mathrm{bucket\,1} = \left(15\MiBs - 0\MiBs\right) \cdot 60\mathrm{\,ms} &= 0,9\mathrm{ \,MiB}\\
+\mathrm{d}_\mathrm{bucket\,2} = \left(15\MiBs - 2\MiBs\right) \cdot 60\mathrm{\,ms} &= 0,78\mathrm{\,MiB}
 \end{align*}
-
-Antwort: r darf zwischen 0$\MiBs$ und 2$\MiBs$ betragen
+Antwort: r darf zwischen 0$\MiBs$ und 2$\MiBs$ betragen.
+\item
+%$$\text{DAS HIER ÜBERPRÜFEN! IST DAS WIRKLICH GEFRAGT?}$$
+Bei einem Burst mit $\mathrm{t}_\mathrm{in} = 12\MiBs$ und einer Dauer von 120\,ms läuft der leaky bucket nach 100\,ms über.
+\begin{align*}
+12 \MiBs - 2 \MiBs \cdot \mathrm{t}_\mathrm{burst} &= 1\,\mathrm{MiB} \\
+\mathrm{t}_\mathrm{burst} &= 100\mathrm{\,ms}
+\end{align*}
+\end{enumerate}
+\subsection{}
+\begin{enumerate}
+\begin{multicols}{2}
+\item
+Indicate the slots in which the router will decide to\newline send a choke packet with a $= 0,2 $:
+$$ \mathrm{u} = 0,2 \cdot \mathrm{u}_\mathrm{prev} + 0,8 \cdot \mathrm{f} $$
+\begin{tabular}{|c|c|c|c|}
+\hline
+t &	f &	$\mathrm{u}_\mathrm{t}$ &	$\mathrm{choke}_\mathrm{t}$	\\ \hline
+0 &	0 &	0,000 &				\\ \hline	
+1 & 0 &	0,000 &				\\ \hline	
+2 &	1 &	0,800 &	X			\\ \hline
+3 &	1 &	0,960 &	X			\\ \hline
+4 &	1 &	0,992 &	X			\\ \hline
+5 &	1 &	0,998 &	X			\\ \hline
+6 &	1 &	1,000 &	X			\\ \hline
+7 &	0 &	0,200 &				\\ \hline
+8 &	1 &	0,840 &	X			\\ \hline
+9 &	1 &	0,968 &	X			\\ \hline
+\end{tabular}
 
 \item
-$$\text{DAS HIER ÜBERPRÜFEN! IST DAS WIRKLICH GEFRAGT?}$$
-Bei einem Burst mit $t_{in} = 12\MiBs$ und einer Dauer von 120\,ms läuft der leaky bucket nach 100\,ms über.
+Indicate the slots in which the router will decide to\newline send a choke packet with a $= 0,8 $:
 
-\begin{align*}
-12 \MiBs - 2 \MiBs \cdot t_{burst} &= 1\,\mathrm{MiB} \\
-t_{burst} &= 100\mathrm{\,ms}
-\end{align*}
-
+ $$ \mathrm{u} = 0,2 \cdot \mathrm{u}_{\mathrm{prev}} + 0,8 \cdot \mathrm{f} $$
+\begin{tabular}{|c|c|c|c|}
+\hline
+t &	f &	$\mathrm{u}_\mathrm{t}$ &	$\mathrm{choke}_\mathrm{t}$ \\ \hline
+0 &	0 &	0,000 &		\\ \hline	
+1 &	0 &	0,000 &	\\ \hline	
+2 &	1 &	0,200 &	\\ \hline	
+3 &	1 &	0,360 &	\\ \hline	
+4 &	1 &	0,488 &	\\ \hline	
+5 &	1 &	0,590 &	X\\ \hline	
+6 &	1 &	0,672 &	X\\ \hline
+7 &	0 &	0,538 &	X\\ \hline	
+8 &	1 &	0,630 &	X\\ \hline	
+9 &	1 &	0,704 &	X\\ \hline	
+\end{tabular}
+\end{multicols}
+\item
+In which of the two previous cases are the reactions of the router to congestion faster? Can this have any drawbacks?
+\\
+In Fall a erfolgt die Reaktion schneller, da die aktuelle Situation stärker gewichtet ist als die Vergangenheit. 
+Dies kann ein Nachteil sein, falls es sich um eine sehr kurze Überlastungssituation handelt, die man eigentlich hätte ignorieren können.
 \end{enumerate}
-
 \section{}
 \subsection{}
   \begin{center}
