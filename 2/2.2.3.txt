@@ -1,0 +1,51 @@
+
+
+2.2.3
+a)
+
+Indicate the slots in which the router will decide to send a choke packet with a = 0.2
+
+u = 0.2 * uprev + 0.8 * f
+
+t	f	u_t	choke_t
+0	0	0,000	
+1	0	0,000	
+2	1	0,800	X
+3	1	0,960	X
+4	1	0,992	X
+5	1	0,998	X
+6	1	1,000	X
+7	0	0,200	
+8	1	0,840	X
+9	1	0,968	X
+
+
+b)
+Indicate the slots in which the router will decide to send a choke packet with a = 0.8
+
+u = 0.2 * uprev + 0.8 * f
+		
+t	f	u_t	choke_t
+0	0	0,000	
+1	0	0,000	
+2	1	0,200	
+3	1	0,360	
+4	1	0,488	
+5	1	0,590	X
+6	1	0,672	X
+7	0	0,538	X
+8	1	0,630	X
+9	1	0,704	X
+
+
+c)
+In which of the two previous cases are the reactions of the router to congestion faster? Can this have any drawbacks?
+
+In Fall a erfolgt die Reaktion schneller, da die aktuelle Situation stärker gewichtet ist als die Vergangenheit. 
+
+Dies kann ein Nachteil sein, falls es sich um eine sehr kurze Überlastungssituation handelt, die man eigentlich hätte ignorieren können.
+
+
+
+
+
