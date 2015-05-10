@@ -23,7 +23,7 @@
 \subsubtitle{Max Weller, Julian Haas, Stefan Pilot}
 
 %\newcommand{\MiBs}{\frac{\mathrm{MiB}}{\mathrm{s}}}
-\newcommand{\MiBs}{\mathrm{MiB}/\mathrm{s}}
+\newcommand{\MiBs}{\,\mathrm{MiB}/\mathrm{s}}
 
 \begin{document}
 
@@ -63,30 +63,30 @@ Connection-oriented:
 \begin{enumerate}
 \item
 \begin{multicols}{2}
-Während des 200ms langen Burst mit Datenrate $20\MiBs$ empfängt der token bucket 4MiB Daten:
+Während des 200\,ms langen Burst mit Datenrate $20\MiBs$ empfängt der token bucket 4\,MiB Daten:
 \begin{align*}
 \text{t}_\text{burst}  \cdot \text{R}_\text{max} &= \text{Datenmenge Burst}
 \\
-200\mathrm{ms} \cdot 20\MiBs &= \mathrm{4MiB}
+200\mathrm{\,ms} \cdot 20\MiBs &= \mathrm{4\,MiB}
 \end{align*}
-Für t1 = 125ms kann der token bucket die empfangenen Daten mit $\mathrm{R}_{\mathrm{max}} = 20\MiBs$, weiterleiten:
+Für t1 = 125\,ms kann der token bucket die empfangenen Daten mit $\mathrm{R}_{\mathrm{max}} = 20\MiBs$, weiterleiten:
 \begin{alignat*}{5}
 &\mathrm{B}     &&{}+ \mathrm{R} &&{}\cdot  \mathrm{t}_1 &&{}= \mathrm{R}_{\mathrm{max}} &&{}\cdot  \mathrm{t}_1 \\
-& 2\mathrm{MiB} &&{}+ 4\MiBs &&{}\cdot   \mathrm{t}_1 &&{}= 20\MiBs &&{}\cdot  \mathrm{t}_1\\
+& 2\mathrm{\,MiB} &&{}+ 4\MiBs &&{}\cdot   \mathrm{t}_1 &&{}= 20\MiBs &&{}\cdot  \mathrm{t}_1\\
 &               &&{}         &&{}      \mathrm{t}_1 &&{}= 0,125\mathrm{s} &&{}
 \end{alignat*}
-Nach diesen 125ms verbleiben noch 1.5MiB an zu sendenden Daten:
-$$4\mathrm{MiB} - \left(0.125\mathrm{s} \cdot 20\MiBs\right) = 1,5 \mathrm{MiB}$$
-Diese 1.5MiB werden dann mit der Rate R = $4\MiBs
+Nach diesen 125\,ms verbleiben noch 1.5\,MiB an zu sendenden Daten:
+$$4\mathrm{\,MiB} - \left(0.125\mathrm{s} \cdot 20\MiBs\right) = 1,5 \mathrm{\,MiB}$$
+Diese 1.5\,MiB werden dann mit der Rate R = $4\MiBs
 $
-% = 0.004 \frac{\mathrm{MiB}}{\mathrm{ms}}$
-übertragen. Das dauert 375ms:
+% = 0.004 \frac{\mathrm{\,MiB}}{\mathrm{\,ms}}$
+übertragen. Das dauert 375\,ms:
 $$
-\frac{1.5 \mathrm{MiB}}{ 4 \MiBs} = 375\mathrm{ms}
+\frac{1.5 \mathrm{\,MiB}}{ 4 \MiBs} = 375\mathrm{\,ms}
 $$
-Die bis zur vollen Sekunde verbleibenden 500ms reichen, bis sich der token bucket wieder gefüllt hat:
+Die bis zur vollen Sekunde verbleibenden 500\,ms reichen, bis sich der token bucket wieder gefüllt hat:
 $$
-4\MiBs \cdot 500\mathrm{ms} = 2\mathrm{MiB} = \mathrm{B}
+4\MiBs \cdot 500\mathrm{\,ms} = 2\mathrm{\,MiB} = \mathrm{B}
 $$
 \vfill
 \columnbreak
@@ -119,17 +119,17 @@ Während der token bucket Daten mit $20\MiBs$ versendet, füllt sich der leaky b
 $$
 20 \MiBs - 10\MiBs = 10\MiBs
 $$
-Nach den 125ms sind
+Nach den 125\,ms sind
 $$
-10\MiBs  \cdot 125\mathrm{ms} = 1,25 \mathrm{MiB}
+10\MiBs  \cdot 125\mathrm{\,ms} = 1,25 \mathrm{\,MiB}
 $$ im leaky bucket.
-In den nächsten 375ms, in denen der token bucket mit $4\MiBs$ verschickt, leert sich der leaky bucket mit einer Rate von
+In den nächsten 375\,ms, in denen der token bucket mit $4\MiBs$ verschickt, leert sich der leaky bucket mit einer Rate von
 $$
 4\MiBs - 10\MiBs = -6 \MiBs
 $$
-Die gespeicherten 1,25MiB Daten brauchen
+Die gespeicherten 1,25\,MiB Daten brauchen
 $$
-\frac{1.25\mathrm{MiB}}{6\MiBs} = 208.33\mathrm{ms}
+\frac{1.25\mathrm{\,MiB}}{6\MiBs} = 208.33\mathrm{\,ms}
 $$
 um den leaky bucket wieder zu verlassen.
 Danach bleibt der leaky bucket bis zur nächsten vollen Sekunde leer.
@@ -193,15 +193,15 @@ $r_{out}$ kann minimal $0\MiBs$ und maximal $2\MiBs$ betragen. Schon durch Einse
 \left(15\MiBs - 2\MiBs\right) \cdot 60\mathrm{\,ms} &= 0,78\mathrm{\,MiB}
 \end{align*}
 
-Antwort: r darf zwischen 0\,$\MiBs$ und 2\,$\MiBs$ betragen
+Antwort: r darf zwischen 0$\MiBs$ und 2$\MiBs$ betragen
 
 \item
 $$\text{DAS HIER ÜBERPRÜFEN! IST DAS WIRKLICH GEFRAGT?}$$
-Bei einem Burst mit $t_{in} = 12\,\MiBs$ und einer Dauer von 120\,ms läuft der leaky bucket nach 100\,ms über.
+Bei einem Burst mit $t_{in} = 12\MiBs$ und einer Dauer von 120\,ms läuft der leaky bucket nach 100\,ms über.
 
 \begin{align*}
-12\, \MiBs - 2\, \MiBs \cdot t_{burst} &= 1\,\mathrm{MiB} \\
-t_{burst} &= 100\,\mathrm{ms}
+12 \MiBs - 2 \MiBs \cdot t_{burst} &= 1\,\mathrm{MiB} \\
+t_{burst} &= 100\mathrm{\,ms}
 \end{align*}
 
 \end{enumerate}
