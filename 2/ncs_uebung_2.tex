@@ -11,20 +11,18 @@
 \usepackage{paralist}
 \usepackage{amsmath}
 \usepackage{pgfplots}
-\usepackage{graphicx}
 \pgfplotsset{compat=newest}
 \usepgfplotslibrary{units}
-\usepackage{ziffer} 
+%\usepgfplotslibrary{units}
 
 \usepackage{multicol} \setlength{\multicolsep}{0pt}
 
 \title{Lösungsvorschlag zur zweiten Hausübung}
-\subtitle{Einführung in Net Centric Systems, Sommersemester 2015}
+\subtitle{Einführung in Net Centric Systems und \LaTeX, Sommersemester 2015}
 \subsubtitle{Max Weller, Julian Haas, Stefan Pilot}
 
 %\newcommand{\MiBs}{\frac{\mathrm{MiB}}{\mathrm{s}}}
-\newcommand{\MiBs}{\,\mathrm{MiB}/\mathrm{s}}
-
+\newcommand{\MiBs}{\mathrm{MiB}/\mathrm{s}}
 \begin{document}
 
 \maketitle
@@ -55,34 +53,38 @@ Connection-oriented:
 \end{compactitem}
 \end{enumerate}
 \end{multicols}
+
+
+
 \section{}
 \subsection{}
 \begin{enumerate}
 \item
 \begin{multicols}{2}
-Während des 200\,ms langen Burst mit Datenrate $20\MiBs$ empfängt der token bucket 4\,MiB Daten:
+Während des 200ms langen Burst mit Datenrate $20\MiBs$ empfängt der token bucket 4MiB Daten: 
 \begin{align*}
 \text{t}_\text{burst}  \cdot \text{R}_\text{max} &= \text{Datenmenge Burst}
 \\
-200\mathrm{\,ms} \cdot 20\MiBs &= \mathrm{4\,MiB}
+200\mathrm{ms} \cdot 20\MiBs &= \mathrm{4MiB}
 \end{align*}
-Für t1 = 125\,ms kann der token bucket die empfangenen Daten mit $\mathrm{R}_{\mathrm{max}} = 20\MiBs$, weiterleiten:
+Für t1 = 125ms kann der token bucket die empfangenen Daten mit $\mathrm{R}_{\mathrm{max}} = 20\MiBs$, weiterleiten:
 \begin{alignat*}{5}
-&\mathrm{B}     &&{}+ \mathrm{R} &&{}\cdot  \mathrm{t}_1 &&{}= \mathrm{R}_{\mathrm{max}} &&{}\cdot  \mathrm{t}_1 \\
-& 2\mathrm{\,MiB} &&{}+ 4\MiBs &&{}\cdot   \mathrm{t}_1 &&{}= 20\MiBs &&{}\cdot  \mathrm{t}_1\\
+&\mathrm{B}     &&{}+ \mathrm{R} &&{}\cdot  \mathrm{t}_1 &&{}= \mathrm{R}_{\mathrm{max}} &&{}\cdot  \mathrm{t}_1 \\ 
+& 2\mathrm{MiB} &&{}+ 4\MiBs &&{}\cdot   \mathrm{t}_1 &&{}= 20\MiBs &&{}\cdot  \mathrm{t}_1\\
 &               &&{}         &&{}      \mathrm{t}_1 &&{}= 0,125\mathrm{s} &&{}
 \end{alignat*}
-Nach diesen 125\,ms verbleiben noch 1.5\,MiB an zu sendenden Daten:
-$$4\mathrm{\,MiB} - \left(0.125\mathrm{s} \cdot 20\MiBs\right) = 1,5 \mathrm{\,MiB}$$
-Diese 1.5\,MiB werden dann mit der Rate R = $4\MiBs
+Nach diesen 125ms verbleiben noch 1.5MiB an zu sendenden Daten:
+$$4\mathrm{MiB} - \left(0.125\mathrm{s} \cdot 20\MiBs\right) = 1,5 \mathrm{MiB}$$
+Diese 1.5MiB werden dann mit der Rate R = $4\MiBs
 $
-übertragen. Das dauert 375\,ms:
+% = 0.004 \frac{\mathrm{MiB}}{\mathrm{ms}}$
+übertragen. Das dauert 375ms:
 $$
-\frac{1,5 \mathrm{\,MiB}}{ 4 \MiBs} = 375\mathrm{\,ms}
+\frac{1.5 \mathrm{MiB}}{ 4 \MiBs} = 375\mathrm{ms}
 $$
-Die bis zur vollen Sekunde verbleibenden 500\,ms reichen, bis sich der token bucket wieder gefüllt hat:
+Die bis zur vollen Sekunde verbleibenden 500ms reichen, bis sich der token bucket wieder gefüllt hat: 
 $$
-4\MiBs \cdot 500\mathrm{\,ms} = 2\mathrm{\,MiB} = \mathrm{B}
+4\MiBs \cdot 500\mathrm{ms} = 2\mathrm{MiB} = \mathrm{B}
 $$
 \vfill
 \columnbreak
@@ -98,7 +100,7 @@ $$
 			 ymin=0,ymax=21,
 			 xmax=1,xmin=0,
 			 enlargelimits=false]
-
+			 
 \addplot[const plot,fill=gray,draw=black]
 coordinates {(0,20)(0.125,20)(0.125,4)(0.5,4)(0.5,0)(1,0)}
 \closedcycle;
@@ -111,44 +113,46 @@ Während der token bucket Daten mit $20\MiBs$ versendet, füllt sich der leaky b
 $$
 20 \MiBs - 10\MiBs = 10\MiBs
 $$
-Nach den 125\,ms sind
+Nach den 125ms sind
 $$
-10\MiBs  \cdot 125\mathrm{\,ms} = 1,25 \mathrm{\,MiB}
+10\MiBs  \cdot 125\mathrm{ms} = 1,25 \mathrm{MiB}
 $$ im leaky bucket.
-In den nächsten 375\,ms, in denen der token bucket mit $4\MiBs$ verschickt, leert sich der leaky bucket mit einer Rate von
+In den nächsten 375ms, in denen der token bucket mit $4\MiBs$ verschickt, leert sich der leaky bucket mit einer Rate von
 $$
 4\MiBs - 10\MiBs = -6 \MiBs
 $$
-Die gespeicherten 1,25\,MiB Daten brauchen
+Die gespeicherten 1,25MiB Daten brauchen
 $$
-\frac{1,25\mathrm{\,MiB}}{6\MiBs} = 208,33\mathrm{\,ms}
+\frac{1.25\mathrm{MiB}}{6\MiBs} = 208.33\mathrm{ms}
 $$
 um den leaky bucket wieder zu verlassen.
-Danach bleibt der leaky bucket bis zur nächsten vollen Sekunde leer.\newline
+Danach bleibt der leaky bucket bis zur nächsten vollen Sekunde leer.
+\\\\
 Antwort: Der leaky bucket verliert keine Daten.
 \item
+
 Wie aus den Rechnungen zu b) hervorgeht, lässt sich der Verlauf der Senderate des leaky bucket in vier Phasen aufteilen:
-\begin{center}
+\begin{table}[ht]
+\caption{Die vier Phasen}
+\centering
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-Phase
+Phase 
 &
 Dauer (ms)
 &
-Empfangsrate $\left( \MiBs \right)$
+Empfangsrate
 &
-Füllrate $\left( \MiBs \right)$
+Füllrate
 &
 Senderate $\left( \MiBs \right)$
 \\ \hline
-1 & 125    & 20 & 10 & 10 \\ \hline
-2 & 208,33 &  4 & -6 & 10 \\ \hline
-3 & 166,67 &  4 &  0 &  4 \\ \hline
-4 & 500    &  0 &  0 &  0 \\ \hline
+1 & 125\,ms    & 20\,$\MiBs$ & 10\,$\MiBs$ & 10\,$\MiBs$ \\ \hline
+2 & 208,33\,ms &  4\,$\MiBs$ & -6\,$\MiBs$ & 10\,$\MiBs$ \\ \hline
+3 & 166,67\,ms &  4\,$\MiBs$ &  0\,$\MiBs$ &  4\,$\MiBs$ \\ \hline
+4 & 500\,ms    &  0\,$\MiBs$ &  0\,$\MiBs$ &  0\,$\MiBs$ \\ \hline
 \end{tabular}
-\end{center}
-%Der Graph des sekündlichen Output des leaky bucket sieht also so aus:
-\begin{center}
+\end{table}
 \begin{tikzpicture}
 \begin{axis}[title=Sekündlicher output des leaky bucket,
 			 change x base,
@@ -161,115 +165,43 @@ Senderate $\left( \MiBs \right)$
 			 ymin=0,ymax=11,
 			 xmax=1,xmin=0,
 			 enlargelimits=false]
-
+			 
 \addplot[const plot,fill=gray,draw=black]
 coordinates {(0,10)(0.333,10)(0.333,4)(0.5,4)(0.5,0)(1,0)}
 \closedcycle;
 \end{axis}
 \end{tikzpicture}
-\end{center}
 \end{enumerate}
 \subsection{}
 \begin{enumerate}
 \item
-Die Rate, mit der der leaky bucket Daten empfängt, wird hier als $\mathrm{r}_{\mathrm{in}}$ bezeichnet, die in der Übung als $\mathrm{r}$ bezeichnete Outputrate als $\mathrm{r}_{\mathrm{out}}$. Der Füllstand des leaky bucket nach einer der Dauer eines Bursts $\mathrm{t}_\mathrm{burst}$ als $\mathrm{d}_\mathrm{bucket}$. Es gilt:
-$$\mathrm{d}_\mathrm{bucket} = \left(\mathrm{r}_\mathrm{in} - \mathrm{r}_\mathrm{out}\right) \cdot \mathrm{t}_\mathrm{burst}$$
-$\mathrm{r}_\mathrm{out}$ kann minimal $0\MiBs$ und maximal $2\MiBs$ betragen. Schon durch Einsetzen dieser Randextrema erhält man die Lösung, da $\mathrm{d}_\mathrm{bucket}$ unter 1\,MiB liegt:
+Die Füllrate des leaky bucket wird hier als $r_{fill}$ bezeichnet, die Rate, mit der der leak bucket Daten empfängt, als $r_{in}$, die in der Übung als $r$ bezeichnete Outputrate als $r_{out}$.
+
+$$d_{bucket} = \left(r_{in} - r_{out}\right) \cdot t_{burst}$$
+
+$r_{out}$ kann minimal $0\MiBs$ und maximal $2\MiBs$ betragen. Schon durch Einsetzen dieser Randextrema erhält man die Lösung, da der $t_{bucket}$ unter 1\,MiB liegt:
+
 \begin{align*}
-\mathrm{d}_\mathrm{bucket\,1} = \left(15\MiBs - 0\MiBs\right) \cdot 60\mathrm{\,ms} &= 0,9\mathrm{ \,MiB}\\
-\mathrm{d}_\mathrm{bucket\,2} = \left(15\MiBs - 2\MiBs\right) \cdot 60\mathrm{\,ms} &= 0,78\mathrm{\,MiB}
+\left(15\MiBs - 0\MiBs\right) \cdot 60\mathrm{\,ms} &= 0,9\mathrm{ \,MiB}\\
+\left(15\MiBs - 2\MiBs\right) \cdot 60\mathrm{\,ms} &= 0,78\mathrm{\,MiB}
 \end{align*}
-Antwort: r darf zwischen 0$\MiBs$ und 2$\MiBs$ betragen.
-\item
-%$$\text{DAS HIER ÜBERPRÜFEN! IST DAS WIRKLICH GEFRAGT?}$$
-Bei einem Burst mit $\mathrm{t}_\mathrm{in} = 12\MiBs$ und einer Dauer von 120\,ms läuft der leaky bucket nach 100\,ms über.
-\begin{align*}
-12 \MiBs - 2 \MiBs \cdot \mathrm{t}_\mathrm{burst} &= 1\,\mathrm{MiB} \\
-\mathrm{t}_\mathrm{burst} &= 100\mathrm{\,ms}
-\end{align*}
-\end{enumerate}
-\subsection{}
-\begin{enumerate}
-\begin{multicols}{2}
-\item
-Indicate the slots in which the router will decide to\newline send a choke packet with a $= 0,2 $:
-$$ \mathrm{u} = 0,2 \cdot \mathrm{u}_\mathrm{prev} + 0,8 \cdot \mathrm{f} $$
-\begin{tabular}{|c|c|c|c|}
-\hline
-t &	f &	$\mathrm{u}_\mathrm{t}$ &	$\mathrm{choke}_\mathrm{t}$	\\ \hline
-0 &	0 &	0,000 &				\\ \hline	
-1 & 0 &	0,000 &				\\ \hline	
-2 &	1 &	0,800 &	X			\\ \hline
-3 &	1 &	0,960 &	X			\\ \hline
-4 &	1 &	0,992 &	X			\\ \hline
-5 &	1 &	0,998 &	X			\\ \hline
-6 &	1 &	1,000 &	X			\\ \hline
-7 &	0 &	0,200 &				\\ \hline
-8 &	1 &	0,840 &	X			\\ \hline
-9 &	1 &	0,968 &	X			\\ \hline
-\end{tabular}
+
+Antwort: r darf zwischen 0\,$\MiBs$ und 2\,$\MiBs$ betragen
 
 \item
-Indicate the slots in which the router will decide to\newline send a choke packet with a $= 0,8 $:
+$$\text{DAS HIER ÜBERPRÜFEN! IST DAS WIRKLICH GEFRAGT?}$$
+Bei einem Burst mit $t_{in} = 12\,\MiBs$ und einer Dauer von 120\,ms läuft der leaky bucket nach 100\,ms über.
 
- $$ \mathrm{u} = 0,2 \cdot \mathrm{u}_{\mathrm{prev}} + 0,8 \cdot \mathrm{f} $$
-\begin{tabular}{|c|c|c|c|}
-\hline
-t &	f &	$\mathrm{u}_\mathrm{t}$ &	$\mathrm{choke}_\mathrm{t}$ \\ \hline
-0 &	0 &	0,000 &		\\ \hline	
-1 &	0 &	0,000 &	\\ \hline	
-2 &	1 &	0,200 &	\\ \hline	
-3 &	1 &	0,360 &	\\ \hline	
-4 &	1 &	0,488 &	\\ \hline	
-5 &	1 &	0,590 &	X\\ \hline	
-6 &	1 &	0,672 &	X\\ \hline
-7 &	0 &	0,538 &	X\\ \hline	
-8 &	1 &	0,630 &	X\\ \hline	
-9 &	1 &	0,704 &	X\\ \hline	
-\end{tabular}
-\end{multicols}
-\item
-In which of the two previous cases are the reactions of the router to congestion faster? Can this have any drawbacks?
-\\
-In Fall a erfolgt die Reaktion schneller, da die aktuelle Situation stärker gewichtet ist als die Vergangenheit. 
-Dies kann ein Nachteil sein, falls es sich um eine sehr kurze Überlastungssituation handelt, die man eigentlich hätte ignorieren können.
+\begin{align*}
+12\, \MiBs - 2\, \MiBs \cdot t_{burst} &= 1\,\mathrm{MiB} \\
+t_{burst} &= 100\,\mathrm{ms}
+\end{align*}
+
 \end{enumerate}
 \section{}
-\subsection{}
-  \begin{center}
-    \includegraphics[scale=0.6]{2_3_1.pdf}
-  \end{center}
 
-\subsection{}
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-Edge i
-&
-$C_{i} (kbit/sec)$
-&
-Utilization of path (pkts/sec)
-&
-$\lambda_{i}(pkts/sec)$
-&
-$\mu C_{i}(pkts/sec)$
-&
-$T_{i}(msec/pkt)$
-&
-Weight
-\\ \hline
-AB & 30 & 12 & 17 & 60 & 23,26 & 0,2881 \\ \hline
-AE & 20 & 6 & 10 & 40 & 33,33 & 0,1695 \\ \hline
-BC & 20 & 8 & 12 & 40 & 35,71 & 0,2034 \\ \hline
-BD & 10 & 3 & 3 & 20 & 58,82 & 0,0508 \\ \hline
-CE & 10 & 5 & 7 & 20 & 76,92 & 0,1186 \\ \hline
-DE & 40 & 5 & 10 & 80 & 14,29 & 0,1695 \\ \hline
-ABC &   & 4 &    &    &       &\\ \hline
-AED &   & 3 &    &    &       &\\ \hline
-BAE &   & 1 &    &    &       &\\ \hline
-CED &   & 2 &    &    &       &\\ \hline
-$\Sigma \lambda _{j}$ & & & 59 & & & \\ \hline
-\end{tabular}
-\end{center}
+
 
 \end{document}
+
+

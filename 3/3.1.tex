@@ -15,10 +15,10 @@
 					main node/.style={circle,draw}]
 
   \node[main node] (A) {A};
-  \node[main node] (B) [left of=A] {B};
-  \node[main node] (C) [right of=A] {C};
-  \node[main node] (D) [below right of=A] {D};
-  \node[main node] (E) [below left of=A] {E};
+  \node[main node] (B) [above left of=A] {B};
+  \node[main node] (C) [above right of=A] {C};
+  \node[main node] (D) [below of=C] {D};
+  \node[main node] (E) [below of=B] {E};
   
   \path[every node/.style={}]
     (A) edge node {7} (B)
