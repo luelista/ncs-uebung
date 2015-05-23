@@ -23,9 +23,915 @@
 
 %\newcommand{\MiBs}{\frac{\mathrm{MiB}}{\mathrm{s}}}
 \newcommand{\MiBs}{\mathrm{MiB}/\mathrm{s}}
+\usepackage{multirow}
+\newcommand{\8}{$\infty$}
+\newcommand{\ezA}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{A}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& B & C & D & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ezB}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{B}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & C & D & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ezC}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{C}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & B & D & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ezD}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{D}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & B & C & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ezE}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{E}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & B & C & D\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ze}{\end{tabular}}
+
+\newcommand{\upd}{\begin{tabular}{c|c}}
 \begin{document}
 
 \maketitle
-\section{}
+\section{ -- 3.1}
+\subsection{3.1.1}
+%%% 3.1.1. %%%
+The Graph:\\
+\begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=2cm,
+					thick,
+					main node/.style={circle,draw}]
 
+  \node[main node] (A) {A};
+  \node[main node] (B) [left of=A] {B};
+  \node[main node] (C) [right of=A] {C};
+  \node[main node] (D) [below of=C] {D};
+  \node[main node] (E) [below of=B] {E};
+  
+  \path[every node/.style={}]
+    (A) edge node {7} (B)
+        edge node {5} (C)
+        edge node {1} (D)
+        edge node {2} (E)
+    (B) edge node {4} (E)
+  	(C) edge node {1} (D)
+  	(D) edge node {3} (E);
+\end{tikzpicture}
+\\
+Distance Tables after Initialisation Phase:
+\\
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+B           & 7    & B   \\
+C           & 5    & C   \\
+D           & 1    & D   \\
+E           & 2    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 7    & A   \\
+C           &      &     \\
+D           &      &     \\
+E           & 4    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 5    & A   \\
+B           &      &     \\
+D           & 1    & D   \\
+E           &      &     \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 1    & A   \\
+B           &      &     \\
+C           & 1    & C   \\
+E           & 3    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 2    & A   \\
+B           & 4    & B   \\
+C           &      &     \\
+D           & 3    & D   \\
+\end{tabular}
+
+The first update messages:\\
+\begin{tabular}{|c|c|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
+\hline \multicolumn{2}{|c|}{Update} & \multicolumn{5}{|c|}{sent to:} \\ \cline{3-7} \multicolumn{2}{|c|}{Messages} & A & B & C & D & E \\ \hline \multirow{5}{*}{\rotatebox{90}{sent by:}}
+& A & &
+\upd
+to C & 5 \\ to D & 1 \\ to E & 2 \\
+\end{tabular} &
+\upd
+to B & 7 \\ to D & 1 \\ to E & 2 \\
+\end{tabular} &
+\upd
+to B & 7 \\ to C & 5 \\ to E & 2 \\
+\end{tabular} &
+\upd
+to B & 7 \\ to C & 5 \\ to D & 1 \\
+\end{tabular} \\ \cline{2-7}
+& B &
+\upd
+to E & 4 \\
+\end{tabular} & & & &
+\upd
+to A & 7 \\
+\end{tabular} \\ \cline{2-7}
+& C &
+\upd
+to D & 1
+\end{tabular} & & &
+\upd
+to A & 5
+\end{tabular} & \\ \cline{2-7}
+& D &
+\upd
+to C & 1 \\ to E & 3 \\
+\end{tabular} & &
+\upd
+to A & 1 \\ to E & 3 \\
+\end{tabular} & &
+\upd
+to A & 1 \\ to C & 1 \\
+\end{tabular} \\ \cline{2-7}
+& E &
+\upd
+to B & 4 \\ to D & 3 \\
+\end{tabular} &
+\upd
+to A & 2 \\ to D & 3 \\
+\end{tabular} & &
+\upd
+to A & 2 \\ to B & 4 \\
+\end{tabular} &
+\\ \hline
+\end{tabular}
+
+
+\clearpage
+%%% 3.1.2 %%%
+\subsection{3.1.2}
+Distance Tables Iteration 1:\\
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+B           & 6    & E   \\
+C           & 2    & D   \\
+D           & 1    & D   \\
+E           & 2    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 6    & A   \\
+C           & 11   & E   \\
+D           & 7    & E   \\
+E           & 4    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 2    & D   \\
+B           & 9    & D   \\
+D           & 1    & D   \\
+E           & 4    & D   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 1    & A   \\
+B           & 7    & E   \\
+C           & 1    & C   \\
+E           & 3    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 2    & A   \\
+B           & 4    & B   \\
+C           & 4    & D   \\
+D           & 3    & D   \\
+\end{tabular}
+\\
+Update Messages Iteration 1:\\
+\begin{tabular}{|c|c|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
+\hline \multicolumn{2}{|c|}{Update} & \multicolumn{5}{|c|}{sent to:} \\ \cline{3-7} \multicolumn{2}{|c|}{Messages} & A & B & C & D & E \\ \hline \multirow{5}{*}{\rotatebox{90}{sent by:}}
+&A&&
+\upd      &   \\ to C & 2\ze &
+\upd to B & 6 \\      &  \ze &
+\upd to B & 6 \\ to C & 2\ze &
+\upd to B & 6 \\ to C & 2\ze \\ \cline{2-7}
+&B&
+\upd to C & 11 \\ to D & 7 \ze &&&&
+\upd to C & 11 \\ to D & 7 \ze \\ \cline{2-7}
+&C&
+\upd      &   \\ to B & 9 \\ to E & 4\ze &&&
+\upd to A & 2 \\ to B & 9 \\ to E & 4\ze & \\ \cline{2-7}
+&D&
+\upd to B & 7\ze &&
+\upd to B & 7\ze &&
+\upd to B & 7\ze \\ \cline{2-7}
+&E&
+\upd to C & 4\ze &
+\upd to C & 4\ze &
+\upd \ze &
+\upd to C & 4\ze &\\ \hline
+\end{tabular}\\
+%\clearpage
+Distance Tables Iteration 2:\\
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+B           & 6    & E   \\
+C           & 2    & D   \\
+D           & 1    & D   \\
+E           & 2    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 6    & A   \\
+C           & 8    & A   \\
+D           & 7    & E   \\
+E           & 4    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 2    & D   \\
+B           & 8    & D   \\
+D           & 1    & D   \\
+E           & 4    & D   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 1    & A   \\
+B           & 7    & E   \\
+C           & 1    & C   \\
+E           & 3    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 2    & A   \\
+B           & 4    & B   \\
+C           & 4    & D   \\
+D           & 3    & D   \\
+\end{tabular}
+\\
+Update Messages Iteration 2:\\
+\begin{tabular}{|c|c|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
+\hline \multicolumn{2}{|c|}{Update} & \multicolumn{5}{|c|}{sent to:} \\ \cline{3-7} \multicolumn{2}{|c|}{Messages} & A & B & C & D & E \\ \hline \multirow{5}{*}{\rotatebox{90}{sent by:}}
+&A&&&&&\\ \cline{2-7}
+&B&\upd to C & 8\ze &&&\upd to C & 8\ze &\\ \cline{2-7}
+&C&\upd to B & 8\ze &&&\upd to B & 8\ze &\\ \cline{2-7}
+&D&&&&&\\ \cline{2-7}
+&E&&&&&\\ \hline
+\end{tabular}
+
+After the second iteration, no more update messages are sent.
+\clearpage
+\subsection{3.1.3}
+The Graph:\\
+\begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=2cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (A) {A};
+  \node[main node] (B) [left of=A] {B};
+  \node[main node] (C) [right of=A] {C};
+  \node[main node] (D) [below of=C] {D};
+  \node[main node] (E) [below of=B] {E};
+  
+  \path[every node/.style={}]
+    (A) edge node {7} (B)
+        edge node {\textcolor{red}{1}} (C)
+        edge node {1} (D)
+        edge node {2} (E)
+    (B) edge node {4} (E)
+  	(C) edge node {1} (D)
+  	(D) edge node {3} (E);
+\end{tikzpicture}
+\\
+Distance Tables after Initialisation Phase:
+\\
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+B           & 7    & B   \\
+C           & \textcolor{red}{1}    & C   \\
+D           & 1    & D   \\
+E           & 2    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 7    & A   \\
+C           &      &     \\
+D           &      &     \\
+E           & 4    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & \textcolor{red}{1}    & A   \\
+B           &      &     \\
+D           & 1    & D   \\
+E           &      &     \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 1    & A   \\
+B           &      &     \\
+C           & 1    & C   \\
+E           & 3    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 2    & A   \\
+B           & 4    & B   \\
+C           &      &     \\
+D           & 3    & D   \\
+\end{tabular}
+\\The first update messages:\\
+\begin{tabular}{|c|c|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
+\hline \multicolumn{2}{|c|}{Update} & \multicolumn{5}{|c|}{sent to:} \\ \cline{3-7} \multicolumn{2}{|c|}{Messages} & A & B & C & D & E \\ \hline \multirow{5}{*}{\rotatebox{90}{sent by:}}
+& A & &
+\upd
+to C & \textcolor{red}{1} \\ to D & 1 \\ to E & 2 \\
+\end{tabular} &
+\upd
+to B & 7 \\ to D & 1 \\ to E & 2 \\
+\end{tabular} &
+\upd
+to B & 7 \\ to C & \textcolor{red}{1} \\ to E & 2 \\
+\end{tabular} &
+\upd
+to B & 7 \\ to C & \textcolor{red}{1} \\ to D & 1 \\
+\end{tabular} \\ \cline{2-7}
+& B &
+\upd
+to E & 4 \\
+\end{tabular} & & & &
+\upd
+to A & 7 \\
+\end{tabular} \\ \cline{2-7}
+& C &
+\upd
+to D & 1
+\end{tabular} & & &
+\upd
+to A & \textcolor{red}{1}
+\end{tabular} & \\ \cline{2-7}
+& D &
+\upd
+to C & 1 \\ to E & 3 \\
+\end{tabular} & &
+\upd
+to A & 1 \\ to E & 3 \\
+\end{tabular} & &
+\upd
+to A & 1 \\ to C & 1 \\
+\end{tabular} \\ \cline{2-7}
+& E &
+\upd
+to B & 4 \\ to D & 3 \\
+\end{tabular} &
+\upd
+to A & 2 \\ to D & 3 \\
+\end{tabular} & &
+\upd
+to A & 2 \\ to B & 4 \\
+\end{tabular} &
+\\ \hline
+\end{tabular}
+\\Distance Tables Iteration 1:\\
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+B           & 6    & E   \\
+C           & \textcolor{red}{1}    & \textcolor{red}{C}   \\
+D           & 1    & D   \\
+E           & 2    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 6    & A   \\
+C           & \textcolor{red}{8}   & \textcolor{red}{E}   \\
+D           & 7    & E   \\
+E           & 4    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & \textcolor{red}{1}    & \textcolor{red}{A}   \\
+B           & \textcolor{red}{8}    & \textcolor{red}{A}   \\
+D           & 1    & D   \\
+E           & \textcolor{red}{3}    & \textcolor{red}{A}   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 1    & A   \\
+B           & 7    & E   \\
+C           & 1    & C   \\
+E           & 3    & E   \\
+\end{tabular}
+\begin{tabular}{c|c|c}
+Destination & Cost & Via \\ \hline
+A           & 2    & A   \\
+B           & 4    & B   \\
+C           & \textcolor{red}{3}    & \textcolor{red}{A}   \\
+D           & 3    & D   \\
+\end{tabular}
+\\
+Update Messages Iteration 1:\\
+\begin{tabular}{|c|c|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
+\hline \multicolumn{2}{|c|}{Update} & \multicolumn{5}{|c|}{sent to:} \\ \cline{3-7} \multicolumn{2}{|c|}{Messages} & A & B & C & D & E \\ \hline \multirow{5}{*}{\rotatebox{90}{sent by:}}
+&A&&
+\upd      &   \\ \colorbox{red}{\textcolor{red}{to C}} & \colorbox{red}{\textcolor{red}{2}}\ze &
+\upd to B & 6 \\      &  \ze &
+\upd to B & 6 \\ \colorbox{red}{\textcolor{red}{to C}} & \colorbox{red}{\textcolor{red}{2}}\ze &
+\upd to B & 6 \\ \colorbox{red}{\textcolor{red}{to C}} & \colorbox{red}{\textcolor{red}{2}}\ze \\ \cline{2-7}
+&B&
+\upd to C & \textcolor{red}{8} \\ to D & 7 \ze &&&&
+\upd to C  & \textcolor{red}{8} \\ to D & 7 \ze \\ \cline{2-7}
+&C&
+\upd      &   \\ to B & \textcolor{red}{8} \\ to E & \textcolor{red}{3}\ze &&&
+\upd \colorbox{red}{\textcolor{red}{to A}} & \colorbox{red}{\textcolor{red}{2}} \\ to B & \textcolor{red}{8} \\ to E & \textcolor{red}{3}\ze & \\ \cline{2-7}
+&D&
+\upd to B & 7\ze &&
+\upd to B & 7\ze &&
+\upd to B & 7\ze \\ \cline{2-7}
+&E&
+\upd to C & \textcolor{red}{3}\ze &
+\upd to C & \textcolor{red}{3}\ze &
+\upd \ze &
+\upd to C & \textcolor{red}{3}\ze &\\ \hline
+\end{tabular}\\
+After the first iteration, no more update messages are sent.
+
+\subsection{3.1.4}
+Wahrscheinlich will man hier hören, dass ein Count-To-Infinity eintritt - ich verstehe aber nicht, warum das so ist.
+\colorbox{red}{\textcolor{white}{SOLUTION MISSING!}}
+\subsection{3.1.5}
+\colorbox{red}{\textcolor{white}{SOLUTION MISSING!}}
+\subsection{3.1.6}
+No it isn't. \colorbox{red}{\textcolor{white}{EXPLANATION HERE!}}
+\section{ -- 3.2}
+\subsection{3.2.1}
+Das Link-State-Routing basiert darauf, dass jeder Knoten die komplette Netzwerktopologie kennt. Alle Knoten verschicken ihre Adjazenzliste an ihre Nachbarn; jeder Knoten verteilt alle Adjazenzlisten, die er erhält, weiter an seine Nachbarn. So kann jeder Knoten einen Graphen erzeugen, der das Netzwerk abbildet - sobald er von zwei Knoten die Information erhält, dass sie mit dem jeweils anderen verbunden sind, fügt er dem Graphen eine Verbindung hinzu. Anhand dieses Graphen kann jeder Knoten per Dijkstra-Algorithmus den kürzesten Pfad zu allen anderen Knoten bestimmen und danach routen. Das edge weight ist dabei abhängig von der Implementierung und kann zum Beispiel Bandbreiteninformationen erhalten. 
+\subsection{3.2.2}
+\begin{itemize}
+\item
+Wir gehen davon aus, dass ein Knoten eine Verbindung erst anerkennt, wenn er von beiden Knoten erfahren hat, dass sie mit dem jeweils anderen verbunden sind.
+%\begin{table}
+%\caption{Den Knoten bekannte Netzwerkteile, Iteration 0}
+\begin{tabular}{|c|c|}
+\hline
+Knoten & Dem Knoten bekannter Teil des Netzwerks\\ \hline
+A & \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.2cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (A) {A};
+  \node[main node] (B) [left of=A] {B};
+  \node[main node] (E) [right of=A] {E};
+  
+  \path[every node/.style={}]
+    (A) edge node {10} (E)
+        edge node {4} (B);
+\end{tikzpicture}
+\\ \hline
+
+B & \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.2cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (B) {B};
+  \node[main node] (A) [left of=B] {A};
+  \node[main node] (F) [below of=B] {F};
+  \node[main node] (D) [right of=B] {D};
+  
+  \path[every node/.style={}]
+    (B) edge node {4} (A)
+        edge node {2} (F)
+        edge node {5} (D);
+\end{tikzpicture}\\ \hline
+C & \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.2cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (A) {C};
+  \node[main node] (D) [left of=A] {D};
+  \node[main node] (G) [right of=A] {G};
+  
+  \path[every node/.style={}]
+    (A) edge node {5} (D)
+        edge node {7} (G);
+\end{tikzpicture}\\ \hline
+D & \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.2cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (D) {D};
+  \node[main node] (B) [below left of=D] {B};
+  \node[main node] (G) [above right of=D] {G};
+  \node[main node] (F) [below right of=D] {F};
+  \node[main node] (C) [above left of=D] {C};
+  
+  \path[every node/.style={}]
+    (D) edge node {10} (B)
+        edge node {4} (C)
+        edge node {6} (G)
+        edge node {3} (F);
+\end{tikzpicture}\\ \hline
+E & \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.2cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (E) {E};
+  \node[main node] (A) [left of=E] {A};
+  \node[main node] (F) [right of=E] {F};
+  
+  \path[every node/.style={}]
+    (E) edge node {10} (A)
+        edge node {4} (F);
+\end{tikzpicture}\\ \hline
+F &  \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.2cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (F) {F};
+  \node[main node] (E) [left of=F] {E};
+  \node[main node] (B) [below of=F] {B};
+  \node[main node] (D) [right of=F] {D};
+  
+  \path[every node/.style={}]
+    (F) edge node {4} (E)
+        edge node {2} (B)
+        edge node {3} (D);
+\end{tikzpicture}\\ \hline
+G &\begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.2cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (G) {G};
+  \node[main node] (D) [left of=G] {D};
+  \node[main node] (C) [right of=G] {C};
+  
+  \path[every node/.style={}]
+    (G) edge node {7} (C)
+        edge node {6} (D);
+\end{tikzpicture} \\ \hline
+\end{tabular}
+%\end{table}
+
+%\begin{table}
+%\caption{Den Knoten bekannte Netzwerkteile, Iteration 1}
+\begin{tabular}{|c|c|}
+\hline
+Knoten & Dem Knoten bekannter Teil des Netzwerks\\ \hline
+A & \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.2cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (A) {A};
+  \node[main node] (B) [left of=A] {B};
+  \node[main node] (E) [right of=A] {E};
+  
+  \path[every node/.style={}]
+    (A) edge node {10} (E)
+        edge node {4} (B);
+\end{tikzpicture}
+\\ \hline
+
+B & \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.5cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (B) {B};
+  \node[main node] (A) [left of=B] {A};
+  \node[main node] (D) [right of=B] {D};
+  \node[main node] (F) [below of=B] {F};
+
+  
+  \path[every node/.style={}]
+    (B) edge node {4} (A)
+        edge node {2} (F)
+        edge node {5} (D)
+    (F) edge node {3} (D);
+\end{tikzpicture}\\ \hline
+C & \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.5cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (D) {D};
+  \node[main node] (C) [above right of=D] {C};
+  \node[main node] (G) [below right of=D] {G};
+  
+  \path[every node/.style={}]
+    (D) edge node {5} (C)
+        edge node {6} (G)
+    (G) edge node {7} (C);
+\end{tikzpicture}\\ \hline
+D & \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.8cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (D) {D};
+  \node[main node] (B) [below left of=D] {B};
+  \node[main node] (G) [above right of=D] {G};
+  \node[main node] (F) [below right of=D] {F};
+  \node[main node] (C) [above left of=D] {C};
+  
+  \path[every node/.style={}]
+    (D) edge node {10} (B)
+        edge node {4}  (C)
+        edge node {6}  (G)
+        edge node {3}  (F)
+    (B) edge node {2}  (F)
+    (C) edge node {7}  (G);
+\end{tikzpicture}\\ \hline
+E & \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.2cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (E) {E};
+  \node[main node] (A) [left of=E] {A};
+  \node[main node] (F) [right of=E] {F};
+  
+  \path[every node/.style={}]
+    (E) edge node {10} (A)
+        edge node {4} (F);
+\end{tikzpicture}\\ \hline
+F &  \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.2cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (F) {F};
+  \node[main node] (E) [left of=F] {E};
+  \node[main node] (B) [below of=F] {B};
+  \node[main node] (D) [right of=F] {D};
+  
+  \path[every node/.style={}]
+    (F) edge node {4} (E)
+        edge node {2} (B)
+        edge node {3} (D);
+\end{tikzpicture}\\ \hline
+G &\begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.5cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (D) {D};
+  \node[main node] (C) [above right of=D] {C};
+  \node[main node] (G) [below right of=D] {G};
+  
+  \path[every node/.style={}]
+    (D) edge node {5} (C)
+        edge node {6} (G)
+    (G) edge node {7} (C);
+\end{tikzpicture}\\ \hline
+\end{tabular}
+%\end{table}
+
+%\begin{table}
+%\caption{Den Knoten bekannte Netzwerkteile, Iteration 2}
+\begin{tabular}{|c|c|}
+\hline
+Knoten & Dem Knoten bekannter Teil des Netzwerks\\ \hline
+A & \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.5cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (D) {D};
+  \node[main node] (B) [above left of=D] {B};
+  \node[main node] (F) [below left of=D] {F};
+  \node[main node] (A) [left of=B] {A};
+  \node[main node] (E) [left of=F] {E};
+  
+  \path[every node/.style={}]
+    (D) edge node {5} (B)
+        edge node {3} (F)
+    (F) edge node {4} (E)
+        edge node {2} (B)
+    (B) edge node {4} (A)
+    (A) edge node {10}(E)
+;
+\end{tikzpicture}
+\\ \hline
+
+B &\begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.5cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (D) {D};
+  \node[main node] (B) [above left of=D] {B};
+  \node[main node] (F) [below left of=D] {F};
+  \node[main node] (A) [left of=B] {A};
+  \node[main node] (E) [left of=F] {E};
+  \node[main node] (C) [above right of=D] {C};
+  \node[main node] (G) [below right of=D] {G}; 
+  
+  \path[every node/.style={}]
+    (D) edge node {5} (B)
+        edge node {3} (F)
+        edge node {5} (C)
+        edge node {6} (G)
+    (F) edge node {4} (E)
+        edge node {2} (B)
+    (B) edge node {4} (A)
+    (A) edge node {10}(E)
+    (C) edge node {7} (G)
+;
+\end{tikzpicture}\\ \hline
+C & \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.8cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (D) {D};
+  \node[main node] (B) [below left of=D] {B};
+  \node[main node] (G) [above right of=D] {G};
+  \node[main node] (F) [below right of=D] {F};
+  \node[main node] (C) [above left of=D] {C};
+  
+  \path[every node/.style={}]
+    (D) edge node {10} (B)
+        edge node {4}  (C)
+        edge node {6}  (G)
+        edge node {3}  (F)
+    (B) edge node {2}  (F)
+    (C) edge node {7}  (G);
+\end{tikzpicture}\\ \hline
+D &\begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.5cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (D) {D};
+  \node[main node] (B) [above left of=D] {B};
+  \node[main node] (F) [below left of=D] {F};
+  \node[main node] (A) [left of=B] {A};
+  \node[main node] (E) [left of=F] {E};
+  \node[main node] (C) [above right of=D] {C};
+  \node[main node] (G) [below right of=D] {G}; 
+  
+  \path[every node/.style={}]
+    (D) edge node {5} (B)
+        edge node {3} (F)
+        edge node {5} (C)
+        edge node {6} (G)
+    (F) edge node {4} (E)
+        edge node {2} (B)
+    (B) edge node {4} (A)
+    (A) edge node {10}(E)
+    (C) edge node {7} (G)
+;
+\end{tikzpicture}\\ \hline \end{tabular}
+\begin{tabular}{|c|c|}
+\hline
+Knoten & Dem Knoten bekannter Teil des Netzwerks\\ \hline
+E & \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.5cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (D) {D};
+  \node[main node] (B) [above left of=D] {B};
+  \node[main node] (F) [below left of=D] {F};
+  \node[main node] (A) [left of=B] {A};
+  \node[main node] (E) [left of=F] {E};
+  
+  \path[every node/.style={}]
+    (D) edge node {5} (B)
+        edge node {3} (F)
+    (F) edge node {4} (E)
+        edge node {2} (B)
+    (B) edge node {4} (A)
+    (A) edge node {10}(E)
+;
+\end{tikzpicture}\\ \hline
+F &  \begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.5cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (D) {D};
+  \node[main node] (B) [above left of=D] {B};
+  \node[main node] (F) [below left of=D] {F};
+  \node[main node] (A) [left of=B] {A};
+  \node[main node] (E) [left of=F] {E};
+  \node[main node] (C) [above right of=D] {C};
+  \node[main node] (G) [below right of=D] {G}; 
+  
+  \path[every node/.style={}]
+    (D) edge node {5} (B)
+        edge node {3} (F)
+        edge node {5} (C)
+        edge node {6} (G)
+    (F) edge node {4} (E)
+        edge node {2} (B)
+    (B) edge node {4} (A)
+    (A) edge node {10}(E)
+    (C) edge node {7} (G)
+;
+\end{tikzpicture}\\ \hline
+G &\begin{tikzpicture}[-,
+					%>=stealth',
+					%shorten >=1pt,
+					auto,
+					node distance=1.8cm,
+					thick,
+					main node/.style={circle,draw}]
+
+  \node[main node] (D) {D};
+  \node[main node] (B) [below left of=D] {B};
+  \node[main node] (G) [above right of=D] {G};
+  \node[main node] (F) [below right of=D] {F};
+  \node[main node] (C) [above left of=D] {C};
+  
+  \path[every node/.style={}]
+    (D) edge node {10} (B)
+        edge node {4}  (C)
+        edge node {6}  (G)
+        edge node {3}  (F)
+    (B) edge node {2}  (F)
+    (C) edge node {7}  (G);
+\end{tikzpicture}\\ \hline
+\end{tabular}
+%\end{table}
+In der folgenden dritten Iteration kennt jeder Knoten das gesamte Netzwerk.
+\item
+Das wurde in Teilaufgabe 2.1 erläutert.
+\end{itemize}
+\subsection{3.2.3}
+Nein, aber ich kann nicht erklären, warum das so ist. \colorbox{red}{\textcolor{white}{SOLUTION MISSING!}}
+\subsection{3.2.4}
+\colorbox{red}{\textcolor{white}{SOLUTION MISSING!}}
+\section{ -- 3.3}
+\section{ -- 3.4}
 \end{document}
