@@ -1,0 +1,35 @@
+% A simple graph with straight and bend arrows and loops
+% Stefan Kottwitz
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{multirow}
+\newcommand{\8}{$\infty$}
+\newcommand{\ezA}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{A}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& B & C & D & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ezB}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{B}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & C & D & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ezC}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{C}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & B & D & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ezD}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{D}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & B & C & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ezE}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{E}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & B & C & D\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ze}{\end{tabular}}
+
+\newcommand{\upd}{\begin{tabular}{c|c}}
+
+\begin{document}
+\section{3.2}
+\subsection{3.2.1}
+\subsection{3.2.2}
+\begin{itemize}
+\item\item
+\end{itemize}
+\subsection{3.2.3}
+\subsection{3.2.4}
+\end{document}
