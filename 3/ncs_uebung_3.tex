@@ -49,7 +49,9 @@
 \section{ -- 3.1}
 \subsection{3.1.1}
 %%% 3.1.1. %%%
-The Graph:\\
+\begin{multicols}{3}
+Der Graph:\\
+\begin{center}
 \begin{tikzpicture}[-,
 					%>=stealth',
 					%shorten >=1pt,
@@ -73,9 +75,10 @@ The Graph:\\
   	(C) edge node {1} (D)
   	(D) edge node {3} (E);
 \end{tikzpicture}
-\\
-Distance Tables after Initialisation Phase:
-\\
+\end{center}
+\columnbreak
+Routingtabellen nach der Initialisierungsphase (dem nicht in der Liste auftauchenden Knoten gehört die Tabelle): \\
+%\begin{multicols}{3}
 \begin{tabular}{c|c|c}
 Destination & Cost & Via \\ \hline
 B           & 7    & B   \\
@@ -111,8 +114,9 @@ B           & 4    & B   \\
 C           &      &     \\
 D           & 3    & D   \\
 \end{tabular}
-
-The first update messages:\\
+\end{multicols}
+Die ersten update messages:
+\begin{center}
 \begin{tabular}{|c|c|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
 \hline \multicolumn{2}{|c|}{Update} & \multicolumn{5}{|c|}{sent to:} \\ \cline{3-7} \multicolumn{2}{|c|}{Messages} & A & B & C & D & E \\ \hline \multirow{5}{*}{\rotatebox{90}{sent by:}}
 & A & &
@@ -164,12 +168,12 @@ to A & 2 \\ to B & 4 \\
 \end{tabular} &
 \\ \hline
 \end{tabular}
-
-
+\end{center}
 \clearpage
 %%% 3.1.2 %%%
 \subsection{3.1.2}
-Distance Tables Iteration 1:\\
+Routingtabellen der ersten Iteration:\\
+\begin{multicols}{3}
 \begin{tabular}{c|c|c}
 Destination & Cost & Via \\ \hline
 B           & 6    & E   \\
@@ -205,8 +209,9 @@ B           & 4    & B   \\
 C           & 4    & D   \\
 D           & 3    & D   \\
 \end{tabular}
-\\
-Update Messages Iteration 1:\\
+\end{multicols}
+Update Messages Iteration 1:
+\begin{center}
 \begin{tabular}{|c|c|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
 \hline \multicolumn{2}{|c|}{Update} & \multicolumn{5}{|c|}{sent to:} \\ \cline{3-7} \multicolumn{2}{|c|}{Messages} & A & B & C & D & E \\ \hline \multirow{5}{*}{\rotatebox{90}{sent by:}}
 &A&&
@@ -229,9 +234,10 @@ Update Messages Iteration 1:\\
 \upd to C & 4\ze &
 \upd \ze &
 \upd to C & 4\ze &\\ \hline
-\end{tabular}\\
-%\clearpage
-Distance Tables Iteration 2:\\
+\end{tabular}
+\end{center}
+Routingtabellen der zweiten Iteration:
+\begin{multicols}{3}
 \begin{tabular}{c|c|c}
 Destination & Cost & Via \\ \hline
 B           & 6    & E   \\
@@ -267,8 +273,9 @@ B           & 4    & B   \\
 C           & 4    & D   \\
 D           & 3    & D   \\
 \end{tabular}
-\\
-Update Messages Iteration 2:\\
+\end{multicols}
+update messages der zweiten Iteration:
+\begin{center}
 \begin{tabular}{|c|c|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
 \hline \multicolumn{2}{|c|}{Update} & \multicolumn{5}{|c|}{sent to:} \\ \cline{3-7} \multicolumn{2}{|c|}{Messages} & A & B & C & D & E \\ \hline \multirow{5}{*}{\rotatebox{90}{sent by:}}
 &A&&&&&\\ \cline{2-7}
@@ -277,11 +284,12 @@ Update Messages Iteration 2:\\
 &D&&&&&\\ \cline{2-7}
 &E&&&&&\\ \hline
 \end{tabular}
-
-After the second iteration, no more update messages are sent.
+\end{center}
+Nach der zweiten Iteration werden kennen alle Knoten die optimalen Routen.
 \clearpage
 \subsection{3.1.3}
-The Graph:\\
+\begin{multicols}{3}
+Der Graph:\\
 \begin{tikzpicture}[-,
 					%>=stealth',
 					%shorten >=1pt,
@@ -305,9 +313,9 @@ The Graph:\\
   	(C) edge node {1} (D)
   	(D) edge node {3} (E);
 \end{tikzpicture}
-\\
-Distance Tables after Initialisation Phase:
-\\
+\vfill
+\columnbreak
+Distanztabellen nach der Initialisierungsphase:\\\\
 \begin{tabular}{c|c|c}
 Destination & Cost & Via \\ \hline
 B           & 7    & B   \\
@@ -343,7 +351,9 @@ B           & 4    & B   \\
 C           &      &     \\
 D           & 3    & D   \\
 \end{tabular}
-\\The first update messages:\\
+\end{multicols}
+Die ersten update messages:
+\begin{center}
 \begin{tabular}{|c|c|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
 \hline \multicolumn{2}{|c|}{Update} & \multicolumn{5}{|c|}{sent to:} \\ \cline{3-7} \multicolumn{2}{|c|}{Messages} & A & B & C & D & E \\ \hline \multirow{5}{*}{\rotatebox{90}{sent by:}}
 & A & &
@@ -395,7 +405,9 @@ to A & 2 \\ to B & 4 \\
 \end{tabular} &
 \\ \hline
 \end{tabular}
-\\Distance Tables Iteration 1:\\
+\end{center}
+Routingtabellen der ersten Iteration:
+\begin{multicols}{3}
 \begin{tabular}{c|c|c}
 Destination & Cost & Via \\ \hline
 B           & 6    & E   \\
@@ -431,8 +443,9 @@ B           & 4    & B   \\
 C           & \textcolor{red}{3}    & \textcolor{red}{A}   \\
 D           & 3    & D   \\
 \end{tabular}
-\\
-Update Messages Iteration 1:\\
+\end{multicols}
+update messages der ersten Iteration:
+\begin{center}
 \begin{tabular}{|c|c|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
 \hline \multicolumn{2}{|c|}{Update} & \multicolumn{5}{|c|}{sent to:} \\ \cline{3-7} \multicolumn{2}{|c|}{Messages} & A & B & C & D & E \\ \hline \multirow{5}{*}{\rotatebox{90}{sent by:}}
 &A&&
@@ -455,8 +468,9 @@ Update Messages Iteration 1:\\
 \upd to C & \textcolor{red}{3}\ze &
 \upd \ze &
 \upd to C & \textcolor{red}{3}\ze &\\ \hline
-\end{tabular}\\
-After the first iteration, no more update messages are sent.
+\end{tabular}
+\end{center}
+Nach der ersten Iteration werden keine update messages mehr versandt.
 
 \subsection{3.1.4}
 Wahrscheinlich will man hier hören, dass ein Count-To-Infinity eintritt - ich verstehe aber nicht, warum das so ist.
@@ -465,15 +479,25 @@ Wahrscheinlich will man hier hören, dass ein Count-To-Infinity eintritt - ich v
 \colorbox{red}{\textcolor{white}{SOLUTION MISSING!}}
 \subsection{3.1.6}
 No it isn't. \colorbox{red}{\textcolor{white}{EXPLANATION HERE!}}
+\clearpage
 \section{ -- 3.2}
 \subsection{3.2.1}
 Das Link-State-Routing basiert darauf, dass jeder Knoten die komplette Netzwerktopologie kennt. Alle Knoten verschicken ihre Adjazenzliste an ihre Nachbarn; jeder Knoten verteilt alle Adjazenzlisten, die er erhält, weiter an seine Nachbarn. So kann jeder Knoten einen Graphen erzeugen, der das Netzwerk abbildet - sobald er von zwei Knoten die Information erhält, dass sie mit dem jeweils anderen verbunden sind, fügt er dem Graphen eine Verbindung hinzu. Anhand dieses Graphen kann jeder Knoten per Dijkstra-Algorithmus den kürzesten Pfad zu allen anderen Knoten bestimmen und danach routen. Das edge weight ist dabei abhängig von der Implementierung und kann zum Beispiel Bandbreiteninformationen erhalten. 
+
 \subsection{3.2.2}
-\begin{itemize}
+\begin{enumerate}
 \item
 Wir gehen davon aus, dass ein Knoten eine Verbindung erst anerkennt, wenn er von beiden Knoten erfahren hat, dass sie mit dem jeweils anderen verbunden sind.
+\\
+\begin{multicols}{2}
+Wissensstand der Knoten, nachdem sie ihre Nachbarknoten gefunden haben:
+\\
+Wissensstand der Knoten nach der ersten Nachrichtenwelle:
+\end{multicols}
+\begin{multicols}{2}
 %\begin{table}
 %\caption{Den Knoten bekannte Netzwerkteile, Iteration 0}
+
 \begin{tabular}{|c|c|}
 \hline
 Knoten & Dem Knoten bekannter Teil des Netzwerks\\ \hline
@@ -600,10 +624,12 @@ G &\begin{tikzpicture}[-,
         edge node {6} (D);
 \end{tikzpicture} \\ \hline
 \end{tabular}
+
 %\end{table}
 
 %\begin{table}
 %\caption{Den Knoten bekannte Netzwerkteile, Iteration 1}
+
 \begin{tabular}{|c|c|}
 \hline
 Knoten & Dem Knoten bekannter Teil des Netzwerks\\ \hline
@@ -736,10 +762,9 @@ G &\begin{tikzpicture}[-,
     (G) edge node {7} (C);
 \end{tikzpicture}\\ \hline
 \end{tabular}
-%\end{table}
-
-%\begin{table}
-%\caption{Den Knoten bekannte Netzwerkteile, Iteration 2}
+\end{multicols}
+Wissenstand der Knoten nach der zweiten Nachrichtenwelle:\\
+\begin{multicols}{2}
 \begin{tabular}{|c|c|}
 \hline
 Knoten & Dem Knoten bekannter Teil des Netzwerks\\ \hline
@@ -846,6 +871,8 @@ D &\begin{tikzpicture}[-,
     (C) edge node {7} (G)
 ;
 \end{tikzpicture}\\ \hline \end{tabular}
+\vfill
+\columnbreak
 \begin{tabular}{|c|c|}
 \hline
 Knoten & Dem Knoten bekannter Teil des Netzwerks\\ \hline
@@ -923,11 +950,12 @@ G &\begin{tikzpicture}[-,
     (C) edge node {7}  (G);
 \end{tikzpicture}\\ \hline
 \end{tabular}
+\end{multicols}
 %\end{table}
 In der folgenden dritten Iteration kennt jeder Knoten das gesamte Netzwerk.
 \item
 Das wurde in Teilaufgabe 2.1 erläutert.
-\end{itemize}
+\end{enumerate}
 \subsection{3.2.3}
 Nein, aber ich kann nicht erklären, warum das so ist. \colorbox{red}{\textcolor{white}{SOLUTION MISSING!}}
 \subsection{3.2.4}
