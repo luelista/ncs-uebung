@@ -1,0 +1,15 @@
+3.6
+
+Hierarchische Routingtabelle für Knoten 5A
+
+Ziel      via      Kosten
+5B        B         1
+5C        B         3
+5D        D         2
+Region 1  B         3
+Region 2  B         3
+Region 3  B         5
+Region 4  B         4
+
+
+?????????? was soll man hier eigentlich tun
