@@ -1,0 +1,52 @@
+3.5 ARP
+
+3.5.1 Wie funktioniert ARP?
+Bsp.                IP                  MAC
+      Rechner A     10.0.0.1            AA:11:00:11:00:11
+      Rechner B     10.0.0.42           BB:42:42:42:42:42
+
+Wenn ein Rechner A in einem LAN ein IP-Paket an einen anderen Rechner B
+senden möchte, muss er dazu zunächst die MAC-Adresse des anderen Rechners
+herausfinden, da auf Ethernet-Ebene Pakete über die MAC und nicht über die IP
+adressiert werden.
+Dazu sendet er zunächst ein ARP-Request. Dieser geht auf MAC-Ebene an die
+Broadcast-Adresse, wird also von allen Rechnern im gleichen Netzsegment
+empfangen. Im ARP-Request steht die IP-Adresse von Rechner B.
+
+MAC-Layer    from AA:11:00:11:00:11
+              to  ff:ff:ff:ff:ff:ff (broadcast)
+ARP         fromIP 10.0.0.1   fromHW AA:11:00:11:00:11
+            to IP  10.0.0.42  toHW   ff:ff:ff:ff:ff:ff
+
+Wenn Rechner B den Request erhält, erkennt er, dass er betroffen ist, und
+sendet eine ARP-Response an Rechner A, die wie folgt aussieht:
+
+MAC-Layer   from  BB:42:42:42:42:42
+            to    AA:11:00:11:00:11
+ARP        fromIP 10.0.0.42   fromHW BB:42:42:42:42:42
+            toIP  10.0.0.1    toHW   AA:11:00:11:00:11
+
+
+3.5.2 Definition von ARP-Cache-Poisoning
+ARP-Spoofing / Poisoning bezeichnet das Senden von gefälschten ARP-Paketen, um
+die ARP-Tabellen so zu verändern, dass der Datenverkehr zwischen zwei Systemen
+(eines davon oft das Default-Gateway) über ein drittes System umgeleitet wird
+und somit abgehört undmanipuliert werden kann. (Man-in-the-Middle-Angriff)
+
+Eine legale Anwendungsmöglichkeit ist ein schnelles Failover in Hochverfügbar-
+keitsumgebungen, dabei haben mehrere Rechner die gleiche IP-Adresse und es wird
+im Fall eines Ausfalls auf MAC-Ebene zum Ersatzsystem umgeleitet.
+
+Quelle: https://de.wikipedia.org/wiki/ARP-Spoofing
+
+
+3.5.3 Unterschied zwischen ARP und RARP
+
+Mit ARP lässt sich bei bekannter IP die MAC-Adresse herausfinden, mit RARP genau
+anders herum, also bei bekannter MAC die IP-Adresse.
+
+ARP benötigt hierzu auf niedrigerer Protokollebene (MAC/Ethernet) einen
+Broadcast, da nur die Adresse eines Protokolls auf höherer Ebene (IP) bekannt
+ist. Bei RARP ist kein Broadcast nötig, denn es ist die MAC-Adresse bekannt und
+somit lässt sich direkt ein Ethernet-Paket an das Zielsystem senden. Dieses
+antwortet dann ebenfalls per direktem Paket mit der IP-Adresse.
