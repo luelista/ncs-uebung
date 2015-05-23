@@ -1,0 +1,40 @@
+3.3 IP Netze
+3.3.1 Wie viele Class A Netze gibts bei class-full Adressierung?
+128 Stück, da es die Netze 0.x.x.x bis 127.x.x.x gibt. Einige davon, unter
+anderem 0.x.x.x sind allerdings reserviert.
+
+3.3.2 Unterschied zwischen class-full und class-less IP Routing
+TODO
+
+3.3.3
+IP 133.120.0.105/31
+
+Netzwerk Klasse B: 133.120.0.0
+Subnetz: 133.120.0.104
+Host: 133.120.0.105
+
+3.3.4
+Die Adresse 225.0.10.122 gehört zur Klasse D (Präfix 1110).
+Klasse D ist für Multicast-Anwendungen reserviert.
+
+3.3.5
+Es gibt real 16384 Klasse-B-Netze. Wäre die Netzmaske 8 Bit länger, gäbe
+es 16384*2^8 = 4194304 Netze. Das sind doppelt so viele wie Klasse C Netze,
+denn Klasse C hat ein Bit mehr im Präfix, also eins weniger in der Netzmaske.
+
+3.3.6 hex zu dezimal
+C2931F78
+0xc2 = 194
+0x93 = 147
+0x1f = 31
+0x78 = 120
+194.147.31.120
+
+3.3.7
+255.255.240.0 = 11111111 11111111 11110000 00000000
+Also Hostmaske =00000000 00000000 00001111 11111111 = 4096
+Abzgl. Netzadresse und Broadcast = 4094 Hosts
+
+3.3.8 Unterschiede IPv4 und IPv6
+* TODO Vier Hauptunterschiede
+* TODO Warum gibt es das IPv4 Protocol Feld nicht im fixed IPv6 header
