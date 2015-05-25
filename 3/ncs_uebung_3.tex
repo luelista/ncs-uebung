@@ -72,7 +72,7 @@ Der Graph:\\
   \node[main node] (C) [right of=A] {C};
   \node[main node] (D) [below of=C] {D};
   \node[main node] (E) [below of=B] {E};
-  
+
   \path[every node/.style={}]
     (A) edge node {7} (B)
         edge node {5} (C)
@@ -327,7 +327,7 @@ Der Graph:\\
   \node[main node] (C) [right of=A] {C};
   \node[main node] (D) [below of=C] {D};
   \node[main node] (E) [below of=B] {E};
-  
+
   \path[every node/.style={}]
     (A) edge node {7} (B)
         edge node {\textcolor{red}{1}} (C)
@@ -506,7 +506,7 @@ No it isn't. \colorbox{red}{\textcolor{white}{EXPLANATION HERE!}}
 \clearpage
 \section{ -- 3.2}
 \subsection{3.2.1}
-Das Link-State-Routing basiert darauf, dass jeder Knoten die komplette Netzwerktopologie kennt. Alle Knoten verschicken ihre Adjazenzliste an ihre Nachbarn; jeder Knoten verteilt alle Adjazenzlisten, die er erhält, weiter an seine Nachbarn. So kann jeder Knoten einen Graphen erzeugen, der das Netzwerk abbildet - sobald er von zwei Knoten die Information erhält, dass sie mit dem jeweils anderen verbunden sind, fügt er dem Graphen eine Verbindung hinzu. Anhand dieses Graphen kann jeder Knoten per Dijkstra-Algorithmus den kürzesten Pfad zu allen anderen Knoten bestimmen und danach routen. Das edge weight ist dabei abhängig von der Implementierung und kann zum Beispiel Bandbreiteninformationen erhalten. 
+Das Link-State-Routing basiert darauf, dass jeder Knoten die komplette Netzwerktopologie kennt. Alle Knoten verschicken ihre Adjazenzliste an ihre Nachbarn; jeder Knoten verteilt alle Adjazenzlisten, die er erhält, weiter an seine Nachbarn. So kann jeder Knoten einen Graphen erzeugen, der das Netzwerk abbildet - sobald er von zwei Knoten die Information erhält, dass sie mit dem jeweils anderen verbunden sind, fügt er dem Graphen eine Verbindung hinzu. Anhand dieses Graphen kann jeder Knoten per Dijkstra-Algorithmus den kürzesten Pfad zu allen anderen Knoten bestimmen und danach routen. Das edge weight ist dabei abhängig von der Implementierung und kann zum Beispiel Bandbreiteninformationen erhalten.
 
 \subsection{3.2.2}
 \begin{enumerate}
@@ -536,7 +536,7 @@ A & \begin{tikzpicture}[-,
   \node[main node] (A) {A};
   \node[main node] (B) [left of=A] {B};
   \node[main node] (E) [right of=A] {E};
-  
+
   \path[every node/.style={}]
     (A) edge node {10} (E)
         edge node {4} (B);
@@ -555,7 +555,7 @@ B & \begin{tikzpicture}[-,
   \node[main node] (A) [left of=B] {A};
   \node[main node] (F) [below of=B] {F};
   \node[main node] (D) [right of=B] {D};
-  
+
   \path[every node/.style={}]
     (B) edge node {4} (A)
         edge node {2} (F)
@@ -572,7 +572,7 @@ C & \begin{tikzpicture}[-,
   \node[main node] (A) {C};
   \node[main node] (D) [left of=A] {D};
   \node[main node] (G) [right of=A] {G};
-  
+
   \path[every node/.style={}]
     (A) edge node {5} (D)
         edge node {7} (G);
@@ -590,7 +590,7 @@ D & \begin{tikzpicture}[-,
   \node[main node] (G) [above right of=D] {G};
   \node[main node] (F) [below right of=D] {F};
   \node[main node] (C) [above left of=D] {C};
-  
+
   \path[every node/.style={}]
     (D) edge node {5} (B)
         edge node {4} (C)
@@ -608,7 +608,7 @@ E & \begin{tikzpicture}[-,
   \node[main node] (E) {E};
   \node[main node] (A) [left of=E] {A};
   \node[main node] (F) [right of=E] {F};
-  
+
   \path[every node/.style={}]
     (E) edge node {10} (A)
         edge node {4} (F);
@@ -625,7 +625,7 @@ F &  \begin{tikzpicture}[-,
   \node[main node] (E) [left of=F] {E};
   \node[main node] (B) [below of=F] {B};
   \node[main node] (D) [right of=F] {D};
-  
+
   \path[every node/.style={}]
     (F) edge node {4} (E)
         edge node {2} (B)
@@ -642,7 +642,7 @@ G &\begin{tikzpicture}[-,
   \node[main node] (G) {G};
   \node[main node] (D) [left of=G] {D};
   \node[main node] (C) [right of=G] {C};
-  
+
   \path[every node/.style={}]
     (G) edge node {7} (C)
         edge node {6} (D);
@@ -668,7 +668,7 @@ A & \begin{tikzpicture}[-,
   \node[main node] (A) {A};
   \node[main node] (B) [left of=A] {B};
   \node[main node] (E) [right of=A] {E};
-  
+
   \path[every node/.style={}]
     (A) edge node {10} (E)
         edge node {4} (B);
@@ -688,7 +688,7 @@ B & \begin{tikzpicture}[-,
   \node[main node] (D) [right of=B] {D};
   \node[main node] (F) [below of=B] {F};
 
-  
+
   \path[every node/.style={}]
     (B) edge node {4} (A)
         edge node {2} (F)
@@ -706,7 +706,7 @@ C & \begin{tikzpicture}[-,
   \node[main node] (D) {D};
   \node[main node] (C) [above right of=D] {C};
   \node[main node] (G) [below right of=D] {G};
-  
+
   \path[every node/.style={}]
     (D) edge node {5} (C)
         edge node {6} (G)
@@ -725,7 +725,7 @@ D & \begin{tikzpicture}[-,
   \node[main node] (G) [below right of=D] {G};
   \node[main node] (F) [below left of=D] {F};
   \node[main node] (C) [above right of=D] {C};
-  
+
   \path[every node/.style={}]
     (D) edge node {5} (B)
         edge node {4}  (C)
@@ -745,7 +745,7 @@ E & \begin{tikzpicture}[-,
   \node[main node] (E) {E};
   \node[main node] (A) [left of=E] {A};
   \node[main node] (F) [right of=E] {F};
-  
+
   \path[every node/.style={}]
     (E) edge node {10} (A)
         edge node {4} (F);
@@ -762,7 +762,7 @@ F &  \begin{tikzpicture}[-,
   \node[main node] (E) [left of=F] {E};
   \node[main node] (B) [below of=F] {B};
   \node[main node] (D) [right of=F] {D};
-  
+
   \path[every node/.style={}]
     (F) edge node {4} (E)
         edge node {2} (B)
@@ -779,7 +779,7 @@ G &\begin{tikzpicture}[-,
   \node[main node] (D) {D};
   \node[main node] (C) [above right of=D] {C};
   \node[main node] (G) [below right of=D] {G};
-  
+
   \path[every node/.style={}]
     (D) edge node {5} (C)
         edge node {6} (G)
@@ -805,7 +805,7 @@ A & \begin{tikzpicture}[-,
   \node[main node] (F) [below left of=D] {F};
   \node[main node] (A) [left of=B] {A};
   \node[main node] (E) [left of=F] {E};
-  
+
   \path[every node/.style={}]
     (D) edge node {3} (F)
     (F) edge node {4} (E)
@@ -831,8 +831,8 @@ B &\begin{tikzpicture}[-,
   \node[main node] (A) [left of=B] {A};
   \node[main node] (E) [left of=F] {E};
   \node[main node] (C) [above right of=D] {C};
-  \node[main node] (G) [below right of=D] {G}; 
-  
+  \node[main node] (G) [below right of=D] {G};
+
   \path[every node/.style={}]
     (D) edge node {5} (B)
         edge node {3} (F)
@@ -858,7 +858,7 @@ C & \begin{tikzpicture}[-,
   \node[main node] (G) [above right of=D] {G};
   \node[main node] (F) [below right of=D] {F};
   \node[main node] (C) [above left of=D] {C};
-  
+
   \path[every node/.style={}]
     (D) edge node {10} (B)
         edge node {4}  (C)
@@ -881,8 +881,8 @@ D &\begin{tikzpicture}[-,
   \node[main node] (A) [left of=B] {A};
   \node[main node] (E) [left of=F] {E};
   \node[main node] (C) [above right of=D] {C};
-  \node[main node] (G) [below right of=D] {G}; 
-  
+  \node[main node] (G) [below right of=D] {G};
+
   \path[every node/.style={}]
     (D) edge node {5} (B)
         edge node {3} (F)
@@ -913,7 +913,7 @@ E & \begin{tikzpicture}[-,
   \node[main node] (F) [below left of=D] {F};
   \node[main node] (A) [left of=B] {A};
   \node[main node] (E) [left of=F] {E};
-  
+
   \path[every node/.style={}]
     (D) edge node {3} (F)
     (F) edge node {4} (E)
@@ -937,8 +937,8 @@ F &  \begin{tikzpicture}[-,
   \node[main node] (A) [left of=B] {A};
   \node[main node] (E) [left of=F] {E};
   \node[main node] (C) [above right of=D] {C};
-  \node[main node] (G) [below right of=D] {G}; 
-  
+  \node[main node] (G) [below right of=D] {G};
+
   \path[every node/.style={}]
     (D) edge node {5} (B)
         edge node {3} (F)
@@ -964,7 +964,7 @@ G &\begin{tikzpicture}[-,
   \node[main node] (G) [above right of=D] {G};
   \node[main node] (F) [below right of=D] {F};
   \node[main node] (C) [above left of=D] {C};
-  
+
   \path[every node/.style={}]
     (D) edge node {10} (B)
         edge node {4}  (C)
@@ -984,14 +984,55 @@ Das wurde in Teilaufgabe 2.1 erläutert.
 Nein, aber ich kann nicht erklären, warum das so ist. \colorbox{red}{\textcolor{white}{SOLUTION MISSING!}}
 \subsection{3.2.4}
 \colorbox{red}{\textcolor{white}{SOLUTION MISSING!}}
-\section{ -- 3.3}
+\section{ -- 3.3 IP Netze}
+
+\subsection{3.3.1 Wie viele Class A Netze gibts bei class-full Adressierung?}
+128 Stück, da es die Netze 0.x.x.x bis 127.x.x.x gibt. Einige davon, unter
+anderem 0.x.x.x sind allerdings reserviert.
+
+\subsection{3.3.2 Unterschied zwischen class-full und class-less IP Routing}
+TODO
+
+\subsection{3.3.3}
+IP 133.120.0.105/31 \\
+Netzwerk Klasse B: 133.120.0.0 \\
+Subnetz: 133.120.0.104 \\
+Host: 133.120.0.105 \\
+
+\subsection{3.3.4}
+Die Adresse 225.0.10.122 gehört zur Klasse D (Präfix 1110).
+
+Klasse D ist für Multicast-Anwendungen reserviert.
+
+\subsection{3.3.5}
+Es gibt real 16384 Klasse-B-Netze. Wäre die Netzmaske 8 Bit länger, gäbe
+es $16384*2^8 = $ 4194304  Netze. Das sind doppelt so viele wie Klasse C Netze,
+denn Klasse C hat ein Bit mehr im Präfix, also eins weniger in der Netzmaske.
+
+\subsection{3.3.6 hex zu dezimal}
+C2931F78  \\
+0xc2 = 194 \\
+0x93 = 147 \\
+0x1f = 31 \\
+0x78 = 120 \\
+194.147.31.120
+
+\subsection{3.3.7}
+255.255.240.0 = 11111111 11111111 11110000 00000000 \\
+Also Hostmaske =00000000 00000000 00001111 11111111 = 4096 \\
+Abzgl. Netzadresse und Broadcast = 4094 Hosts
+
+\subsection{3.3.8 Unterschiede IPv4 und IPv6}
+* TODO Vier Hauptunterschiede
+* TODO Warum gibt es das IPv4 Protocol Feld nicht im fixed IPv6 header
+
 \section{ -- 3.4 CIDR}
 \subsection{3.4.1}
 Can the addresses be aggregated?\\
 \begin{align*}
 64.52.\text{~~}96.0/22 &= 64.52.\text{~~}96.0 - 64.52.\text{~~}99.255 \\
 64.52.104.0/22 &= 64.52.104.0 - 64.52.107.255 \\
-64.52.112.0/22 &= 64.52.112.0 - 64.52.115.255 \\ 
+64.52.112.0/22 &= 64.52.112.0 - 64.52.115.255 \\
 64.52.120.0/22 &= 64.52.120.0 - 64.52.123.255
 \end{align*}
 Maximaler Abstand von 24 Class-C-Netzen, also ist die maximale Präfixlänge in
