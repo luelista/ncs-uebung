@@ -14,6 +14,9 @@
 \pgfplotsset{compat=newest}
 \usepgfplotslibrary{units}
 %\usepgfplotslibrary{units}
+\usepackage{xcolor}
+\definecolor{tud2d}{RGB}{0,78,115}
+\definecolor{litegray}{gray}{0.9}
 
 \usepackage{multicol} \setlength{\multicolsep}{0pt}
 
@@ -330,7 +333,7 @@ Der Graph:\\
   
   \path[every node/.style={}]
     (A) edge node {7} (B)
-        edge node {\textcolor{red}{1}} (C)
+        edge node {\colorbox{litegray}{\textcolor{tud2d}{1}}} (C)
         edge node {1} (D)
         edge node {2} (E)
     (B) edge node {4} (E)
@@ -343,7 +346,7 @@ Distanztabellen nach der Initialisierungsphase:\\\\
 \begin{tabular}{c|c|c}
 Destination & Cost & Via \\ \hline
 B           & 7    & B   \\
-C           & \textcolor{red}{1}    & C   \\
+C           & \colorbox{litegray}{\textcolor{tud2d}{1}}    & C   \\
 D           & 1    & D   \\
 E           & 2    & E   \\
 \end{tabular}
@@ -356,7 +359,7 @@ E           & 4    & E   \\
 \end{tabular}
 \begin{tabular}{c|c|c}
 Destination & Cost & Via \\ \hline
-A           & \textcolor{red}{1}    & A   \\
+A           & \colorbox{litegray}{\textcolor{tud2d}{1}}    & A   \\
 B           &      &     \\
 D           & 1    & D   \\
 E           &      &     \\
@@ -382,16 +385,16 @@ Die ersten update messages:
 \hline \multicolumn{2}{|c|}{Update} & \multicolumn{5}{|c|}{sent to:} \\ \cline{3-7} \multicolumn{2}{|c|}{Messages} & A & B & C & D & E \\ \hline \multirow{5}{*}{\rotatebox{90}{sent by:}}
 & A & &
 \upd
-to C & \textcolor{red}{1} \\ to D & 1 \\ to E & 2 \\
+to C & \colorbox{litegray}{\textcolor{tud2d}{1}} \\ to D & 1 \\ to E & 2 \\
 \end{tabular} &
 \upd
 to B & 7 \\ to D & 1 \\ to E & 2 \\
 \end{tabular} &
 \upd
-to B & 7 \\ to C & \textcolor{red}{1} \\ to E & 2 \\
+to B & 7 \\ to C & \colorbox{litegray}{\textcolor{tud2d}{1}} \\ to E & 2 \\
 \end{tabular} &
 \upd
-to B & 7 \\ to C & \textcolor{red}{1} \\ to D & 1 \\
+to B & 7 \\ to C & \colorbox{litegray}{\textcolor{tud2d}{1}} \\ to D & 1 \\
 \end{tabular} \\ \cline{2-7}
 & B &
 \upd
@@ -405,7 +408,7 @@ to A & 7 \\
 to D & 1
 \end{tabular} & & &
 \upd
-to A & \textcolor{red}{1}
+to A & \colorbox{litegray}{\textcolor{tud2d}{1}}
 \end{tabular} & \\ \cline{2-7}
 & D &
 \upd
@@ -435,24 +438,34 @@ Routingtabellen der ersten Iteration:
 \begin{tabular}{c|c|c}
 Destination & Cost & Via \\ \hline
 B           & 6    & E   \\
-C           & \textcolor{red}{1}    & \textcolor{red}{C}   \\
+C           &
+\colorbox{litegray}{\textcolor{tud2d}{1}}    & \colorbox{litegray}{\textcolor{tud2d}{C}}   \\
 D           & 1    & D   \\
 E           & 2    & E   \\
 \end{tabular}
+\vfill \columnbreak
 \begin{tabular}{c|c|c}
 Destination & Cost & Via \\ \hline
 A           & 6    & A   \\
-C           & \textcolor{red}{8}   & \textcolor{red}{E}   \\
+C           &
+\colorbox{litegray}{\textcolor{tud2d}{8}}   & \colorbox{litegray}{\textcolor{tud2d}{E}}   \\
 D           & 7    & E   \\
 E           & 4    & E   \\
 \end{tabular}
+\vfill \columnbreak
 \begin{tabular}{c|c|c}
 Destination & Cost & Via \\ \hline
-A           & \textcolor{red}{1}    & \textcolor{red}{A}   \\
-B           & \textcolor{red}{8}    & \textcolor{red}{A}   \\
+A           &
+\colorbox{litegray}{\textcolor{tud2d}{1}}    & \colorbox{litegray}{\textcolor{tud2d}{A}}   \\
+B           &
+\colorbox{litegray}{\textcolor{tud2d}{8}}    & \colorbox{litegray}{\textcolor{tud2d}{A}}   \\
 D           & 1    & D   \\
-E           & \textcolor{red}{3}    & \textcolor{red}{A}   \\
+E           &
+\colorbox{litegray}{\textcolor{tud2d}{3}}    & \colorbox{litegray}{\textcolor{tud2d}{A}}   \\
 \end{tabular}
+\end{multicols}
+~\\
+\begin{multicols}{3}
 \begin{tabular}{c|c|c}
 Destination & Cost & Via \\ \hline
 A           & 1    & A   \\
@@ -460,38 +473,44 @@ B           & 7    & E   \\
 C           & 1    & C   \\
 E           & 3    & E   \\
 \end{tabular}
+\vfill \columnbreak
 \begin{tabular}{c|c|c}
 Destination & Cost & Via \\ \hline
 A           & 2    & A   \\
 B           & 4    & B   \\
-C           & \textcolor{red}{3}    & \textcolor{red}{A}   \\
+C           &
+\colorbox{litegray}{\textcolor{tud2d}{3}}    & \colorbox{litegray}{\textcolor{tud2d}{A}}  \\
 D           & 3    & D   \\
 \end{tabular}
 \end{multicols}
+~\\
 update messages der ersten Iteration:
 \begin{center}
 \begin{tabular}{|c|c|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|@{}c@{}|}
 \hline \multicolumn{2}{|c|}{Update} & \multicolumn{5}{|c|}{sent to:} \\ \cline{3-7} \multicolumn{2}{|c|}{Messages} & A & B & C & D & E \\ \hline \multirow{5}{*}{\rotatebox{90}{sent by:}}
 &A&&
-\upd      &   \\ \colorbox{red}{\textcolor{red}{to C}} & \colorbox{red}{\textcolor{red}{2}}\ze &
+\upd      &   \\ \colorbox{tud2d}{\textcolor{tud2d}{to C}} & \colorbox{tud2d}{\textcolor{tud2d}{2}}\ze &
 \upd to B & 6 \\      &  \ze &
-\upd to B & 6 \\ \colorbox{red}{\textcolor{red}{to C}} & \colorbox{red}{\textcolor{red}{2}}\ze &
-\upd to B & 6 \\ \colorbox{red}{\textcolor{red}{to C}} & \colorbox{red}{\textcolor{red}{2}}\ze \\ \cline{2-7}
+\upd to B & 6 \\ \colorbox{tud2d}{\textcolor{tud2d}{to C}} & \colorbox{tud2d}{\textcolor{tud2d}{2}}\ze &
+\upd to B & 6 \\ \colorbox{tud2d}{\textcolor{tud2d}{to C}} & \colorbox{tud2d}{\textcolor{tud2d}{2}}\ze \\ \cline{2-7}
 &B&
-\upd to C & \textcolor{red}{8} \\ to D & 7 \ze &&&&
-\upd to C  & \textcolor{red}{8} \\ to D & 7 \ze \\ \cline{2-7}
+\upd to C & \colorbox{litegray}{\textcolor{tud2d}{8}} \\ to D & 7 \ze &&&&
+\upd to C  & \colorbox{litegray}{\textcolor{tud2d}{8}} \\ to D & 7 \ze \\ \cline{2-7}
 &C&
-\upd      &   \\ to B & \textcolor{red}{8} \\ to E & \textcolor{red}{3}\ze &&&
-\upd \colorbox{red}{\textcolor{red}{to A}} & \colorbox{red}{\textcolor{red}{2}} \\ to B & \textcolor{red}{8} \\ to E & \textcolor{red}{3}\ze & \\ \cline{2-7}
+\upd      &   \\ to B & \colorbox{litegray}{\textcolor{tud2d}{8}} \\ to E & \colorbox{litegray}{\textcolor{tud2d}{3}}\ze &&&
+\upd \colorbox{tud2d}{\textcolor{tud2d}{to A}} & \colorbox{tud2d}{\textcolor{tud2d}{2}} \\ to B & \colorbox{litegray}{\textcolor{tud2d}{8}} \\ to E & \colorbox{litegray}{\textcolor{tud2d}{3}}\ze & \\ \cline{2-7}
 &D&
 \upd to B & 7\ze &&
 \upd to B & 7\ze &&
 \upd to B & 7\ze \\ \cline{2-7}
 &E&
-\upd to C & \textcolor{red}{3}\ze &
-\upd to C & \textcolor{red}{3}\ze &
+\upd to C &
+\colorbox{litegray}{\textcolor{tud2d}{3}}\ze &
+\upd to C &
+\colorbox{litegray}{\textcolor{tud2d}{3}}\ze &
 \upd \ze &
-\upd to C & \textcolor{red}{3}\ze &\\ \hline
+\upd to C &
+\colorbox{litegray}{\textcolor{tud2d}{3}}\ze &\\ \hline
 \end{tabular}
 \end{center}
 Nach der ersten Iteration werden keine update messages mehr versandt.
