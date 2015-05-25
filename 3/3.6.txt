@@ -13,3 +13,8 @@ Region 4  B         4
 
 
 ?????????? was soll man hier eigentlich tun
+
+3.6.2:
+a) Bei 10.000 Routern muss jeder dieser Router in seiner Routingtabelle 9.999 Einträge haben, insgesamt also 99.990.000
+b) 2-Level-Hierarchie: 400 Router pro Subnetz, jeder Router hat 399 Einträge in der Tabelle für das eigene Subnetz und 24 Einträge für die anderen Subnetze, also insgesamt 423 Einträge
+c) 3-Level-Hierachie: Da es $20 \cdot 5 = 100$ Regionen gibt, enthält jede Region 100 Router, von denen jeder also 99 Einträge für die benachbarten Router, 4 Einträge für die Subnetze der anderen Regionen und 19 Einträge für die Netze der anderen Cluster enthält. Insgesamt sind dies 122 Einträge pro Router.
