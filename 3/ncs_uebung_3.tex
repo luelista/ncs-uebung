@@ -1056,12 +1056,71 @@ Mit ARP lässt sich bei bekannter IP die MAC-Adresse herausfinden, mit RARP gena
 
 ARP benötigt hierzu auf niedrigerer Protokollebene (MAC\,/\,Ethernet) einen
 Broadcast, da nur die Adresse eines Protokolls auf höherer Ebene (IP) bekannt ist. Bei RARP ist kein Broadcast nötig, denn es ist die MAC-Adresse bekannt und somit lässt sich direkt ein Ethernet-Paket an das Zielsystem senden. Dieses antwortet dann ebenfalls per direktem Paket mit der IP-Adresse.
+\clearpage
 \section{3.6}
-3.6
-
 \subsection{3.6.1}
-a) Bei 10.000 Routern muss jeder dieser Router in seiner Routingtabelle 9.999 Einträge haben, insgesamt also 99.990.000
-b) 2-Level-Hierarchie: 400 Router pro Subnetz, jeder Router hat 399 Einträge in der Tabelle für das eigene Subnetz und 24 Einträge für die anderen Subnetze, also insgesamt 423 Einträge
-c) 3-Level-Hierachie: Da es $20 \cdot 5 = 100$ Regionen gibt, enthält jede Region 100 Router, von denen jeder also 99 Einträge für die benachbarten Router, 4 Einträge für die Subnetze der anderen Regionen und 19 Einträge für die Netze der anderen Cluster enthält. Insgesamt sind dies 122 Einträge pro Router.
 
+Kosten von jedem Knoten zu 5A: \\
+\begin{multicols}{3}
+\begin{tabular}{c|c}
+Startknoten & Kosten \\ \hline
+1A & 6\\
+1B & 3\\
+1C & 7\\
+1D & 6\\
+\end{tabular}
+\vfill
+\columnbreak
+\begin{tabular}{c|c}
+Startknoten & Kosten \\ \hline
+2A & 4\\
+2B & 5\\
+2C & 3\\
+\end{tabular}
+\vfill
+\columnbreak
+\begin{tabular}{c|c}
+Startknoten & Kosten \\ \hline
+3A & 8\\
+3B & 9\\
+3C & 5\\
+3D & 7\\
+3E & 7\\
+\end{tabular}
+\end{multicols}
+\begin{multicols}{3}
+\begin{tabular}{c|c}
+Startknoten & Kosten \\ \hline
+4A & 8\\
+4B & 4\\
+\end{tabular}
+\vfill
+\columnbreak
+\begin{tabular}{c|c}
+Startknoten & Kosten \\ \hline
+5A & 0\\
+5B & 1\\
+5C & 3\\
+5D & 2\\
+\end{tabular}
+\end{multicols}
+~\\
+Hierarchische Routingtabelle für Knoten 5A: \\
+\begin{tabular}{c|c|c}
+Ziel  &   via  &   Kosten \\ \hline
+5B       &B    &    1 \\
+5C       &B    &    3\\
+5D       &D    &    2\\
+Region 1 &B    &    3\\
+Region 2 &B    &    3\\
+Region 3 &B    &    5\\
+Region 4 &B    &    4\\
+\end{tabular}
+
+\subsection{3.6.2}
+\begin{enumerate}
+\item Bei 10.000 Routern muss jeder dieser Router in seiner Routingtabelle 9.999 Einträge haben, insgesamt also 99.990.000
+\item 2-Level-Hierarchie: 400 Router pro Subnetz, jeder Router hat 399 Einträge in der Tabelle für das eigene Subnetz und 24 Einträge für die anderen Subnetze, also insgesamt 423 Einträge
+\item 3-Level-Hierachie: Da es $20 \cdot 5 = 100$ Regionen gibt, enthält jede Region 100 Router, von denen jeder also 99 Einträge für die benachbarten Router, 4 Einträge für die Subnetze der anderen Regionen und 19 Einträge für die Netze der anderen Cluster enthält. Insgesamt sind dies 122 Einträge pro Router.
+\end{enumerate}
 \end{document}
