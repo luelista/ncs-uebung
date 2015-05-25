@@ -48,6 +48,13 @@
 \maketitle
 \section{ -- 3.1}
 \subsection{3.1.1}
+%\ezA
+%&B&&&&\\ \cline{2-6}
+%&C&&&&\\ \cline{2-6}
+%&D&&&&\\ \cline{2-6}
+%&E&&&&\\ \hline
+%\end{tabular}
+%\\
 %%% 3.1.1. %%%
 \begin{multicols}{3}
 Der Graph:\\
@@ -585,7 +592,7 @@ D & \begin{tikzpicture}[-,
   \node[main node] (C) [above left of=D] {C};
   
   \path[every node/.style={}]
-    (D) edge node {10} (B)
+    (D) edge node {5} (B)
         edge node {4} (C)
         edge node {6} (G)
         edge node {3} (F);
@@ -686,7 +693,7 @@ B & \begin{tikzpicture}[-,
     (B) edge node {4} (A)
         edge node {2} (F)
         edge node {5} (D)
-    (F) edge node {3} (D);
+    (D) edge node {3} (F);
 \end{tikzpicture}\\ \hline
 C & \begin{tikzpicture}[-,
 					%>=stealth',
@@ -703,28 +710,28 @@ C & \begin{tikzpicture}[-,
   \path[every node/.style={}]
     (D) edge node {5} (C)
         edge node {6} (G)
-    (G) edge node {7} (C);
+    (C) edge node {7} (G);
 \end{tikzpicture}\\ \hline
 D & \begin{tikzpicture}[-,
 					%>=stealth',
 					%shorten >=1pt,
 					auto,
-					node distance=1.8cm,
+					node distance=1.5cm,
 					thick,
 					main node/.style={circle,draw}]
 
   \node[main node] (D) {D};
-  \node[main node] (B) [below left of=D] {B};
-  \node[main node] (G) [above right of=D] {G};
-  \node[main node] (F) [below right of=D] {F};
-  \node[main node] (C) [above left of=D] {C};
+  \node[main node] (B) [above left of=D] {B};
+  \node[main node] (G) [below right of=D] {G};
+  \node[main node] (F) [below left of=D] {F};
+  \node[main node] (C) [above right of=D] {C};
   
   \path[every node/.style={}]
-    (D) edge node {10} (B)
+    (D) edge node {5} (B)
         edge node {4}  (C)
         edge node {6}  (G)
         edge node {3}  (F)
-    (B) edge node {2}  (F)
+    (F) edge node {2}  (B)
     (C) edge node {7}  (G);
 \end{tikzpicture}\\ \hline
 E & \begin{tikzpicture}[-,
@@ -776,7 +783,7 @@ G &\begin{tikzpicture}[-,
   \path[every node/.style={}]
     (D) edge node {5} (C)
         edge node {6} (G)
-    (G) edge node {7} (C);
+    (C) edge node {7} (G);
 \end{tikzpicture}\\ \hline
 \end{tabular}
 \end{multicols}
@@ -800,12 +807,12 @@ A & \begin{tikzpicture}[-,
   \node[main node] (E) [left of=F] {E};
   
   \path[every node/.style={}]
-    (D) edge node {5} (B)
-        edge node {3} (F)
+    (D) edge node {3} (F)
     (F) edge node {4} (E)
         edge node {2} (B)
     (B) edge node {4} (A)
-    (A) edge node {10}(E)
+        edge node {5} (D)
+    (E) edge node {10}(A)
 ;
 \end{tikzpicture}
 \\ \hline
@@ -908,12 +915,12 @@ E & \begin{tikzpicture}[-,
   \node[main node] (E) [left of=F] {E};
   
   \path[every node/.style={}]
-    (D) edge node {5} (B)
-        edge node {3} (F)
+    (D) edge node {3} (F)
     (F) edge node {4} (E)
         edge node {2} (B)
     (B) edge node {4} (A)
-    (A) edge node {10}(E)
+        edge node {5} (D)
+    (E) edge node {10}(A)
 ;
 \end{tikzpicture}\\ \hline
 F &  \begin{tikzpicture}[-,
