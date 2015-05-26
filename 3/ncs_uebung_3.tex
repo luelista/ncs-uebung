@@ -516,12 +516,17 @@ update messages der ersten Iteration:
 Nach der ersten Iteration werden keine update messages mehr versandt.
 
 \subsection{3.1.4}
-Wahrscheinlich will man hier hören, dass ein Count-To-Infinity eintritt - ich verstehe aber nicht, warum das so ist.
-\colorbox{red}{\textcolor{white}{SOLUTION MISSING!}}
+B und E werden ihren Nachbarn mitteilen, dass die Entfernung zum jeweils anderen unendlich ist, da keine Verbindung mehr besteht. Die betroffenen Pfade (zu/von B) werden sich verlängern, da sie nun eine längere Kante enthalten müssen.
+
 \subsection{3.1.5}
-\colorbox{red}{\textcolor{white}{SOLUTION MISSING!}}
+Dies führt zu keinen weiteren Problemen, da es sich bei beiden Techniken um Schutzmechanismen gegen das Count-to-Infinity-Problem handelt.
+
+
+
 \subsection{3.1.6}
-No it isn't. \colorbox{red}{\textcolor{white}{EXPLANATION HERE!}}
+Nein, beim Path Vector Routing kann kein Count-to-Infinity auftreten, da hier allen Knoten die komplette Topologie bekannt ist und somit Schleifen sofort erkannt werden.
+
+
 \clearpage
 \section{ -- 3.2}
 \subsection{3.2.1}
@@ -1000,9 +1005,17 @@ In der folgenden dritten Iteration kennt jeder Knoten das gesamte Netzwerk.
 Das wurde in Teilaufgabe 2.1 erläutert.
 \end{enumerate}
 \subsection{3.2.3}
-Nein, aber ich kann nicht erklären, warum das so ist. \colorbox{red}{\textcolor{white}{SOLUTION MISSING!}}
+Nein, beim Path Vector Routing kann kein Count-to-Infinity auftreten, da hier allen Knoten die komplette Topologie bekannt ist und somit Schleifen sofort erkannt werden.
+
+
 \subsection{3.2.4}
-\colorbox{red}{\textcolor{white}{SOLUTION MISSING!}}
+
+Im Gegensatz zum DVR kennt beim LSR jeder Knoten das gesamte Netz, daher ist LSR nicht auf sehr große Netze skalierbar, dafür können einzelne Knoten intelligentere Entscheidungen treffen und Schleifen verhindern.
+
+
+Anwendungsbeispiele: DVR - BGP zwischen AS im Internet, LSR - Spanning Tree Protokoll in kleineren Firmennetzen, DSR - drahtlose Peer-to-Peer Netze
+
+
 \section{ -- 3.3 IP Netze}
 
 \subsection{3.3.1 Wie viele Class A Netze gibts bei class-full Adressierung?}
@@ -1043,8 +1056,16 @@ Also Hostmaske =00000000 00000000 00001111 11111111 = 4096 \\
 Abzgl. Netzadresse und Broadcast = 4094 Hosts
 
 \subsection{3.3.8 Unterschiede IPv4 und IPv6}
-* TODO Vier Hauptunterschiede
-* TODO Warum gibt es das IPv4 Protocol Feld nicht im fixed IPv6 header
+Unterschiede zw. IPv4 und IPv6:
+\begin{itemize}
+\item Der Adressraum ist erheblich größer, da IPv4-Adressen 32 bit haben, IPv6-Adressen dagegen 128 bit.
+\item IPv6 hat keine integrierte Checksumme und überlässt das den darüber liegenden Protokollschichten
+\item Der IPv6-Header hat im Gegensatz zu IPv4 eine feste Länge
+\item Dafür gibt es bei IPv6 flexible Erweiterungsheader (z.B. für IPsec, )
+\end{itemize}
+
+Das Feld protocol wurde bei IPv6 in next header umbenannt, die vergebenen Nummern sind identisch geblieben (6=TCP, 17=UDP, usw.)
+
 
 \section{ -- 3.4 CIDR}
 \subsection{3.4.1}
