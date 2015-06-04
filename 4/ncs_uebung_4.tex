@@ -1,0 +1,57 @@
+\documentclass[a4paper,
+			llpt,
+			solution,
+			accentcolor=tud2d,
+			colorbacktitle
+			]
+			{tudexercise}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{paralist}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{units}
+%\usepgfplotslibrary{units}
+\usepackage{xcolor}
+\definecolor{tud2d}{RGB}{0,78,115}
+\definecolor{litegray}{gray}{0.9}
+
+\usepackage{multicol} \setlength{\multicolsep}{0pt}
+
+\title{Lösungsvorschlag zur vierten Hausübung}
+\subtitle{Einführung in Net Centric Systems und \LaTeX, Sommersemester 2015}
+\subsubtitle{Max Weller, Julian Haas, Stefan Pilot}
+
+%\newcommand{\MiBs}{\frac{\mathrm{MiB}}{\mathrm{s}}}
+\newcommand{\MiBs}{\mathrm{MiB}/\mathrm{s}}
+\usepackage{multirow}
+\newcommand{\8}{$\infty$}
+\newcommand{\ezA}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{A}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& B & C & D & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ezB}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{B}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & C & D & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ezC}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{C}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & B & D & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ezD}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{D}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & B & C & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ezE}{\begin{tabular}{|c|c|c|c|c|c|}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{E}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & B & C & D\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+
+\newcommand{\ze}{\end{tabular}}
+
+\newcommand{\upd}{\begin{tabular}{c|c}}
+\begin{document}
+\maketitle
+\section{Flooding}
+\section{Autonomous Systems}
+\section{Border Gateway Protocol}
+\section{RIP and OSPF}
+\section{Overlay Routing}
+\section{Multiple Choice}
+\end{document}
