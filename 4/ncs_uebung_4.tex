@@ -209,71 +209,47 @@ OSPF weist gegenüber RIP zahlreiche neue Funktionen auf, unter anderem werden d
 Im Vergleich zu RIP ist OSPF besser skalierbar und bietet geringere Konvergenzzeiten. Durch die geringere Anzahl nötiger Update Messages verursacht OSPF einen geringeren Overhead in großen Netzwerken. Da die Implemtierung allerdings sehr kompliziert ist und die einzelnen Knoten eine größere Rechenleistung brauchen als bei RIP ist OSPF für kleine Netzwerke nicht empfehlenswert.
 \section{Overlay Routing}
 \section{Multiple Choice}
-Die richtigen Antworten sind \textcolor{tud2d}{blau} markiert, die falschen \textcolor{litegray}{grau}.
 \subsection{Which is the lowest layer that uses traffic regulation mechanisms to keep a fast transmitter from drowning a slow receiver in data?}
 \begin{compactenum}
-\item Transport Layer
-\item Network Layer
-\item Physical Layer
-\item Data Link Layer
-\item Session Layer
+\item[d)] Data Link Layer
 \end{compactenum}
 \subsection{Which layer is responsible for determining how packets are routed from source to destination?}
 \begin{compactenum}
-\item Transport Layer
-\item Network Layer
-\item Physical Layer
-\item Data Link Layer
-\item Session Layer
+\item[b)] Network Layer
 \end{compactenum}
 \subsection{Which kind of routing algorithms are variable according to the current network status?}
+Das kommt darauf an, wie man "Status" definiert. Dynamische Routingalgorithmen sind in der Lage, den Ausfall von Knoten oder Verbindungen zu kompensieren. Adaptive Routingalgorithmen berücksichtigen auch die Auslastung einzelner Knoten und Verbindungen. Der Übergang ist allerdings fließend und hängt auch von der Metrik ab.
 \begin{compactenum}
-\item Adaptive routing algorithms
-\item Non-adaptive routing algorithms
-\item Static routing algorithms
-\item Dynamic routing algorithms
+\item[a)] Adaptive routing algorithms
+\item[d)] Dynamic routing algorithms
 \end{compactenum}
 \subsection{For which algorithms the count-to-infinity problem does not occur?}
 \begin{compactenum}
-\item LSR
-\item DVR
-\item BGP
-\item OSPF
-\item RIP
-\item DSR
+\item[a)] LSR
+\item[c)] BGP
+\item[d)] OSPF
+\item[f)] DSR
 \end{compactenum}
 \subsection{When a connection is established, a route from the source machine to the destination machine is chosen as a part of the connection setup and stored in tables inside the routers. For which connection is the statement valid?}
 \begin{compactenum}
-\item \textcolor{litegray}{Connection-less Services}
-\item \textcolor{tud2d}{Connection-oriented Services}
+\item[b)]{Connection-oriented Services}
 \end{compactenum}
 \subsection{Which of the algorithms throws away tokens when a bucket fills up but never discards packets?}
 \begin{compactenum}
-\item \textcolor{tud2d}{Token Bucket}
-\item \textcolor{litegray}{Leaky Bucket}
+\item Token Bucket
 \end{compactenum}
 \subsection{Which of the fields belong only to IPv6?}
 \begin{compactenum}
-\item Header checksum
-\item Type of service
-\item Next header
-\item Payload length
-\item Source address
-\item Hop limit
-\item Time to live
+\item[c)] Next header
+\item[d)] Payload length
+\item[f)] Hop limit
 \end{compactenum}
 \subsection{How do you call a connection that allows traffic either way but only one way at a time?}
 \begin{compactenum}
-\item \textcolor{litegray}{simplex}
-\item \textcolor{litegray}{full duplex}
-\item \textcolor{tud2d}{half duplex}
-\item \textcolor{litegray}{multiplex}
+\item[c)]{half duplex}
 \end{compactenum}
 \subsection{According to DVR all update messages are sent...}
 \begin{compactenum}
-\item When a node has calculated a new minimum distance to another node
-\item To all nodes in the network
-\item Only to neighbouring nodes
-\item When it is requested by another node
+\item[c)]{only to neighbouring nodes}
 \end{compactenum}
 \end{document}
