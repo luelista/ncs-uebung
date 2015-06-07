@@ -1,0 +1,67 @@
+
+\subsection{4.3.1}
+
+a) Provider Q kann bis zu drei Routen zu Provider P empfangen, nämlich über 1, über 2, und über 4-3
+
+b) Die Aufgabenstellung ist unklar, ich interpretiere es wie folgt: Traffic wird immer über die nächstgelegene Line geleitet, die zum Zielprovider führt. Das ist nennt sich auch Hot-Potato-Prinzip: Paket möglichst schnell aus dem eigenen Verantwortungsbereich herausrouten.
+
+Dann fließt ein Paket von A zu B wie folgt:
+
+[4_3_1_b_AB.png]
+
+Ein Paket von B zu A verläuft wie folgt:
+
+[4_3_1_b_BA.png]
+
+
+\subsection{4.3.2}
+
+
+
+Wie die Router in diesem Fall reagieren kommt auf die Konfiguration an: Die Router sind vermutlich so konfiguriert, dass sie keine Routen aus BGP übernehmen, in deren AS-PATH sie selbst vorkommen. Dann wird der grün markierte Pfad verwendet. Es könnte aber auch von den Admins von AS42 explizit eingestellt sein, dass die Abkürzung über AS23 verwendet wird.
+
+
+\subsection{4.3.3}
+BGP löst das Count-To-Infinity-Problem durch die Übertragung des kompletten bevorzugten Pfades (AS-PATH).
+
+Beispiel - Ausgangssituation:
+
+  AS1   --1--    AS2   --1--    AS3
+
+von   zu    AS-PATH   Kosten
+AS2   AS1    -         1
+AS3   AS1    AS2       2
+
+
+Der Link zwischen AS1 und AS2 wird schlechter
+
+  AS1   --42--   AS2   --1--    AS3
+
+
+AS2 bemerkt Abbruch des Links zu AS1, also
+von   zu    AS-PATH   Kosten
+AS2   AS1    -         1
+wird gelöscht
+
+Gleichzeitig erhält AS2 aber folgende Route von AS3
+von   zu    AS-PATH   Kosten
+AS2   AS1   AS3,AS2    3
+
+Diese wird aber von AS2 verworfen, da im AS-PATH AS2 selber vorkommt. Damit wurde das Count-To-Infinity verhindert.
+
+
+\subsection{4.3.4}
+
+Die Angreifer haben das BGP verwendet, um Internettraffic vom Nutzer unbemerkt über ihre eigenen Netze umzuleiten. Dazu wurde von einem Provider auf einem Uplink ein fremdes Prefix announced, sodass der Traffic in das Netz gelangt. Eine andere Route wurde unverändert gelassen, um den Traffic danach an das eigentliche Ziel weiterleiten zu können. Der Angreifer kann den Traffic dadurch abhören oder als MitM auch verändern.
+
+\subsection{4.3.5}
+
+BGP ist ein auf path vector routing basierendes Routingprotokoll, welches für das Routing zwischen den Autonomen Systemen eingesetzt wird, aus denen das Internet besteht. Es wird daher auch als Exterior Gateway Protocol bezeichnet.
+
+Vorteile:
+* sehr flexibel da nur Distanz übertragen wird und Policyentscheidungen lokal vom Admin getroffen werden können
+* vermeidet Count-To-Infinity
+
+Probleme:
+* Skalierung: Anzahl der AS steigt, die in jedem Router gespeicherte Tabelle aller erreichbaren Prefixe wird immer größer
+* Sicherheit: BGP ist anfällig für Spoofing, da normalerweise jeder Provider jedes Präfix announcen kann
