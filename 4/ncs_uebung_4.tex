@@ -7,7 +7,7 @@
 			{tudexercise}
 
 \usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
+%\usepackage[ngerman]{babel}
 \usepackage{paralist}
 \usepackage{amsmath}
 \usepackage{pgfplots}
@@ -16,7 +16,7 @@
 %\usepgfplotslibrary{units}
 \usepackage{xcolor}
 %\definecolor{tud2d}{RGB}{0,78,115}
-\definecolor{litegray}{gray}{0.9}
+\definecolor{litegray}{gray}{0.5}
 
 \usepackage{multicol} \setlength{\multicolsep}{0pt}
 
@@ -52,11 +52,20 @@
 \section{Autonomous Systems}
 \section{Border Gateway Protocol}
 \section{RIP and OSPF}
+\subsection{Name at least 4 main characteristics of RIP.\\Briefly explain how the algorithm works.\\ What happens if a link goes down?}
+Das Routing-Information-Protocol implementiert Distance-Vector-Routing. Dabei wird der Hop Count als Metrik eingesetzt. Die maximale Anzahl Hops liegt bei 15, 16 Hops sind gleichbedeutend mit \8, weshalb die maximale Netzwerkgröße begrenzt ist. RIP unterliegt dem Count-to-Infinity-Problem.\\
+Alle 30 Sekunden senden alle Router in den sog. Response Messages ihre Routingtabelle an die direkt verbundenen Nachbarn, die dadurch ihre eigenen Routingtabelle aktualisieren können.\\
+Empfängt ein Router 180 Sekunden lang keine Nachrichten, die darüber Aufschluss geben, dass ein ihm bekannter Router noch erreichbar ist, setzt er den Hop Count zu diesem Router auf 16 $\hat{=}$ \8.\\
+Die genannten Zeitdauern sind die in RFC 1058 definierten Standardzeiten und können in manchen Implementierungen abweichen.
+\subsection{How does the algorithm OSPF work?\\Additionally describe at least 2 main characteristics  of the protocol OSPF.\\Which additional features have been introduced in OSPF? Name at least 3 features.\\Briefly compare OSPF to RIP.}
+Open Shortest Path First implementiert Link-State-Routing und benutzt Dijkstras "Shortest Path First"-Algorithmus. Nachdem alle Knoten das Gewicht der adjazenten Kanten herausgefunden haben, verschicken sie ein Paket mit diesen Informationen, welches per Flooding im Netzwerk verteilt wird. So kann sich jeder Router einen Graphen zeichnen, der das komplette Netzwerk repräsentiert und per Dijkstra den minimalen Spannbaum berechnen, nach welchem er dann routet.\\
+
+OSPF weist gegenüber RIP zahlreiche neue Funktionen auf, unter anderem werden die Routingpakete per TCP verschickt und authentifiziert, OSPF unterstützt multiple Metriken für die gleiche Verbindung, Hierarchie und Subnetze durch die Einteilung des Netzwerks in Areas, VLSM, CIDR und routet garantiert loop-frei. OSPF unterliegt nicht dem Count-to-Infinity-Problem.\\
+Im Vergleich zu RIP ist OSPF besser skalierbar und bietet geringere Konvergenzzeiten. Durch die geringere Anzahl nötiger Update Messages verursacht OSPF einen geringeren Overhead in großen Netzwerken. Da die Implemtierung allerdings sehr kompliziert ist und auf die einzelnen Knoten eine größere Rechenleistung brauchen als bei RIP, ist OSPF für kleine Netzwerke ungeeignet.
 \section{Overlay Routing}
 \section{Multiple Choice}
 Die richtigen Antworten sind \textcolor{tud2d}{blau} markiert, die falschen \textcolor{litegray}{grau}.
-\subsection{Which is the lowest layer that uses traffic regulation mechanisms to keep a fast
-transmitter from drowning a slow receiver in data?}
+\subsection{Which is the lowest layer that uses traffic regulation mechanisms to keep a fast transmitter from drowning a slow receiver in data?}
 \begin{compactenum}
 \item Transport Layer
 \item Network Layer
@@ -64,8 +73,7 @@ transmitter from drowning a slow receiver in data?}
 \item Data Link Layer
 \item Session Layer
 \end{compactenum}
-\subsection{Which layer is responsible for determining how packets are routed from source to
-destination?}
+\subsection{Which layer is responsible for determining how packets are routed from source to destination?}
 \begin{compactenum}
 \item Transport Layer
 \item Network Layer
@@ -89,15 +97,12 @@ destination?}
 \item RIP
 \item DSR
 \end{compactenum}
-\subsection{When a connection is established, a route from the source machine to the destination
-machine is chosen as a part of the connection setup and stored in tables inside the routers.
-For which connection is the statement valid?}
+\subsection{When a connection is established, a route from the source machine to the destination machine is chosen as a part of the connection setup and stored in tables inside the routers. For which connection is the statement valid?}
 \begin{compactenum}
 \item \textcolor{litegray}{Connection-less Services}
 \item \textcolor{tud2d}{Connection-oriented Services}
 \end{compactenum}
-\subsection{Which of the algorithms throws away tokens when a bucket fills up but never discards
-packets?}
+\subsection{Which of the algorithms throws away tokens when a bucket fills up but never discards packets?}
 \begin{compactenum}
 \item \textcolor{tud2d}{Token Bucket}
 \item \textcolor{litegray}{Leaky Bucket}
