@@ -8,3 +8,11 @@ a) Siehe Grafik 2
 b) Der hop count von 2 ist zu gering, um einen Pfad von A nach F zu finden. Deswegen werden die Pakete verworfen, bevor sie F erreichen können.
 c) Der kürzeste Pfad von A nach F ist "ADEF". Der minimal benötigte hop count beträgt damit 3.
 d) Keine, da der hop count hier 0 beträgt und die Router die Pakete deswegen nicht mehr weiter schicken dürfen.
+
+4.1.3.
+a) siehe Tabelle.
+b) KEINE AHNUNG???
+
+4.1.4.
+      1. Jede Station merkt sich, welche Pakete sie schon gesendet hat und sendet diese kein zweites Mal. So lassen sich Dopplungen vermeiden.
+      2. Selective Flooding: Die Stationen merken sich, aus welcher "Richtung" die Pakete kamen und versuchen die Pakete nur in "Zielrichtung" weiterzuschicken. Dies funktioniert zwar abhängig von der Netzwerktopologie nur sehr begrenzt, verhindert aber, dass Pakete z.B. wieder beim Absender landen.
