@@ -1,0 +1,10 @@
+4.1.1.
+a) Siehe Grafik 1
+b) Wie in Grafik 1 deutlich wird, führt der beschriebene Flooding Algorithmus angewendet auf die gegebene Topologie dazu, dass gewisse Pakete nie ankommen und in einer Schleife (Schritt 6 entspricht wieder Schritt 3) immer wieder hin und her geschickt werden. Selbst wenn eines der Pakete schon bei D angekommen ist und die Übertragung damit im Prinzip abgeschlossen ist, führt der Kreis in der Toplogie dazu, dass die Pakete immer weiter geschickt werden.
+c) Der kürzeste Pfad von A nach D ist "ACBD". Da der kürzeste Pfad aus 3 "Sprüngen" besteht, wird mindestens ein hop count von 3 benötigt, damit die Pakete ankommen.
+
+4.1.2.
+a) Siehe Grafik 2
+b) Der hop count von 2 ist zu gering, um einen Pfad von A nach F zu finden. Deswegen werden die Pakete verworfen, bevor sie F erreichen können.
+c) Der kürzeste Pfad von A nach F ist "ADEF". Der minimal benötigte hop count beträgt damit 3.
+d) Keine, da der hop count hier 0 beträgt und die Router die Pakete deswegen nicht mehr weiter schicken dürfen.
