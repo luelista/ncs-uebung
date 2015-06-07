@@ -1,0 +1,18 @@
+4.5.1
+a) A -> C
+Overlay Path:  A,C
+Hopcount: 7
+Shortest Path: 7
+Stretch Factor: 1
+
+b) A -> E
+Overlay Path: A,C,D,E
+Hopcount: 16
+Shortest Path: 3
+Stretch Factor: 5,3
+
+c) D -> B
+Overlay Path: D,C,B
+Hopcount: 11
+Shortest Path: 5
+Stretch Factor: 2,2
