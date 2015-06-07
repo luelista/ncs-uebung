@@ -1,0 +1,12 @@
+4.2.1
+* Skalierbarkeit - würde man keine hierarchische Struktur wählen, würden gigantische Routingtabellen entstehen
+* Policy/Wirtschaftliche Gründe - Routing innerhalb des AS geschieht meist nach rein technischen Gesichtspunkten (Distanz, Bandbreite, Latenz, etc), aber zwischen AS werden Peeringverträge abgeschlossen, für die teilweise einer der beiden Partner bezahlen muss.
+
+
+4.2.2
+Innerhalb eines AS wird meistens Link-State Routing verwendet, d.h. alle Router kennen die gesamte Netzstruktur, während Inter-AS das BGP verwendet wird, welches ein Path Vector Routing darstellt. Außerdem haben bei Inter-AS-Routing wirtschaftliche und politische Gesichtspunkte einen Einfluss auf das Routing, während Intra-AS normalerweise nur technische Kriterien herangezogen werden.
+
+
+4.2.3
+a) BGP
+b) OSPF, RIP
