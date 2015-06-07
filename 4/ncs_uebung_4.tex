@@ -11,10 +11,12 @@
 \usepackage{paralist}
 \usepackage{amsmath}
 \usepackage{pgfplots}
+\usepackage{capt-of}
 \pgfplotsset{compat=newest}
 \usepgfplotslibrary{units}
 %\usepgfplotslibrary{units}
 \usepackage{xcolor}
+\usepackage{caption}
 %\definecolor{tud2d}{RGB}{0,78,115}
 \definecolor{litegray}{gray}{0.5}
 
@@ -38,7 +40,7 @@
 \hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{C}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & B & D & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
 
 \newcommand{\ezD}{\begin{tabular}{|c|c|c|c|c|c|}
-\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{D}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & B & C & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
+\hline\multicolumn{2}{|c|}{\multirow{2}{*}{$hrm{D}^\mathrm{D}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & B & C & E\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
 
 \newcommand{\ezE}{\begin{tabular}{|c|c|c|c|c|c|}
 \hline\multicolumn{2}{|c|}{\multirow{2}{*}{$\mathrm{D}^\mathrm{E}$}} & \multicolumn{4}{|c|}{Cost via}\\ \cline{3-6}\multicolumn{2}{|c|}{}& A & B & C & D\\ \hline\multirow{4}{*}{\rotatebox{90}{Destination}}}
@@ -46,23 +48,38 @@
 \newcommand{\ze}{\end{tabular}}
 
 \newcommand{\upd}{\begin{tabular}{c|c}}
+
+%% deutsche Bildunterschriften
+\renewcommand{\figurename}{Abbildung}
+\captionsetup{labelsep=none}
+
 \begin{document}
 \maketitle
 \section{Flooding}
 \subsection{}
+\begin{center}
+\includegraphics[scale=1.5]{4_1_1.jpg}
+\captionof{figure}{}
+\end{center}
 \begin{enumerate}
-\item Siehe Grafik 1
-\item Wie in Grafik 1 deutlich wird, führt der beschriebene Flooding Algorithmus angewendet auf die gegebene Topologie dazu, dass gewisse Pakete nie ankommen und in einer Schleife (Schritt 6 entspricht wieder Schritt 3) immer wieder hin und her geschickt werden. Selbst wenn eines der Pakete schon bei D angekommen ist und die Übertragung damit im Prinzip abgeschlossen ist, führt der Kreis in der Toplogie dazu, dass die Pakete immer weiter geschickt werden.
+\item Siehe Abbildung 1
+\item Wie in Abbildung 1 deutlich wird, führt der beschriebene Flooding Algorithmus angewendet auf die gegebene Topologie dazu, dass gewisse Pakete nie ankommen und in einer Schleife (Schritt 6 entspricht wieder Schritt 3) immer wieder hin und her geschickt werden. Selbst wenn eines der Pakete schon bei D angekommen ist und die Übertragung damit im Prinzip abgeschlossen ist, führt der Kreis in der Toplogie dazu, dass die Pakete immer weiter geschickt werden.
 \item Der kürzeste Pfad von A nach D ist "ACBD". Da der kürzeste Pfad aus 3 "Sprüngen" besteht, wird mindestens ein hop count von 3 benötigt, damit die Pakete ankommen.
 \end{enumerate}
 \subsection{}
+\begin{center}
+\includegraphics[scale=1.2]{4_1_2.jpg}
+\captionof{figure}{}
+\end{center}
 \begin{enumerate}
-
-\item Siehe Grafik 2
-\item Der hop count von 2 ist zu gering, um einen Pfad von A nach F zu finden. Deswegen werden die Pakete verworfen, bevor sie F erreichen können.
+\item Siehe Abbildung 2
+\item Der hopcount von 2 ist zu gering, um einen Pfad von A nach F zu finden. Deswegen werden die Pakete verworfen, bevor sie F erreichen können.
 \item Der kürzeste Pfad von A nach F ist "ADEF". Der minimal benötigte hop count beträgt damit 3.
+\begin{center}
+\includegraphics[scale=1.6]{4_1_2_d.jpg}
+\captionof{figure}{}
+\end{center}
 \item Keine, da der hop count hier 0 beträgt und die Router die Pakete deswegen nicht mehr weiter schicken dürfen.
-
 \end{enumerate}
 \subsection{}
 \begin{enumerate}
