@@ -49,6 +49,48 @@
 \begin{document}
 \maketitle
 \section{Flooding}
+\subsection{}
+\begin{enumerate}
+\item Siehe Grafik 1
+\item Wie in Grafik 1 deutlich wird, führt der beschriebene Flooding Algorithmus angewendet auf die gegebene Topologie dazu, dass gewisse Pakete nie ankommen und in einer Schleife (Schritt 6 entspricht wieder Schritt 3) immer wieder hin und her geschickt werden. Selbst wenn eines der Pakete schon bei D angekommen ist und die Übertragung damit im Prinzip abgeschlossen ist, führt der Kreis in der Toplogie dazu, dass die Pakete immer weiter geschickt werden.
+\item Der kürzeste Pfad von A nach D ist "ACBD". Da der kürzeste Pfad aus 3 "Sprüngen" besteht, wird mindestens ein hop count von 3 benötigt, damit die Pakete ankommen.
+\end{enumerate}
+\subsection{}
+\begin{enumerate}
+
+\item Siehe Grafik 2
+\item Der hop count von 2 ist zu gering, um einen Pfad von A nach F zu finden. Deswegen werden die Pakete verworfen, bevor sie F erreichen können.
+\item Der kürzeste Pfad von A nach F ist "ADEF". Der minimal benötigte hop count beträgt damit 3.
+\item Keine, da der hop count hier 0 beträgt und die Router die Pakete deswegen nicht mehr weiter schicken dürfen.
+
+\end{enumerate}
+\subsection{}
+\begin{enumerate}
+
+\item siehe Tabelle.
+%\begin{tabular}
+%\\ \hline
+%1 & 125\,ms    & 20\,$\MiBs$ & 10\,$\MiBs$ & 10\,$\MiBs$ \\ \hline
+%2 & 208,33\,ms &  4\,$\MiBs$ & -6\,$\MiBs$ & 10\,$\MiBs$ \\ \hline
+%3 & 166,67\,ms &  4\,$\MiBs$ &  0\,$\MiBs$ &  4\,$\MiBs$ \\ \hline
+%4 & 500\,ms    &  0\,$\MiBs$ &  0\,$\MiBs$ &  0\,$\MiBs$ \\ \hline
+
+%\begin{table}[ht]
+%\caption{Die vier Phasen}
+%\centering
+%\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+%\\ \hline
+%Node & A & B & C & D & E & F & G & Sum \\ \hline
+%Step & s & d & s  & d & s & d & s & d & s & d & s & d & s & d & Sum \\ \hline
+%\end{tabular}
+%\end{table}
+
+\item KEINE AHNUNG???
+
+\end{enumerate}
+4.1.4.
+      1. Jede Station merkt sich, welche Pakete sie schon gesendet hat und sendet diese kein zweites Mal. So lassen sich Dopplungen vermeiden.
+      2. Selective Flooding: Die Stationen merken sich, aus welcher "Richtung" die Pakete kamen und versuchen die Pakete nur in "Zielrichtung" weiterzuschicken. Dies funktioniert zwar abhängig von der Netzwerktopologie nur sehr begrenzt, verhindert aber, dass Pakete z.B. wieder beim Absender landen.
 \section{Autonomous Systems}
 \section{Border Gateway Protocol}
 \section{RIP and OSPF}
