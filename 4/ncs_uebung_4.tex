@@ -72,7 +72,7 @@
 \includegraphics[scale=1.2]{4_1_2.jpg}
 \captionof{figure}{}
 \end{center}
-\begin{enumerate}
+\begin{enumerate}	
 \item Siehe Abbildung 2
 \item Der hopcount von 2 ist zu gering, um einen Pfad von A nach F zu finden. Deswegen werden die Pakete verworfen, bevor sie F erreichen können.
 \item Der kürzeste Pfad von A nach F ist "ADEF". Der minimal benötigte hop count beträgt damit 3.
@@ -226,48 +226,92 @@ Open Shortest Path First implementiert Link-State-Routing und benutzt Dijkstras 
 OSPF weist gegenüber RIP zahlreiche neue Funktionen auf, unter anderem werden die Routingpakete per TCP verschickt und authentifiziert, OSPF unterstützt multiple Metriken für die gleiche Verbindung, Hierarchie und Subnetze durch die Einteilung des Netzwerks in Areas, VLSM, CIDR und routet garantiert loop-frei. OSPF unterliegt nicht dem Count-to-Infinity-Problem.\\
 Im Vergleich zu RIP ist OSPF besser skalierbar und bietet geringere Konvergenzzeiten. Durch die geringere Anzahl nötiger Update Messages verursacht OSPF einen geringeren Overhead in großen Netzwerken. Da die Implemtierung allerdings sehr kompliziert ist und die einzelnen Knoten eine größere Rechenleistung brauchen als bei RIP ist OSPF für kleine Netzwerke nicht empfehlenswert.
 \section{Overlay Routing}
+\begin{enumerate}
+\item \textbf{A -> C} \\
+Overlay Path: A,C \\
+Hopcount: 7 \\
+Shortest Path: 7 \\
+Stretch Factor: 1
+
+\item \textbf{A -> E} \\
+Overlay Path: A,C,D,E \\
+Hopcount: 16 \\
+Shortest Path: 3 \\
+Stretch Factor: 5,3
+
+\item \textbf{D -> B} \\
+Overlay Path: D,C,B \\
+Hopcount: 11 \\
+Shortest Path: 5 \\
+Stretch Factor: 2,2
+
+\end{enumerate}
 \section{Multiple Choice}
+Die richtigen Antworten sind \textcolor{tud2d}{blau} markiert, die falschen \textcolor{litegray}{grau}.
 \subsection{Which is the lowest layer that uses traffic regulation mechanisms to keep a fast transmitter from drowning a slow receiver in data?}
 \begin{compactenum}
-\item[d)] Data Link Layer
+\item Transport Layer
+\item Network Layer
+\item Physical Layer
+\item Data Link Layer
+\item Session Layer
 \end{compactenum}
 \subsection{Which layer is responsible for determining how packets are routed from source to destination?}
 \begin{compactenum}
-\item[b)] Network Layer
+\item Transport Layer
+\item Network Layer
+\item Physical Layer
+\item Data Link Layer
+\item Session Layer
 \end{compactenum}
 \subsection{Which kind of routing algorithms are variable according to the current network status?}
-Das kommt darauf an, wie man "Status" definiert. Dynamische Routingalgorithmen sind in der Lage, den Ausfall von Knoten oder Verbindungen zu kompensieren. Adaptive Routingalgorithmen berücksichtigen auch die Auslastung einzelner Knoten und Verbindungen. Der Übergang ist allerdings fließend und hängt auch von der Metrik ab.
 \begin{compactenum}
-\item[a)] Adaptive routing algorithms
-\item[d)] Dynamic routing algorithms
+\item Adaptive routing algorithms
+\item Non-adaptive routing algorithms
+\item Static routing algorithms
+\item Dynamic routing algorithms
 \end{compactenum}
 \subsection{For which algorithms the count-to-infinity problem does not occur?}
 \begin{compactenum}
-\item[a)] LSR
-\item[c)] BGP
-\item[d)] OSPF
-\item[f)] DSR
+\item LSR
+\item DVR
+\item BGP
+\item OSPF
+\item RIP
+\item DSR
 \end{compactenum}
 \subsection{When a connection is established, a route from the source machine to the destination machine is chosen as a part of the connection setup and stored in tables inside the routers. For which connection is the statement valid?}
 \begin{compactenum}
-\item[b)]{Connection-oriented Services}
+\item \textcolor{litegray}{Connection-less Services}
+\item \textcolor{tud2d}{Connection-oriented Services}
 \end{compactenum}
 \subsection{Which of the algorithms throws away tokens when a bucket fills up but never discards packets?}
 \begin{compactenum}
-\item Token Bucket
+\item \textcolor{tud2d}{Token Bucket}
+\item \textcolor{litegray}{Leaky Bucket}
 \end{compactenum}
 \subsection{Which of the fields belong only to IPv6?}
 \begin{compactenum}
-\item[c)] Next header
-\item[d)] Payload length
-\item[f)] Hop limit
+\item Header checksum
+\item Type of service
+\item Next header
+\item Payload length
+\item Source address
+\item Hop limit
+\item Time to live
 \end{compactenum}
 \subsection{How do you call a connection that allows traffic either way but only one way at a time?}
 \begin{compactenum}
-\item[c)]{half duplex}
+\item \textcolor{litegray}{simplex}
+\item \textcolor{litegray}{full duplex}
+\item \textcolor{tud2d}{half duplex}
+\item \textcolor{litegray}{multiplex}
 \end{compactenum}
 \subsection{According to DVR all update messages are sent...}
 \begin{compactenum}
-\item[c)]{only to neighbouring nodes}
+\item When a node has calculated a new minimum distance to another node
+\item To all nodes in the network
+\item Only to neighbouring nodes
+\item When it is requested by another node
 \end{compactenum}
 \end{document}
