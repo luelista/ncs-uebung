@@ -51,6 +51,7 @@
 
 %% deutsche Bildunterschriften
 \renewcommand{\figurename}{Abbildung}
+\renewcommand{\tablename}{Tabelle}
 \captionsetup{labelsep=none}
 
 \begin{document}
@@ -84,25 +85,25 @@
 \subsection{}
 \begin{enumerate}
 
-\item siehe Tabelle.
-%\begin{tabular}
-%\\ \hline
-%1 & 125\,ms    & 20\,$\MiBs$ & 10\,$\MiBs$ & 10\,$\MiBs$ \\ \hline
-%2 & 208,33\,ms &  4\,$\MiBs$ & -6\,$\MiBs$ & 10\,$\MiBs$ \\ \hline
-%3 & 166,67\,ms &  4\,$\MiBs$ &  0\,$\MiBs$ &  4\,$\MiBs$ \\ \hline
-%4 & 500\,ms    &  0\,$\MiBs$ &  0\,$\MiBs$ &  0\,$\MiBs$ \\ \hline
+\item siehe Tabelle 1
+\begin{table}[ht]
+\begin{tabular}{|c|p{0.7cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.8cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}|p{0.7cm}|c|}
+\hline
+Node & \multicolumn{2}{c|}{A} & \multicolumn{2}{c|}{B} & \multicolumn{2}{c|}{C} & \multicolumn{2}{c|}{D} & \multicolumn{2}{c|}{E} & \multicolumn{2}{c|}{F} & \multicolumn{2}{c|}{G} & Sum \\ \hline
+Step & s & d & s  & d & s & d & s & d & s & d & s & d & s & d &  \\ \hline
+1 & - & B &  &  &  &  &  &  &  &  &  &  &  &  & 1 \\ \hline
+2 &  &  & A & C &  &  &  &  &  &  &  &  &  &  & 1 \\ \hline
+3 &  &  &  &  & B & D,E,F &  &  &  &  &  &  &  &  & 3 \\ \hline
+4 &  &  &  &  &  &  & C & F & C & F & C & D,E,G &  &  & 5 \\ \hline
+5 &  &  &   &  &  &  & F & C & F & C & D \newline E & C,E,G \newline C,D,G & F & - & 8\\ \hline
+6 &  &  &   &  & D \newline E \newline F \newline F & B,E,F \newline B,D,F \newline B,D,E \newline B,D,E & F & C & F & C &  &  & F \newline F& - \newline - &  14\\ \hline
+7 &  &  & C \newline C \newline C \newline C & A \newline A \newline A \newline A & D \newline E & B,E,F \newline B,D,F & C \newline C \newline C & F \newline F \newline F & C \newline C \newline C & F \newline F \newline F & C \newline C & D,E,G \newline D,E,G &  &  & 22 \\ \hline
+8 & B \newline B \newline B \newline B & - \newline - \newline - \newline - & C \newline C  & A \newline A &  &  & C \newline F \newline F & F \newline C \newline C & C \newline F \newline F & F \newline C \newline C & C \newline C \newline D \newline D \newline D \newline E \newline E \newline E & D,E,G \newline D,E,G \newline C,E,G \newline C,E,G \newline C,E,G \newline C,D,G \newline C,D,G \newline C,D,G & F \newline F & - \newline - & 32  \\ \hline
+\end{tabular}
+\captionof{table}{}
+\end{table}
 
-%\begin{table}[ht]
-%\caption{Die vier Phasen}
-%\centering
-%\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
-%\\ \hline
-%Node & A & B & C & D & E & F & G & Sum \\ \hline
-%Step & s & d & s  & d & s & d & s & d & s & d & s & d & s & d & Sum \\ \hline
-%\end{tabular}
-%\end{table}
-
-\item KEINE AHNUNG???
+\item Die Zahl der gesendeten Pakete wird bei jedem Schritt deutlich größer. Durch die gute Vernetzung zwischen C,D,E und F werden viel mehr Pakete verschickt, als eigentlich benötigt werden.
 
 \end{enumerate}
 \subsection{}
