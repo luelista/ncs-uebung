@@ -110,6 +110,16 @@ Step & s & d & s  & d & s & d & s & d & s & d & s & d & s & d &  \\ \hline
       1. Jede Station merkt sich, welche Pakete sie schon gesendet hat und sendet diese kein zweites Mal. So lassen sich Dopplungen vermeiden.\\
       2. Selective Flooding: Die Stationen merken sich, aus welcher "Richtung" die Pakete kamen und versuchen die Pakete nur in "Zielrichtung" weiterzuschicken. Dies funktioniert zwar abhängig von der Netzwerktopologie nur sehr begrenzt, verhindert aber, dass Pakete z.B. wieder beim Absender landen.
 \section{Autonomous Systems}
+\subsection{}
+\textbf{Skalierbarkeit}- würde man keine hierarchische Struktur wählen, würden gigantische Routingtabellen entstehen. \\
+\textbf{Policy/Wirtschaftliche Gründe} - Routing innerhalb des AS geschieht meist nach rein technischen Gesichtspunkten (Distanz, Bandbreite, Latenz, etc), aber zwischen AS werden Peeringverträge abgeschlossen, für die teilweise einer der beiden Partner bezahlen muss.
+\subsection{}
+Innerhalb eines AS wird meistens Link-State Routing verwendet, d.h. alle Router kennen die gesamte Netzstruktur, während Inter-AS das BGP verwendet wird, welches ein Path Vector Routing darstellt. Außerdem haben bei Inter-AS-Routing wirtschaftliche und politische Gesichtspunkte einen Einfluss auf das Routing, während Intra-AS normalerweise nur technische Kriterien herangezogen werden.
+\subsection{}
+\begin{enumerate}
+\item BGP
+\item OSPF, RIP
+\end{enumerate}
 \section{Border Gateway Protocol}
 \subsection{}
 \begin{enumerate}
