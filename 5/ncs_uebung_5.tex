@@ -41,13 +41,8 @@
 \subsection{Consider a connection with a round-trip delay of 18msec and the sender sends a packet with 2 bytes of data every 10msec. The receiver acknowledges each packet when read, but needs 10msec to read one byte of data.}
 \begin{enumerate}
 \item Visualize the first 50msec of this connection without a TCP connection setup.
-\item Assume a TCP flow control mechanism as shown in Figure 5.1. The receiver now has a buffer
-of 10 bytes and received packets are acknowledged immediately. Will the flow control
-mechanism stop the sender? If yes, when will it stop, for how long and will the connection
-stabilize? Complete the table to find the answer or justify your answer briefly.
-\item Assume the same setup as in (b) but this time the packet with sequence number 4 takes a
-detour through the network and arrives just before the packet with sequence number 12. How
-will this affect the connection? Complete the table below.
+\item Assume a TCP flow control mechanism as shown in Figure 5.1. The receiver now has a buffer of 10 bytes and received packets are acknowledged immediately. Will the flow control mechanism stop the sender? If yes, when will it stop, for how long and will the connection stabilize? Complete the table to find the answer or justify your answer briefly.
+\item Assume the same setup as in (b) but this time the segment with sequence number 3 (bytes 3+4) takes a detour through the network and arrives just before the segment with sequence number 11. How will this affect the connection? Complete the table below.
 \end{enumerate}
 \subsection{In sliding window protocols the sender maintains a set of sequence numbers corresponding to frames that have been sent and are as yet not acknowledged. The receiver also maintains a receiving window corresponding to the frames it is permitted to accept. The sequence numbers within the sender’s window represent frames that have been sent but are not yet acknowledged. Assume there is a sliding window protocol as shown in Figure 5.2. A sender transmits 5 frames to a receiver (sequence number 0-4) using the sliding window protocol. The parties have agreed on a window size of 2. Each frame is acknowledged individually. Sending and receiving of frames generally has higher priority than producing or receiving ACKs. One station cannot send and receive at the same time. There is a transmission delay from sender to receiver of one step. Draw the sliding windows in Figure 5.2. (no transmission errors). Given is the initial state.}
 \section{Sequence Numbers}
@@ -81,7 +76,7 @@ Please justify your answer.
 handshake.
 \item Assume the three-way handshake protocol is reduced to the first two messages. That means
 that the acknowledgement is not sent during the connection establishment. Which incorrect
-behavior occurs when the connection is released after the first message is sent?
+behavior can occur when the connection is released after the first message is sent?
 \end{enumerate}
 \subsection{How does TCP release its connections? Does it avoid the problem of synchronizing the connection release? Please justify your answer briefly.}
 \subsection{Figure 5.6. shows two malicious scenarios for the three-way handshake protocol using “Gesperrte Referenzen”. Describe for each of the scenarios how they violate the correct protocol. Elaborate what incorrect behavior results from this. Mark those time frames on the time axis, where the respective node assumes an established connection.}
