@@ -35,8 +35,36 @@
 \maketitle
 \section{Transport Layer}
 \subsection{What is the function of the Transport Layer? Which kind of Transport Services are provided? Describe two Transport Services and name corresponding protocols and applications making use of different service types.}
+Die Transportschicht stellt folgende Kommunikationsdienste zwischen Anwendungen in einem Netzwerk bereit:
+\begin{enumerate}
+	\item Verbindungsorientierte Kommunikation
+
+	Ermöglicht der Anwendung, die Verbindung als Datenstrom zu verwenden. Damit muss die Anwendung sich nicht selbst um die Aufteilung der Daten in Pakete/Datagramme kümmern.
+	\item Sicherstellung der Übertragungsreihenfolge
+
+	Datenpakete werden mit einer laufenden Nummer versehen, sodass sie, selbst wenn die Reihenfolge der Pakete in unterliegenden Schichten verändert wird, der Zielanwendung in der richtigen Reihenfolge zugestellt werden können.
+	\item Zuverlässigkeit
+	\item Flusskontrolle
+	\item Staukontrolle
+	\item Multiplexing
+\end{enumerate}
+Das Transmission Control Protocol (TCP) bietet alle oben angegebenen Services. Es wird z.B. von Webbrowsern als Schicht unterhalb von HTTP bzw SSL verwendet, sowie bei Mailprogrammen unterhalb von IMAP. Es kommt auch bei SSH oder FTP zum Einsatz.
+
+Das User Datagram Protocol (UDP) arbeitet verbindungslos, Anwendungen müssen also selber sog. Datagramme bilden, außerdem ist keine Zuverlässigkeit gegeben und die Übertragungsreihenfolge wird nicht sichergestellt. Es wird z.B. von Streamingdiensten, Internettelefonie und VPNs eingesetzt.
+
+
 \subsection{What is the main difference between Network and Transport Layer? Why are two different layers needed?}
+Die Netzwerkschicht stellt eine Verbindung zwischen zwei Hosts (Computern) her, während die Transportschicht dies zwischen zwei Anwendungen (Prozessen) auf diesen tut.
+
+Die Aufteilung auf zwei Schichten ermöglicht das modulare Austauschen der Funktionalitäten, z.B. kann die Umstellung auf längere Hostadressen (IPv4 auf IPv6) ausschließlich in der Netzwerkschicht stattfinden, es ist keine Änderung an den Protokollen der Transportschicht (TCP, UDP) notwendig.
+
+
 \subsection{What are protocol ports? What is their purpose? How can a process address a protocol port?}
+Die Ports auf Transportebene bilden zusammen mit der Adresse der Netzwerkschicht eine Socketadresse, die einen bestimmten Dienst auf einem Rechner eindeutig identifizieren. Dies ermöglicht, dass mehrere Prozesse auf einem Rechner die Netzwerkverbindung nutzen.
+
+Beim Aufbau einer Verbindung wird beim Aufruf von "connect()" neben der IP-Adresse auch der Port angegeben. Beim Warten auf eine Verbindung bindet sich der Prozess mit "bind()" an einen Port.
+
+
 \section{Flow Control}
 \subsection{Consider a connection with a round-trip delay of 18msec and the sender sends a packet with 2 bytes of data every 10msec. The receiver acknowledges each packet when read, but needs 10msec to read one byte of data.}
 \begin{enumerate}
