@@ -86,11 +86,11 @@ UDP ist nicht-zuverlässig und nicht verbindungsorientiert. Pakete können in de
 \subsection{State at least two reasons why UDP could be used in software development.}
 Einfache Implementierung. Geringe Latenz -> gut für Multimediaanwendungen wie Musik- oder Videostreams.
 \subsection{What protocols (UDP or TCP) would you use for the following scenarios? Briefly explain your decision.}
-\begin{compactenum}
+\begin{enumerate}
 \item \textbf{video live streams (e.g. sport events)}: UDP. Die geringe Latenz führt zu einer verzögerungsärmeren Übertragung. Zwar leidet durch den Verlust einzelner Pakete eventuell die Qualität, bei TCP könnte es aber zu langen Verzögerungen kommen, was ungünstiger ist.
 \item \textbf{an online payment system}: TCP. Selten ist die Zuverlässigkeit der Kommunikation wichtiger als bei Payment-Systemen, verzögerungsarme Übertragung ist unwichtig, die Datenmengen sind auch sehr gering.
 \item \textbf{a multiplayer action video game loaded over the Internet}: Bei Spielen soll in der Regel gewährleistet sein, dass der Zustand des Spieles bei allen Spielenden zur gleichen Zeit immer gleich ist. Kommt es also bei Einzelnen zu Verzögerungen, müssen alle anderen auf diese Einzelnen warten, damit keine unfairen Situationen entstehen. Das ist ein Argument für die Verwendung von TCP. Andererseits können Verzögerungen in der Übertragung dem Spielspaß auch sehr abträglich sein, was ein Argument für UDP ist. Bei einem Spiel mit einer großen Spielerzahl würde ich UDP verwenden, weil unfaire Nachteile für einzelne hier dem Spielspaß aller geopfert werden können. Ist die Zahl der Spieler allerdings gering, kann auch TCP verwendet werden.
-\end{compactenum}
+\end{enumerate}
 \subsection{Complete the diagrams in Figure 5.3, so that the transfer of the shown data is completed successfully for the sender as well as the receiver. Assume the TCP protocol from the lecture with cumulative acknowledgements. Fill in the sequence numbers in your solution.}
 \subsection{In Figure 5.4. you can see different phases of the TCP congestion window. A TCP connection consists of the two phases slow start and congestion avoidance. In the slow start phase the threshold of the congestion window should be reached fast and a simple additive increase would take very long. The congestion window is doubled until the threshold is reached. In the congestion avoidance phase TCP switches to an additive increase of the congestion window until a timeout occurs. The congestion window is halved.}
 \begin{enumerate}
