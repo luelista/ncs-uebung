@@ -66,11 +66,13 @@ Einfache Implementierung. Geringe Latenz -> gut für Multimediaanwendungen wie M
 \subsection{Complete the diagrams in Figure 5.3, so that the transfer of the shown data is completed successfully for the sender as well as the receiver. Assume the TCP protocol from the lecture with cumulative acknowledgements. Fill in the sequence numbers in your solution.}
 \subsection{In Figure 5.4. you can see different phases of the TCP congestion window. A TCP connection consists of the two phases slow start and congestion avoidance. In the slow start phase the threshold of the congestion window should be reached fast and a simple additive increase would take very long. The congestion window is doubled until the threshold is reached. In the congestion avoidance phase TCP switches to an additive increase of the congestion window until a timeout occurs. The congestion window is halved.}
 \begin{enumerate}
-\item Which parameter is actually adapted by the congestion window?
-\item How does a timeout occur in the depicted congestion control protocol? Describe what
-happens at sender and receiver.
-\item What do you think why the congestion window is reduced so drastically after a timeout?
-\item How does the task of the TCP congestion control differ from the task of flow control?
+\item \textbf{Which parameter is actually adapted by the congestion window?} Durch das beschriebene congestion-window-Verfahren wird die Senderate des Senders an die maximale Übertragungsrate des Netzwerks angenähert, sofern Paketverluste in der Überlastung einzelner Knoten ihre Ursache haben (und nicht etwa in der Zuverlässigkeit einzelner Verbindungen wie z.B. bei Drahtlosnetzwerken).
+\item \textbf{How does a timeout occur in the depicted congestion control protocol? Describe what
+happens at sender and receiver.} Ein Timeout wird dann erreicht, wenn der Sender für ein gewisses Datenpaket in einem gewissen Zeitabschnitt nach dessen Versenden kein dazu passendes ACK vom Empfänger erhält. Das kann entweder daran liegen, dass das Datenpaket den Empfänger niemals erreicht hat oder daran, dass das ACK den Sender nicht erreicht hat. Wenn der Sender nach der Timeout-Zeit kein ACK erhalten hat, sendet er das Datenpaket erneut, setzt sein Congestion Window auf 1 und halbiert das threshold, weil er davon ausgeht, dass der Paketverlust durch Netzwerkauslastung entstanden ist.
+\item \textbf{What do you think why the congestion window is reduced so drastically after a timeout?}
+Wird das Netzwerk stark belastet, gehen immer mehr Pakete verloren, die neu gesendet werden müssen. Arbeitet das Netzwerk an seiner Überlastungsgrenze, ist der Traffic, den es insgesamt zu bewältigen hat, also größer. Deshalb ist es sinnvoll, das congestion window stark zu senken, wenn Anzeichen vorhanden sind, dass das Netzwerk stark ausgelastet ist, um, bis der durch Paketverluste entstandene zusätzliche Traffic abgearbeitet ist.
+\item \textbf{How does the task of the TCP congestion control differ from the task of flow control?}
+Congestion Control berücksichtigt das gesamte (Teil-)Netz inklusive der einzelnen Komponenten (Hosts, Router etc.) und deren Prozesse und kontrolliert den gesamten Datendurchsatz.  Flow Control hingegen betrachtet einzelne (Punkt-zu-Punkt-) Verbindungen und versucht,'Überlastung langsamer Empfänger durch schnellere Sender zu vermeiden.
 \end{enumerate}
 \section{Three-Way Handshake}
 \subsection{Given is a connection establishment using the three-way handshake as shown in Figure 5.5. which was introduced in the lecture.}
