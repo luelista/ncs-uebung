@@ -76,16 +76,29 @@ Beim Aufbau einer Verbindung wird beim Aufruf von "connect()" neben der IP-Adres
 \section{Sequence Numbers}
 \subsection{What is the purpose of sequence numbers? What are the problems related to the use of sequence numbers?}
 Sequenznummern werden genutzt, um die Reihenfolge von TCP Paketen zu bestimmen.  Ein verschicktes Paket hat dabei immer eine höhere Sequenznummer, als das zuvor verschickte Paket.
-      Für jedes übertragene Byte erhöht sich die Sequenznummer um 1.
-      Zusätzlich werden die Nummern genutzt, um ACK Nachrichten des Empfängers den jeweiligen Paketen zuzuordnen. Die Sequenznummer, die mit dem ACK übertragen wird, entspricht dabei der Sequenznummer des nächsten vom TCP Empfänger erwarteten Bytes.
-
-      Ein Problem, was durch die Nutzung von Sequenznummern entsteht, ist der erhöhte Aufwand: Pro TCP Paket werden 4 Byte benötigt, um die Sequenznummer mitzuschicken. Zusätzlich dazu müssen sowohl Sender als auch Empfänger immer wieder den aktuellen Stand der Sequenznummer berechnen, um die Übertragung fortsetzen zu können.
-      Als weiteres Problem ist der Zahlenraum, der für die Sequenznummern genutzt werden kann begrenzt. Mit einer Länge von 4 byte (32 Bit) ergibt sich demnach eine Maximalzahl von 4.294.967.295. Nach dieser Ziffer wird die Sequenznummer wieder auf 0 gesetzt.
+Für jedes übertragene Byte erhöht sich die Sequenznummer um 1.
+Zusätzlich werden die Nummern genutzt, um ACK Nachrichten des Empfängers den jeweiligen Paketen zuzuordnen. Die Sequenznummer, die mit dem ACK übertragen wird, entspricht dabei der Sequenznummer des nächsten vom TCP Empfänger erwarteten Bytes.
+\\\\s
+Ein Problem, was durch die Nutzung von Sequenznummern entsteht, ist der erhöhte Aufwand: Pro TCP Paket werden 4 Byte benötigt, um die Sequenznummer mitzuschicken. Zusätzlich dazu müssen sowohl Sender als auch Empfänger immer wieder den aktuellen Stand der Sequenznummer berechnen, um die Übertragung fortsetzen zu können.
+Ein weiteres Problem ist der begrenzte Zahlenraum, der für die Sequenznummern verfügbar ist. Mit einer Länge von 4 Byte (32 Bit) ergibt sich demnach eine Maximalzahl von 4.294.967.295. Nach dieser Ziffer wird die Sequenznummer wieder auf 0 gesetzt.
 \subsection{Please derive an equation that calculates the time (in seconds) after which all the sequence numbers have been used in a protocol that uses x bits for the sequence numbers. Consider packets that have a length of y bytes, and a connection speed of s bits/second.}
-Die Zeit nach der alle Sequenznummern \glqq aufgebraucht\grqq sind $(t)$, ergibt sich nach
-$$\frac{2^x}{\frac{s}{y\cdot8}}$$
-Anzahl der möglichen Sequenznummern/Pakete pro Sekunde.
-    \subsection{After how many seconds, would this time be for a TCP protocol while using a 20 Gbit/s connection and 15 byte packets?}
+Die Zeit nach der alle Sequenznummern "aufgebraucht" sind ergibt sich nach Anzahl der möglichen Sequenznummern/Pakete pro Sekunde.
+\\\\
+\centerline{
+$
+    \frac{s \frac{bits}{sec}}{y*8\frac{bits}{pkg}} = \frac{s}{y*8} \frac{pkg}{sec}
+$
+}
+\\
+\\
+
+\centerline{
+$\frac{2^x seqnums}{\frac{s}{y*8} \frac{pkg}{sec}} = t$ $sec$
+}
+\subsection{After how many seconds, would this time be for a TCP protocol while using a 20 Gbit/s connection and 15 byte packets?}
+\centerline{
+$\frac{2^{32} seqnums}{\frac{20*10^9}{15*8} \frac{pkg}{sec}} \approx 25,77$ $sec$
+}
 Es ergibt sich eine Zahl von ca. 166666666,67 gesendeten Paketen pro Sekunde. Da im TCP Header 4 Byte (32 Bit) für die Sequenznummer vorgesehen sind, ergibt sich damit, dass nach ca. 25,77 Sekunden alle möglichen Sequenznummern aufgebraucht sind (also einmal genutzt wurden).
 \section{TCP and UDP}
 \subsection{Name the main differences between TCP and UDP. What are the advantages and disadvantages of each protocol?}
