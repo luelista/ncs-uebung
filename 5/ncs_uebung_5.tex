@@ -36,7 +36,7 @@
 \section{Transport Layer}
 \subsection{What is the function of the Transport Layer? Which kind of Transport Services are provided? Describe two Transport Services and name corresponding protocols and applications making use of different service types.}
 Die Transportschicht stellt folgende Kommunikationsdienste zwischen Anwendungen in einem Netzwerk bereit:
-\begin{enumerate}
+\begin{compactenum}
 	\item Verbindungsorientierte Kommunikation
 
 	Ermöglicht der Anwendung, die Verbindung als Datenstrom zu verwenden. Damit muss die Anwendung sich nicht selbst um die Aufteilung der Daten in Pakete/Datagramme kümmern.
@@ -47,7 +47,7 @@ Die Transportschicht stellt folgende Kommunikationsdienste zwischen Anwendungen 
 	\item Flusskontrolle
 	\item Staukontrolle
 	\item Multiplexing
-\end{enumerate}
+\end{compactenum}
 Das Transmission Control Protocol (TCP) bietet alle oben angegebenen Services. Es wird z.B. von Webbrowsern als Schicht unterhalb von HTTP bzw SSL verwendet, sowie bei Mailprogrammen unterhalb von IMAP. Es kommt auch bei SSH oder FTP zum Einsatz.
 
 Das User Datagram Protocol (UDP) arbeitet verbindungslos, Anwendungen müssen also selber sog. Datagramme bilden, außerdem ist keine Zuverlässigkeit gegeben und die Übertragungsreihenfolge wird nicht sichergestellt. Es wird z.B. von Streamingdiensten, Internettelefonie und VPNs eingesetzt.
