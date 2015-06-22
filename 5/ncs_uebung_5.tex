@@ -109,22 +109,19 @@ UDP ist nicht-zuverlässig und nicht verbindungsorientiert. Pakete können in de
 \subsection{State at least two reasons why UDP could be used in software development.}
 Einfache Implementierung. Geringe Latenz -> gut für Multimediaanwendungen wie Musik- oder Videostreams.
 \subsection{What protocols (UDP or TCP) would you use for the following scenarios? Briefly explain your decision.}
-\begin{enumerate}
+\begin{compactenum}
 \item \textbf{video live streams (e.g. sport events)}: UDP. Die geringe Latenz führt zu einer verzögerungsärmeren Übertragung. Zwar leidet durch den Verlust einzelner Pakete eventuell die Qualität, bei TCP könnte es aber zu langen Verzögerungen kommen, was ungünstiger ist.
 \item \textbf{an online payment system}: TCP. Selten ist die Zuverlässigkeit der Kommunikation wichtiger als bei Payment-Systemen, verzögerungsarme Übertragung ist unwichtig, die Datenmengen sind auch sehr gering.
 \item \textbf{a multiplayer action video game loaded over the Internet}: Bei Spielen soll in der Regel gewährleistet sein, dass der Zustand des Spieles bei allen Spielenden zur gleichen Zeit immer gleich ist. Kommt es also bei Einzelnen zu Verzögerungen, müssen alle anderen auf diese Einzelnen warten, damit keine unfairen Situationen entstehen. Das ist ein Argument für die Verwendung von TCP. Andererseits können Verzögerungen in der Übertragung dem Spielspaß auch sehr abträglich sein, was ein Argument für UDP ist. Bei einem Spiel mit einer großen Spielerzahl würde ich UDP verwenden, weil unfaire Nachteile für einzelne hier dem Spielspaß aller geopfert werden können. Ist die Zahl der Spieler allerdings gering, kann auch TCP verwendet werden.
-\end{enumerate}
+\end{compactenum}
 \subsection{Complete the diagrams in Figure 5.3, so that the transfer of the shown data is completed successfully for the sender as well as the receiver. Assume the TCP protocol from the lecture with cumulative acknowledgements. Fill in the sequence numbers in your solution.}
-\includegraphics[width=\textwidth]{haesslon.png}
 \subsection{In Figure 5.4. you can see different phases of the TCP congestion window. A TCP connection consists of the two phases slow start and congestion avoidance. In the slow start phase the threshold of the congestion window should be reached fast and a simple additive increase would take very long. The congestion window is doubled until the threshold is reached. In the congestion avoidance phase TCP switches to an additive increase of the congestion window until a timeout occurs. The congestion window is halved.}
 \begin{enumerate}
-\item \textbf{Which parameter is actually adapted by the congestion window?} Durch das beschriebene congestion-window-Verfahren wird die Senderate des Senders an die maximale Übertragungsrate des Netzwerks angenähert, sofern Paketverluste in der Überlastung einzelner Knoten ihre Ursache haben (und nicht etwa in der Zuverlässigkeit einzelner Verbindungen wie z.B. bei Drahtlosnetzwerken).
-\item \textbf{How does a timeout occur in the depicted congestion control protocol? Describe what
-happens at sender and receiver.} Ein Timeout wird dann erreicht, wenn der Sender für ein gewisses Datenpaket in einem gewissen Zeitabschnitt nach dessen Versenden kein dazu passendes ACK vom Empfänger erhält. Das kann entweder daran liegen, dass das Datenpaket den Empfänger niemals erreicht hat oder daran, dass das ACK den Sender nicht erreicht hat. Wenn der Sender nach der Timeout-Zeit kein ACK erhalten hat, sendet er das Datenpaket erneut, setzt sein Congestion Window auf 1 und halbiert das threshold, weil er davon ausgeht, dass der Paketverlust durch Netzwerkauslastung entstanden ist.
-\item \textbf{What do you think why the congestion window is reduced so drastically after a timeout?}
-Wird das Netzwerk stark belastet, gehen immer mehr Pakete verloren, die neu gesendet werden müssen. Arbeitet das Netzwerk an seiner Überlastungsgrenze, ist der Traffic, den es insgesamt zu bewältigen hat, also größer. Deshalb ist es sinnvoll, das congestion window stark zu senken, wenn Anzeichen vorhanden sind, dass das Netzwerk stark ausgelastet ist, um, bis der durch Paketverluste entstandene zusätzliche Traffic abgearbeitet ist.
-\item \textbf{How does the task of the TCP congestion control differ from the task of flow control?}
-Congestion Control berücksichtigt das gesamte (Teil-)Netz inklusive der einzelnen Komponenten (Hosts, Router etc.) und deren Prozesse und kontrolliert den gesamten Datendurchsatz.  Flow Control hingegen betrachtet einzelne (Punkt-zu-Punkt-) Verbindungen und versucht,'Überlastung langsamer Empfänger durch schnellere Sender zu vermeiden.
+\item Which parameter is actually adapted by the congestion window?
+\item How does a timeout occur in the depicted congestion control protocol? Describe what
+happens at sender and receiver.
+\item What do you think why the congestion window is reduced so drastically after a timeout?
+\item How does the task of the TCP congestion control differ from the task of flow control?
 \end{enumerate}
 \section{Three-Way Handshake}
 \subsection{Given is a connection establishment using the three-way handshake as shown in Figure 5.5. which was introduced in the lecture.}
@@ -141,7 +138,47 @@ behavior can occur when the connection is released after the first message is se
 \subsection{Figure 5.6. shows two malicious scenarios for the three-way handshake protocol using “Gesperrte Referenzen”. Describe for each of the scenarios how they violate the correct protocol. Elaborate what incorrect behavior results from this. Mark those time frames on the time axis, where the respective node assumes an established connection.}
 \section{Distributed Systems}
 \subsection{What are the main differences between Lamport’s and of van Renesse’s definition of distributed systems? Briefly discuss the two definitions. Give at least two counterexamples.}
+Lamport geht davon aus, dass Distributed Systems nicht funktionieren können (die Definition sagt man könne darin nicht arbeiten, da ein Computer gecrasht ist, den man nicht kennt). Die Definition von Tanenbaum und van Renesse beschreibt, dass ein Distributed System eine Ansammlung von Computern ist, die dem User gegenüber als ein einziger dargestellt werden.
+
+Es gibt funktionierende DS, z.B. Cluster/Grids in wissenschaftlichen Anwendungen, das World Wide Web, Telefonnetze.
+
+Keine DS sind Shared-Memory-Multiprozessorsysteme, sowie Systeme mit einem zentralen Server (z.B. Nameserver).
+
+
 \subsection{What is the purpose of a distributed system? Give at least 3 advantages and 3 disadvantages of distributed systems and briefly justify your answers.}
+Das Ziel ist die Erreichung echter Nebenläufigkeit sowie oft Skalierbarkeit.
+
+Vorteile:
+\begin{itemize}
+\item Skalierbarkeit/Lastverteilung
+\item Zuverlässigkeit/Hochverfügbarkeit/geringere Fehleranfälligkeit durch Redundanz
+\item Erweiterbarkeit
+\end{itemize}
+
+Nachteile:
+\begin{itemize}
+	\item hohe Komplexität/Systemgröße kann Fehler verursachen
+	\item hoher Aufwand, denn viele Komponenten müssen verbunden werden
+	\item Fehler können propagiert werden
+	\item Teilausfälle können unbemerkt bleiben
+\end{itemize}
+
+
 \subsection{Give an example for each of the different kinds of transparencies of distributed systems.}
+\begin{itemize}
+	\item Access transparency: Zugriff auf Netzlaufwerke ist genauso möglich wie auf lokale Geräte
+	\item Location transparency: beim Mailversand spielt es keine Rolle, wo der Zielmailserver physikalisch steht
+	\item Replication transparency: Content Delivery Networks kopieren häufig verwendete Daten in Datenzentren auf der ganzen Welt
+	\item Fragmentation transparency: Bei BitTorrent werden mehrere Teile einer Datei von unterschiedlichen anderen Usern geladen, ohne dass der Anwender dies manuell steuern muss.
+	\item Concurrency transparency: auf einer Google Documents Datei können mehrere Leute gleichzeitig bearbeiten
+	\item Error transparency: wenn ein physikalischer Server bei Amazon S3 ausfällt, wird die VM auf einem anderen Server transparent neu gespawnt
+	\item Migration transparency: Wenn sich der Ort einer Entity im verteilten System ändert, bemerkt der User dies nicht
+	\item Performance transparency: Eine VM kann weiteren RAM oder virtuelle CPUs zur Laufzeit zugewiesen bekommen
+	\item Scaling transparency: Wenn neue Server mit dem Internet verbunden werden, hat dies keine direkten Auswirkungen auf den Rest des Internet
+\end{itemize}
+
+
 \subsection{Describe the difference between reliability and availability. Calculate the availability and Mean Time To Failure (MTTF) for the downtimes given in Table 5.6. for the two service started on the first day of the year 2014. Argue which service is better.}
+
+
 \end{document}
