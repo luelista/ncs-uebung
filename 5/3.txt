@@ -1,7 +1,10 @@
 3)
-      1) Sequenznummern werden genutzt, um die Reihenfolge von TCP Paketen zu bestimmen.  Ein verschicktes Paket hat dabei immer eine höhere Sequenznummer, als das zuvor verschickte Paket.
+     1) Sequenznummern werden genutzt, um die Reihenfolge von TCP Paketen zu bestimmen.  Ein verschicktes Paket hat dabei immer eine höhere Sequenznummer, als das zuvor verschickte Paket.
       Für jedes übertragene Byte erhöht sich die Sequenznummer um 1.
       Zusätzlich werden die Nummern genutzt, um ACK Nachrichten des Empfängers den jeweiligen Paketen zuzuordnen. Die Sequenznummer, die mit dem ACK übertragen wird, entspricht dabei der Sequenznummer des nächsten vom TCP Empfänger erwarteten Bytes.
 
       Ein Problem, was durch die Nutzung von Sequenznummern entsteht, ist der erhöhte Aufwand: Pro TCP Paket werden 4 Byte benötigt, um die Sequenznummer mitzuschicken. Zusätzlich dazu müssen sowohl Sender als auch Empfänger immer wieder den aktuellen Stand der Sequenznummer berechnen, um die Übertragung fortsetzen zu können.
       Als weiteres Problem ist der Zahlenraum, der für die Sequenznummern genutzt werden kann begrenzt. Mit einer Länge von 4 byte (32 Bit) ergibt sich demnach eine Maximalzahl von 4.294.967.295. Nach dieser Ziffer wird die Sequenznummer wieder auf 0 gesetzt.
+
+    2) Die Zeit nach der alle Sequenznummern "aufgebraucht" sind (t), ergibt sich nach 2^x/(s/(y*8)). Anzahl der möglichen Sequenznummern/Pakete pro Sekunde.
+    3) Es ergibt sich eine Zahl von ca. 166666666,67 gesendeten Paketen pro Sekunde. Da im TCP Header 4 Byte (32 Bit) für die Sequenznummer vorgesehen sind, ergibt sich damit, dass nach ca. 25,77 Sekunden alle möglichen Sequenznummern aufgebraucht sind (also einmal genutzt wurden).
