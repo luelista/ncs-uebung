@@ -148,23 +148,22 @@ Keine DS sind Shared-Memory-Multiprozessorsysteme, sowie Systeme mit einem zentr
 Das Ziel ist die Erreichung echter Nebenläufigkeit sowie oft Skalierbarkeit.
 
 Vorteile:
-\begin{itemize}
+\begin{compactitem}
 \item Skalierbarkeit/Lastverteilung
 \item Zuverlässigkeit/Hochverfügbarkeit/geringere Fehleranfälligkeit durch Redundanz
 \item Erweiterbarkeit
-\end{itemize}
+\end{compactitem}
 
 Nachteile:
-\begin{itemize}
+\begin{compactitem}
 	\item hohe Komplexität/Systemgröße kann Fehler verursachen
 	\item hoher Aufwand, denn viele Komponenten müssen verbunden werden
 	\item Fehler können propagiert werden
 	\item Teilausfälle können unbemerkt bleiben
-\end{itemize}
-
+\end{compactitem}
 
 \subsection{Give an example for each of the different kinds of transparencies of distributed systems.}
-\begin{itemize}
+\begin{compactitem}
 	\item Access transparency: Zugriff auf Netzlaufwerke ist genauso möglich wie auf lokale Geräte
 	\item Location transparency: beim Mailversand spielt es keine Rolle, wo der Zielmailserver physikalisch steht
 	\item Replication transparency: Content Delivery Networks kopieren häufig verwendete Daten in Datenzentren auf der ganzen Welt
@@ -174,7 +173,7 @@ Nachteile:
 	\item Migration transparency: Wenn sich der Ort einer Entity im verteilten System ändert, bemerkt der User dies nicht
 	\item Performance transparency: Eine VM kann weiteren RAM oder virtuelle CPUs zur Laufzeit zugewiesen bekommen
 	\item Scaling transparency: Wenn neue Server mit dem Internet verbunden werden, hat dies keine direkten Auswirkungen auf den Rest des Internet
-\end{itemize}
+\end{compactitem}
 
 
 \subsection{Describe the difference between reliability and availability. Calculate the availability and Mean Time To Failure (MTTF) for the downtimes given in Table 5.6. for the two service started on the first day of the year 2014. Argue which service is better.}
