@@ -178,5 +178,40 @@ Nachteile:
 
 \subsection{Describe the difference between reliability and availability. Calculate the availability and Mean Time To Failure (MTTF) for the downtimes given in Table 5.6. for the two service started on the first day of the year 2014. Argue which service is better.}
 
+Reliability beschreibt die Wahrscheinlichkeit, dass das System über eine ganze bestimmte Zeitspanne funktioniert. Availability beschreibt die Wahrscheinlichkeit, dass ein System zu einem Bestimmten Zeitpunkt gerade funktioniert.
+
+\subsubsection*{Service 1:}
+
+Availability:
+
+\begin{math}
+    Gesamtzeit = 1\ \textrm{Jahr} = 525 600 min \\
+    Downtime = 20 + 35 + 27 + 65 + 29 = 176 min \\
+    A = \frac{Uptime}{Gesamtzeit} = \frac{(Gesamtzeit - Downtime)}{Gesamtzeit} = \frac{525424}{525600} = 99,97 \%
+\end{math}
+
+Mean-Time-to-Failure:
+
+Um die Rechnung zu vereinfachen sollen die kurzen Downtimes aus der Berechnung herausgenommen sein, da sie sowieso sehr klein sind und kaum ins Gewicht fallen.
+
+Die letzte Downtime war am 11.11., also nach 314 Tagen. Somit ist die MTTF ungefähr 314/5 = 62,8 Tage
+
+\subsubsection*{Service 2:}
+
+Availability:
+
+\begin{math}
+    Gesamtzeit = 525 600 min \\
+    Downtime = 221 + 178 + 246 = 645 min \\
+    A = 524955/525600 = 99,88 \%
+\end{math}
+
+MTTF:
+
+\begin{math}
+314/3 = 104,67
+\end{math}
+
+Der Zweite Service ist besser, weil die Availability fast gleich ist, aber die Mean time to failure bei Service 2 deutlich höher ist.
 
 \end{document}
