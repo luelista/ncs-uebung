@@ -64,15 +64,17 @@ Die Ports auf Transportebene bilden zusammen mit der Adresse der Netzwerkschicht
 
 Beim Aufbau einer Verbindung wird beim Aufruf von "connect()" neben der IP-Adresse auch der Port angegeben. Beim Warten auf eine Verbindung bindet sich der Prozess mit "bind()" an einen Port.
 
-
+\clearpage
 \section{Flow Control}
-\subsection{Consider a connection with a round-trip delay of 18msec and the sender sends a packet with 2 bytes of data every 10msec. The receiver acknowledges each packet when read, but needs 10msec to read one byte of data.}
-\begin{enumerate}
-\item Visualize the first 50msec of this connection without a TCP connection setup.
-\item Assume a TCP flow control mechanism as shown in Figure 5.1. The receiver now has a buffer of 10 bytes and received packets are acknowledged immediately. Will the flow control mechanism stop the sender? If yes, when will it stop, for how long and will the connection stabilize? Complete the table to find the answer or justify your answer briefly.
-\item Assume the same setup as in (b) but this time the segment with sequence number 3 (bytes 3+4) takes a detour through the network and arrives just before the segment with sequence number 11. How will this affect the connection? Complete the table below.
-\end{enumerate}
-\subsection{In sliding window protocols the sender maintains a set of sequence numbers corresponding to frames that have been sent and are as yet not acknowledged. The receiver also maintains a receiving window corresponding to the frames it is permitted to accept. The sequence numbers within the sender’s window represent frames that have been sent but are not yet acknowledged. Assume there is a sliding window protocol as shown in Figure 5.2. A sender transmits 5 frames to a receiver (sequence number 0-4) using the sliding window protocol. The parties have agreed on a window size of 2. Each frame is acknowledged individually. Sending and receiving of frames generally has higher priority than producing or receiving ACKs. One station cannot send and receive at the same time. There is a transmission delay from sender to receiver of one step. Draw the sliding windows in Figure 5.2. (no transmission errors). Given is the initial state.}
+-- nicht bearbeitet --
+%\subsection{Consider a connection with a round-trip delay of 18msec and the sender sends a packet %with 2 bytes of data every 10msec. The receiver acknowledges each packet when read, but needs 10msec %to read one byte of data.}
+%\begin{enumerate}
+%\item Visualize the first 50msec of this connection without a TCP connection setup.
+%\item Assume a TCP flow control mechanism as shown in Figure 5.1. The receiver now has a buffer of 10 bytes and received packets are acknowledged immediately. Will the flow control mechanism stop the sender? If yes, when will it stop, for how long and will the connection stabilize? Complete the table to find the answer or justify your answer briefly.
+%\item Assume the same setup as in (b) but this time the segment with sequence number 3 (bytes 3+4) takes a detour through the network and arrives just before the segment with sequence number 11. How will this affect the connection? Complete the table below.
+%\end{enumerate}
+%\subsection{In sliding window protocols the sender maintains a set of sequence numbers corresponding to frames that have been sent and are as yet not acknowledged. The receiver also maintains a receiving window corresponding to the frames it is permitted to accept. The sequence numbers within the sender’s window represent frames that have been sent but are not yet acknowledged. Assume there is a sliding window protocol as shown in Figure 5.2. A sender transmits 5 frames to a receiver (sequence number 0-4) using the sliding window protocol. The parties have agreed on a window size of 2. Each frame is acknowledged individually. Sending and receiving of frames generally has higher priority than producing or receiving ACKs. One station cannot send and receive at the same time. There is a transmission delay from sender to receiver of one step. Draw the sliding windows in Figure 5.2. (no transmission errors). Given is the initial state.}
+%\clearpage
 \section{Sequence Numbers}
 \subsection{What is the purpose of sequence numbers? What are the problems related to the use of sequence numbers?}
 Sequenznummern werden genutzt, um die Reihenfolge von TCP Paketen zu bestimmen.  Ein verschicktes Paket hat dabei immer eine höhere Sequenznummer, als das zuvor verschickte Paket.
@@ -100,6 +102,7 @@ $\frac{2^x seqnums}{\frac{s}{y*8} \frac{pkg}{sec}} = t$ $sec$
 $\frac{2^{32} seqnums}{\frac{20*10^9}{15*8} \frac{pkg}{sec}} \approx 25,77$ $sec$
 }
 Es ergibt sich eine Zahl von ca. 166666666,67 gesendeten Paketen pro Sekunde. Da im TCP Header 4 Byte (32 Bit) für die Sequenznummer vorgesehen sind, ergibt sich damit, dass nach ca. 25,77 Sekunden alle möglichen Sequenznummern aufgebraucht sind (also einmal genutzt wurden).
+\clearpage
 \section{TCP and UDP}
 \subsection{Name the main differences between TCP and UDP. What are the advantages and disadvantages of each protocol?}
 TCP arbeitet zuverlässig und verbindungsorientiert. Eine Anwendung, die TCP benutzt, kann sich darauf verlassen, dass alle Pakete ankommen und in der richtigen Reihenfolge sind. Über eine aufgebaute TCP-Verbindung können beide Parteien miteinander kommunizieren. Dafür ist TCP vergleichsweise komplex, erzeugt einen hohen Overhead und kann größere Verzögerungen erzeugen. \\
@@ -125,6 +128,7 @@ Wird das Netzwerk stark belastet, gehen immer mehr Pakete verloren, die neu gese
 \item \textbf{How does the task of the TCP congestion control differ from the task of flow control?}
 Congestion Control berücksichtigt das gesamte (Teil-)Netz inklusive der einzelnen Komponenten (Hosts, Router etc.) und deren Prozesse und kontrolliert den gesamten Datendurchsatz.  Flow Control hingegen betrachtet einzelne (Punkt-zu-Punkt-) Verbindungen und versucht,'Überlastung langsamer Empfänger durch schnellere Sender zu vermeiden.
 \end{enumerate}
+\clearpage
 \section{Three-Way Handshake}
 \subsection{Given is a connection establishment using the three-way handshake as shown in Figure 5.5. which was introduced in the lecture.}
 \begin{enumerate}
@@ -163,7 +167,7 @@ TCP beendet Verbindungen, in dem von A ein Paket gesendet wird, welches das FIN 
 Die Verletzung des Protokolls liegt hier im zweiten Schritt. B geht davon aus, dass ein gültiges ConnectRequest von A über Referenz X vorliegt. Es handelt sich allerdings um ein Duplikat eines älteren Requests, woraus geschlossen werden kann, dass offensichtlich vorher eine Verbindung zu A über X vorlag. B sendet nun eine ConnectConfirmation mit der eigenen Referenz Y. Dies ist nicht zulässig, da wir uns offensichtlich noch in dem Zeitintervall befinden, in dem die Referenz Y gesperrt ist. Dies wird dadurch deutlich, dass das doppelte CR(X) noch nicht aufgrund seines Alters verworfen wurde. B dürfte demnach nur eine ConnectConfirmation mit einer anderen eigenen Referenz als Y senden, was Fehler verhindern würde.\\
 \textbf{2:} Zu Zeitpunkt t2 geht A davon aus, dass eine gültige Verbindung zu B aufgebaut wurde.\\
 Hier ist schon der erste Schritt eine Verletzung des Protokolls. A versucht über die Referenz X eine Verbindung zu B aufzubauen. Da kurz darauf eine doppelte ConnectConfirmation CC(Z,X) eintrifft, war die Referenz X in diesem Zeitintervall offensichtlich noch gesperrt und hätte nicht wieder vergeben werden dürfen. Wäre die Sperrzeit von X schon vorbei, so wäre auch das veraltete CC(Z,X) schon aufgrund seines Alters verworfen worden.
-
+\clearpage
 \section{Distributed Systems}
 \subsection{What are the main differences between Lamport’s and of van Renesse’s definition of distributed systems? Briefly discuss the two definitions. Give at least two counterexamples.}
 Lamport geht davon aus, dass Distributed Systems nicht funktionieren können (die Definition sagt man könne darin nicht arbeiten, da ein Computer gecrasht ist, den man nicht kennt). Die Definition von Tanenbaum und van Renesse beschreibt, dass ein Distributed System eine Ansammlung von Computern ist, die dem User gegenüber als ein einziger dargestellt werden.
