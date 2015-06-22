@@ -130,16 +130,42 @@ Congestion Control berücksichtigt das gesamte (Teil-)Netz inklusive der einzeln
 \section{Three-Way Handshake}
 \subsection{Given is a connection establishment using the three-way handshake as shown in Figure 5.5. which was introduced in the lecture.}
 \begin{enumerate}
-\item Is there a situation in which the three-way handshake fails to reliably release the connection?
-Please justify your answer.
-\item Describe two different alternatives how to release a connection additionally to the three-way
-handshake.
-\item Assume the three-way handshake protocol is reduced to the first two messages. That means
+\item \textbf{Is there a situation in which the three-way handshake fails to reliably release the connection?
+Please justify your answer.}\\
+\\
+Eigentlich wird durch den three-way-handshake die Verbindung immer zuverlässig beendet, da die einzelnen Nachrichten einfach immer so lange geschickt werden, bis eine Bestätigung der Gegenseite empfangen wurde.
+Der einzige Fall, in dem ein three-way-handshake nicht zum gewünschten Ergebnis führt, ist der, in dem man die Senderichtung schließen möchte, aber weiterhin Pakete von der Gegenseite empfangen möchte. Dies ist durch einen three-way-handshake nicht möglich, da hier die Verbindung sobald sie von einer Seite geschlossen wurde auch immer von der Gegenseite geschlossen wird.
+\item \textbf{Describe two different alternatives how to release a connection additionally to the three-way
+handshake.}\\
+\\
+1. Als Ergänzung zum three-way-handshake wäre es auch möglich, den zweiten Schritt des Protokolls in 2 Nachrichten aufzuteilen, also Ack und die Nachricht zum Beenden der Verbindung zu trennen (siehe Grafik 1, quelle Wikipedia).\\
+2. Es wäre außerdem möglich, die Verbindung zu trennen, ohne überhaupt eine Nachricht an die Gegenseite zu schicken. Konkret würde das bedeuten, dass man nach Trennen der Verbindung keine Pakete der Gegenseite mehr akzeptieren würde. Die Gegenseite würde dann nach einer bestimmten Zeit ohne Antwort auf die eigenen Nachrichten die Verbindung ebenfalls beenden (timeout).
+\item \textbf{Assume the three-way handshake protocol is reduced to the first two messages. That means
 that the acknowledgement is not sent during the connection establishment. Which incorrect
-behavior can occur when the connection is released after the first message is sent?
+behavior can occur when the connection is released after the first message is sent?}\\
+\\
+B würde nicht merken, dass die ConnectConfirmation (CC) nie bei A angekommen ist, davon ausgehen, dass nun eine Verbindung aufgebaut ist und auf die Übertragung von Daten warten.
 \end{enumerate}
 \subsection{How does TCP release its connections? Does it avoid the problem of synchronizing the connection release? Please justify your answer briefly.}
+TCP beendet Verbindungen, in dem von A ein Paket gesendet wird, welches das FIN Bit im TCP Header gesetzt hat. Der Erhalt dieses Paketes wird von B durch eine ACK Nachricht mit entsprechender Sequenznummer sichergestellt.
+    Daraufhin beendet B seine Verbindung ebenfalls durch eine Nachricht mt FIN Bit. Auch dies wird durch eine ACK Nachricht bestätigt. (siehe Abbildung 1)
+    Nach senden des letzten ACKs wechseln die Clients in einen vorrübergehenden Wartezustand in dem alle ankommenden Nachrichten verworfen werden. So ist sichergestellt, dass verspätete Nachrichten nicht falsch interpretiert werden und Verbindungen zuverlässig beendet werden.
+
+\begin{center}
+\includegraphics[scale=0.5]{tcp-teardown.pdf}
+\captionof{figure}{}
+\end{center}
+
 \subsection{Figure 5.6. shows two malicious scenarios for the three-way handshake protocol using “Gesperrte Referenzen”. Describe for each of the scenarios how they violate the correct protocol. Elaborate what incorrect behavior results from this. Mark those time frames on the time axis, where the respective node assumes an established connection.}
+\begin{center}
+\includegraphics[scale=1.5]{5.png}
+\captionof{figure}{}
+\end{center}
+\textbf{1:} Zu Zeitpunkt t1 geht B davon aus, dass eine Verbindung zu A aufgebaut wurde, obwohl keine gültige Anfrage von A vorlag.\\
+Die Verletzung des Protokolls liegt hier im zweiten Schritt. B geht davon aus, dass ein gültiges ConnectRequest von A über Referenz X vorliegt. Es handelt sich allerdings um ein Duplikat eines älteren Requests, woraus geschlossen werden kann, dass offensichtlich vorher eine Verbindung zu A über X vorlag. B sendet nun eine ConnectConfirmation mit der eigenen Referenz Y. Dies ist nicht zulässig, da wir uns offensichtlich noch in dem Zeitintervall befinden, in dem die Referenz Y gesperrt ist. Dies wird dadurch deutlich, dass das doppelte CR(X) noch nicht aufgrund seines Alters verworfen wurde. B dürfte demnach nur eine ConnectConfirmation mit einer anderen eigenen Referenz als Y senden, was Fehler verhindern würde.\\
+\textbf{2:} Zu Zeitpunkt t2 geht A davon aus, dass eine gültige Verbindung zu B aufgebaut wurde.\\
+Hier ist schon der erste Schritt eine Verletzung des Protokolls. A versucht über die Referenz X eine Verbindung zu B aufzubauen. Da kurz darauf eine doppelte ConnectConfirmation CC(Z,X) eintrifft, war die Referenz X in diesem Zeitintervall offensichtlich noch gesperrt und hätte nicht wieder vergeben werden dürfen. Wäre die Sperrzeit von X schon vorbei, so wäre auch das veraltete CC(Z,X) schon aufgrund seines Alters verworfen worden.
+
 \section{Distributed Systems}
 \subsection{What are the main differences between Lamport’s and of van Renesse’s definition of distributed systems? Briefly discuss the two definitions. Give at least two counterexamples.}
 \subsection{What is the purpose of a distributed system? Give at least 3 advantages and 3 disadvantages of distributed systems and briefly justify your answers.}
