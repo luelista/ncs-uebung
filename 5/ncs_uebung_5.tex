@@ -103,11 +103,10 @@ Es ergibt sich eine Zahl von ca. 166666666,67 gesendeten Paketen pro Sekunde. Da
 \section{TCP and UDP}
 \subsection{Name the main differences between TCP and UDP. What are the advantages and disadvantages of each protocol?}
 TCP arbeitet zuverlässig und verbindungsorientiert. Eine Anwendung, die TCP benutzt, kann sich darauf verlassen, dass alle Pakete ankommen und in der richtigen Reihenfolge sind. Über eine aufgebaute TCP-Verbindung können beide Parteien miteinander kommunizieren. Dafür ist TCP vergleichsweise komplex, erzeugt einen hohen Overhead und kann größere Verzögerungen erzeugen. \\
-UDP ist nicht-zuverlässig und nicht verbindungsorientiert. Pakete können in der falschen Reihenfolge oder auch gar nicht ankommen. \textcolor{red}{Eine "UDP-Verbindung" existiert nicht, UDP ist unidirektional.} Ferner ist bei UDP die automatische Bitfehlerkorrektur durch Prüfsummen optional, während sie bei TCP immer geschieht. Die Implementierung von UDP ist vergleichsweise einfach und die entstehenden Verzögerungen sind gering.
-
-\textcolor{red}{Möglicherweise ist das für acht Punkte nicht detailliert genug...}
+UDP ist nicht-zuverlässig und nicht verbindungsorientiert. Pakete können in der falschen Reihenfolge oder auch gar nicht ankommen. Eine "UDP-Verbindung" existiert nicht, UDP ist unidirektional. Ferner ist bei UDP die automatische Bitfehlerkorrektur durch Prüfsummen optional, während sie bei TCP immer geschieht. Die Implementierung von UDP ist vergleichsweise einfach und die entstehenden Verzögerungen sind gering.
 \subsection{State at least two reasons why UDP could be used in software development.}
-Einfache Implementierung. Geringe Latenz -> gut für Multimediaanwendungen wie Musik- oder Videostreams.
+UDP ist einfach zu implementieren.\\
+UDP führt zu geringen Latenzen und ist damit sehr gut für Multimediaanwendungen wie Musik- und Videostreaming geeignet.
 \subsection{What protocols (UDP or TCP) would you use for the following scenarios? Briefly explain your decision.}
 \begin{compactenum}
 \item \textbf{video live streams (e.g. sport events)}: UDP. Die geringe Latenz führt zu einer verzögerungsärmeren Übertragung. Zwar leidet durch den Verlust einzelner Pakete eventuell die Qualität, bei TCP könnte es aber zu langen Verzögerungen kommen, was ungünstiger ist.
