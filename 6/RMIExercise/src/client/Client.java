@@ -24,5 +24,10 @@ class Client {
        worked = service.add(y,1);
        System.out.println("\nTrying to add 1 worked: \t" + worked);
        System.out.println("Value afterwards: \t\t"+y.getValue());
+		// Adding 1 did not work as expected because the BankAccount object
+		// is passed by value, so the balance is changed in the copy of the
+		// object in the Server process, but remains unchanged in the local
+		// copy.
+
     }
 }
