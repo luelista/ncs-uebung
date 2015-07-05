@@ -15,10 +15,13 @@ class TransferServer extends UnicastRemoteObject  implements TransferServerInter
 		
 	}
 
-	public void createAccount(int i, String name){
+	// rebind could throw a RemoteException, so this method is declared as "throws RemoteException"
+	public void createAccount(int i, String name) throws RemoteException{
 		BankAccountInterfaceImpl x = new BankAccountInterfaceImpl(i);
-//		BankAccountInterface stub = ...
-//		LocateRegistry.getRegistry(8080).rebind(name, stub);
+		// create a stub of the object so it will be called by reference
+		BankAccountInterface stub = (BankAccountInterface) UnicastRemoteObject.exportObject(x, 0);
+		// register the stub with the registry
+		LocateRegistry.getRegistry(8080).rebind(name, stub);
 	};
 
 	public static void main(String arg[]) throws AccessException, RemoteException {
@@ -29,10 +32,17 @@ class TransferServer extends UnicastRemoteObject  implements TransferServerInter
 	}
 
 
-	public boolean add(BankAccount account, int add){
+	public boolean add(BankAccount account, int add) throws RemoteException{
 		int temp = account.getValue();
 		account.setValue(account.getValue() + add);
-		
+
+		return account.getValue() == temp+add;
+	}
+
+	public boolean add(BankAccountInterface account, int add) throws RemoteException{
+		int temp = account.getValue();
+		account.setValue(account.getValue() + add);
+
 		return account.getValue() == temp+add;
 	}
 }

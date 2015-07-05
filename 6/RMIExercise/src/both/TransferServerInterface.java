@@ -9,6 +9,6 @@ public interface TransferServerInterface extends Remote{
 
 	boolean add(BankAccount account, int add) throws RemoteException;
 	
-	//boolean add(BankAccountInterface account, int add);
+	boolean add(BankAccountInterface account, int add) throws RemoteException;
 }
 
