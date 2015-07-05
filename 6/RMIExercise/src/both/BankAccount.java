@@ -1,7 +1,9 @@
 package both;
 
 
-public class BankAccount{
+import java.io.Serializable;
+
+public class BankAccount implements Serializable {
 
 	private int value;
 	public BankAccount(int value) {

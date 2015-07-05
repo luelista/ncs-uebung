@@ -1,7 +1,7 @@
 package both;
 
 
-public interface BankAccountInterface{
+public interface BankAccountInterface {
 	int getValue();
 	void setValue(int i);
 }
