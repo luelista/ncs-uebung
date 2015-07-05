@@ -28,6 +28,8 @@
 \captionsetup{labelsep=none}
 \usepackage{multicol} \setlength{\multicolsep}{0pt}
 \usepackage{siunitx}
+\usepackage{units} 
+
 \makeatletter
 \newcommand{\Spvek}[2][r]{%
   \gdef\@VORNE{1}
@@ -47,25 +49,29 @@
   \fi}
 \makeatother
 
-\title{Lösungsvorschlag zur fünften Hausübung}
+\title{Lösungsvorschlag zur sechsten Hausübung}
 \subtitle{Einführung in Net Centric Systems und \LaTeX, Sommersemester 2015}
 \subsubtitle{Max Weller, Julian Haas, Stefan Pilot}
 \begin{document}
 \maketitle
 \section{}
+Remote Procedure Calls (RPC) konzentrieren sich wie der Name schon sagt auf Prozeduren. Prozeduren können dabei entweder auf dem lokalen System oder eben auf Remote Systemen aufgerufen werden und werden dort ausgeführt. Das Ergebnis der Prozedur wird dann an das aufrufende System zurück geschickt. Man versucht dabei möglichst wenig Unterscheidung zwischen lokalen und externen Prozeduren zu machen. Betrachtet man das gesamte System erfolgt die Ausführung der Prozeduren oft sequentiell und nicht parallel. Das bedeutet, dass die aufrufende Maschine auf das Ergebnis der anderen Maschine wartet, bis es die Programmausführung fortsetzt.
+
+    Remote Method Invocation ist im Gegensatz zu RPC Objekt- und nicht Prozedurenorientiert. Die einzelnen Maschinen erstellen lokal Objekte, die dann entweder komplett (by value) oder als Referenz (by reference) an Remote Maschinen übergeben werden. So ist es den einzelnen Maschinen möglich, Methoden von Objekten aufzurufen, die auf anderen Maschinen gespeichert sind und dort erstellt wurden.
 \section{}
 \section{Clocks}
 \subsection{}
+Idealerweise berechnet sich die Zeit bei Slave wie folgt:
 $$
-I = \frac{T_1 - T_0}{2}
+C_M'(T_1) = C_M + \frac{T_1-T_0-I}{2}
 $$
-\textcolor{red}{AUFGABE UNVOLLSTÄNDIG}
+Slave kann aber die Interrupt Handling Time $I$ nicht berechnen. Deshalb muss die in der Gleichung für C$_M$'(T$_1$) weggelassen werden, was die Genauigkeit verschlechtert. Eine Möglichkeit, sie trotzdem zu verbessern, ist, die Zeit sehr oft abzufragen, sie aber bei großem T$_1$ - T$_0$ zu verwerfen.
 \subsection{}
 \begin{enumerate}
-\item Keine Ahnung.
-\item Keine Ahnung.
-\item $$f = \frac{1}{\frac{\delta}{2\cdot c}} = \frac{1}{\frac{100\text{ms}}{\num{2e-5}}}$$
-\item $\text{C}_\text{s}$ soll streng monoton steigend sein. Lösung: Änderungsrate kurzzeitig senken, bis sich die Zeiten angeglichen haben.
+\item Auf 12:00 + 4.5 ms.
+\item Um 12:00 - 4.5 ms.
+\item $$f \geq \frac{\delta}{2\cdot c}^{-1} = \frac{100\text{ms}}{\num{2e-5}}^{-1}$$
+\item $\text{C}_\text{s}$ ist streng monoton steigend definiert, darf also nicht zurückgesetzt werden. Lösung: Änderungsrate kurzzeitig senken, bis sich die Zeiten angeglichen haben.
 \end{enumerate}
 \subsection{}
 Lamports Algorithmus ist dafür gedacht, die Uhren in einem Computernetzwerk zu synchronisieren, in dem kein Rechner einen UTC-Empfänger hat. Alle $\tau$ Sekunden schicken alle Rechner Nachrichten an ihre direkten Nachbarn und berechnen ihre neue Zeit aus dem Durchschnitt dieser Nachrichten. Bei diesem System lässt sich beweisen, dass es im ganzen Netzwerk eine maximale Uhrabweichung gibt.
@@ -122,7 +128,8 @@ c) (2,8,4)
 \subsection{}
 Die zwei könnten sich einfach erinnern, wann sie zuletzt mit Bob gesprochen haben. Chris hat es später getan als Dave. Also zählt die Aussage, die Dave von Bob bekommen hat und sie einigen sich auf Donnerstag. Zur Lösung wurde wall clock time benutzt, also eine physical clock.
 \section{}
+
 \section{}
-
-
+\subsection{}
+\subsection{}
 \end{document}
