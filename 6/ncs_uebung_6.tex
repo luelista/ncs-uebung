@@ -1,0 +1,128 @@
+\documentclass[a4paper,
+			llpt,
+			solution,
+			accentcolor=tud2d,
+			colorbacktitle
+			]
+			{tudexercise}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{paralist}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{capt-of}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{units}
+%\usepgfplotslibrary{units}
+\usepackage{xcolor}
+\usepackage{caption}
+%\definecolor{tud2d}{RGB}{0,78,115}
+\definecolor{litegray}{gray}{0.5}
+\usepackage{multirow}
+\newcommand{\ze}{\end{tabular}}
+\newcommand{\upd}{\begin{tabular}{c|c}}
+%% deutsche Bildunterschriften
+\renewcommand{\figurename}{Abbildung}
+\renewcommand{\tablename}{Tabelle}
+\captionsetup{labelsep=none}
+\usepackage{multicol} \setlength{\multicolsep}{0pt}
+\usepackage{siunitx}
+\makeatletter
+\newcommand{\Spvek}[2][r]{%
+  \gdef\@VORNE{1}
+  \left(\hskip-\arraycolsep%
+    \begin{array}{#1}\vekSp@lten{#2}\end{array}%
+  \hskip-\arraycolsep\right)}
+
+\def\vekSp@lten#1{\xvekSp@lten#1;vekL@stLine;}
+\def\vekL@stLine{vekL@stLine}
+\def\xvekSp@lten#1;{\def\temp{#1}%
+  \ifx\temp\vekL@stLine
+  \else
+    \ifnum\@VORNE=1\gdef\@VORNE{0}
+    \else\@arraycr\fi%
+    #1%
+    \expandafter\xvekSp@lten
+  \fi}
+\makeatother
+
+\title{Lösungsvorschlag zur fünften Hausübung}
+\subtitle{Einführung in Net Centric Systems und \LaTeX, Sommersemester 2015}
+\subsubtitle{Max Weller, Julian Haas, Stefan Pilot}
+\begin{document}
+\maketitle
+\section{}
+\section{}
+\section{Clocks}
+\subsection{}
+$$
+I = \frac{T_1 - T_0}{2}
+$$
+\textcolor{red}{AUFGABE UNVOLLSTÄNDIG}
+\subsection{}
+\begin{enumerate}
+\item Keine Ahnung.
+\item Keine Ahnung.
+\item $$f = \frac{1}{\frac{\delta}{2\cdot c}} = \frac{1}{\frac{100\text{ms}}{\num{2e-5}}}$$
+\item $\text{C}_\text{s}$ soll streng monoton steigend sein. Lösung: Änderungsrate kurzzeitig senken, bis sich die Zeiten angeglichen haben.
+\end{enumerate}
+\subsection{}
+Lamports Algorithmus ist dafür gedacht, die Uhren in einem Computernetzwerk zu synchronisieren, in dem kein Rechner einen UTC-Empfänger hat. Alle $\tau$ Sekunden schicken alle Rechner Nachrichten an ihre direkten Nachbarn und berechnen ihre neue Zeit aus dem Durchschnitt dieser Nachrichten. Bei diesem System lässt sich beweisen, dass es im ganzen Netzwerk eine maximale Uhrabweichung gibt.
+\subsection{}
+\begin{enumerate}
+\item $ a_1, a_2, a_3, a_4  $
+\item $ a_6, a_7, b_4, b_5, c_4, c_5, c_6, d_5  $
+\item $ a_5, d_3  $
+\item \begin{tabular}{c|ccccccc}
+\begin{tabular}[t]{@{}lr@{}}& Event No.: \\Process\end{tabular} &1&2&3&4&5&6&7 \\ \hline
+  A & 1 & 2 & 3 & 4 & 5 & 8 & 9\\
+  B & 2 & 3 & 5 & 6 & 7 \\
+  C & 1 & 2 & 4 & 7 & 8 & 10\\
+  D & 1 & 3 & 5 & 6 & 9 \\
+\end{tabular}
+\end{enumerate}
+\subsection{}
+Während eine physikalische Uhr die physikalische Zeit misst, hat eine logische Uhr nur die Aufgabe, aller Ereignisse einen eindeutigen Zeitstempel zuzuweisen. Dafür müssen sie monoton steigen, allerdings nicht notwendigerweise linear. Eine weitere Bedingung ist, dass ein Ereignis, welches kausal von einem anderen abhängig ist, auch einen höheren Zeitstempel bekommt.
+\subsection{}
+Eine physical clock sollte offensichtlicherweise immer dann benutzt werden, wenn der user mit dem vergebenen Timestamp in Kontakt kommt. Außerdem kann es bei sehr weit verteilten Systemen oder solchen mit sehr vielen Teilnehmern einfacher sein, alle mit einem UTC-Empfänger auszustatten. Ansonsten kann immer auf logical clocks zurückgegriffen werden.
+\subsection{}
+???
+\subsection{}
+\begin{tabular}{c|ccccccc}
+\begin{tabular}[t]{@{}lr@{}}& Event No.:\\Process:&\end{tabular}&1&2&3&4&5&6&7 \\ \hline
+A & $ \Spvek{1;0;0;0} $ 
+  & $ \Spvek{2;0;0;0} $ 
+  & $ \Spvek{3;0;0;0} $
+  & $ \Spvek{4;0;0;0} $
+  & $ \Spvek{5;0;0;0} $
+  & $ \Spvek{7;7;7;0} $
+  & $ \Spvek{8;8;8;0} $ \\ 
+B & $ \Spvek{0;1;0;0} $
+  & $ \Spvek{2;2;0;0} $
+  & $ \Spvek{3;3;3;0} $
+  & $ \Spvek{4;4;4;0} $
+  & $ \Spvek{5;5;5;0} $
+  & $ \Spvek{6;6;6;0} $ \\
+C & $ \Spvek{0;0;1;0} $
+  & $ \Spvek{0;0;2;0} $
+  & $ \Spvek{0;0;3;0} $
+  & $ \Spvek{0;0;5;3} $
+  & $ \Spvek{6;6;6;4} $
+  & $ \Spvek{7;7;7;5} $
+  & $ \Spvek{8;8;8;7} $ \\
+D & $ \Spvek{0;0;0;1} $
+  & $ \Spvek{0;0;4;2} $
+  & $ \Spvek{0;0;6;4} $
+  & $ \Spvek{0;0;7;5} $
+  & $ \Spvek{7;7;7;6} $ \\
+\end{tabular}
+\subsection{}
+c) (2,8,4)
+\subsection{}
+Die zwei könnten sich einfach erinnern, wann sie zuletzt mit Bob gesprochen haben. Chris hat es später getan als Dave. Also zählt die Aussage, die Dave von Bob bekommen hat und sie einigen sich auf Donnerstag. Zur Lösung wurde wall clock time benutzt, also eine physical clock.
+\section{}
+\section{}
+
+
+\end{document}
