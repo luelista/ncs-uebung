@@ -45,4 +45,14 @@ class TransferServer extends UnicastRemoteObject  implements TransferServerInter
 
 		return account.getValue() == temp+add;
 	}
+
+	// corrected pass-by-value method
+	// return the changed bank account
+	public BankAccount addCallByBalue(BankAccount account, int add) throws RemoteException{
+		int temp = account.getValue();
+		account.setValue(account.getValue() + add);
+		if (account.getValue() != temp+add) throw new RuntimeException("could not change account balance");
+		return account;
+	}
+
 }

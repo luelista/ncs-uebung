@@ -31,6 +31,13 @@ class Client {
 		// object in the Server process, but remains unchanged in the local
 		// copy.
 
+
+		// fixed call by value
+		y = service.addCallByBalue(y,1);
+		System.out.println("\nTrying to add 1 worked: \t" + worked);
+		System.out.println("Value afterwards: \t\t"+y.getValue());
+
+
 		// ############# call by ref #########################
 		// 6.4.1c
 		// creating a new account on the server
@@ -47,7 +54,6 @@ class Client {
 		System.out.println("Depositing 1 dollar worked? "+worked);
 
 		System.out.println("\nbalance: " + iface.getValue());
-
 
 	}
 }
